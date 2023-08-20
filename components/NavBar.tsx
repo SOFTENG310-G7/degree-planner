@@ -22,7 +22,7 @@ export default async function NavBar() {
           </Link>
 
           <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center [&>a]:px-1">
-            <Link href="/courses" className="mr-5 hover:text-gray-900">
+            <Link href="/courses" className={"mr-5 hover:text-gray-900"}>
               Courses
             </Link>
             <Link href="/planner" className="mr-5 hover:text-gray-900">
