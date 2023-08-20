@@ -18,7 +18,7 @@ export default function Footer() {
           <a
             href="https://www.auckland.ac.nz/"
             target="_blank"
-            className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start"
+            className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start hover:underline"
           >
             <span>The University of Auckland</span>
           </a>
