@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install dependencies
-        run: npm
+        run: npm install
       - name: Test and coverage
         run: npm jest --coverage
       # For SonarCloud to analyse the code from pull request
