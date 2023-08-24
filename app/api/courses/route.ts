@@ -3,66 +3,46 @@ import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
-  const supabase = createRouteHandlerClient({ cookies }, { supabaseKey: process.env.SUPABASE_SERVICE_KEY });
-    const {searchParams} = new URL(request.url);
-    const subject = searchParams.get("subject");
-    const title = searchParams.get("title");
-    const catalog_number = searchParams.get("catalog_number");
-    const has_requirements = searchParams.get("has_requirements");
-    const academic_group = searchParams.get("academic_group");
+  const supabase = createRouteHandlerClient(
+    { cookies },
+    { supabaseKey: process.env.SUPABASE_SERVICE_KEY }
+  );
+  const { searchParams } = new URL(request.url);
+  const subject = searchParams.get("subject");
+  const title = searchParams.get("title");
+  const catalog_number = searchParams.get("catalog_number");
+  const has_requirements = searchParams.get("has_requirements");
+  const academic_group = searchParams.get("academic_group");
 
-    if(subject){
-        const { data } = await supabase
-            .from("courses")
-            .select()
-            .eq("subject", subject);
-        return NextResponse.json(data, { status: 200 });
+  let query = supabase.from("courses").select();
+  if (subject) {
+    query = query.eq("subject", subject);
+  }
+
+  if (title) {
+    query = query.ilike("title", `%${title}%`);
+  }
+
+  if (catalog_number) {
+    query = query.eq("catalog_number", catalog_number);
+  }
+
+  if (has_requirements) {
+    if (has_requirements === "false") {
+      query = query
+        .or("requirement_description.is.null,requirement_description.eq..")
+    } else if (has_requirements === "true") {
+      query = query
+        .neq("requirement_description", '.')
+        .neq("requirement_description", null);
     }
+  }
 
-    if(title){
-        const { data } = await supabase
-            .from("courses")
-            .select()
-            .ilike("title", `%${title}%`);
-        return NextResponse.json(data, { status: 200 });
-    }
+  if (academic_group) {
+    query = query.eq("academic_group", academic_group);
+  }
 
-    if(catalog_number){
-        const { data } = await supabase
-            .from("courses")
-            .select()
-            .eq("catalog_number", catalog_number);
-        return NextResponse.json(data, { status: 200 });
-    }
+  const data = await query;
 
-    if(has_requirements){
-        if (has_requirements === "false"){
-            const { data } = await supabase
-                .from("courses")
-                .select()
-                .is("requirement_description", null);
-            return NextResponse.json(data, { status: 200 });
-        }
-        else if (has_requirements === "true"){
-            const { data } = await supabase
-                .from("courses")
-                .select()
-                .neq("requirement_description", null);
-            return NextResponse.json(data, { status: 200 });
-        }
-    }
-
-    if(academic_group){
-        const { data } = await supabase
-            .from("courses")
-            .select()
-            .eq("academic_group", academic_group);
-        return NextResponse.json(data, { status: 200 });
-    }
-
-  const { data } = await supabase
-    .from("courses")
-    .select();
-
-  return NextResponse.json(data, { status: 200 });
+  return NextResponse.json(data.data, { status: 200 });
 }
