@@ -12,9 +12,6 @@ export const getOAuthToken = async () : Promise<string> => {
 
   const oauth_response = await fetch(UOA_OAUTH_API, {
     method: "POST",
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-    },
     body: formData,
   });
 
