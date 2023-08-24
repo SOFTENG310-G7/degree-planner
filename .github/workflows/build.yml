@@ -15,7 +15,10 @@ jobs:
   Build:
     runs-on: ubuntu-latest
     steps:
-
+      - name: Install dependencies
+        run: npm
+      - name: Test and coverage
+        run: npm jest --coverage
       # For SonarCloud to analyse the code from pull request
       - name: Save PR number (for SonarCloud)
         if: github.event_name == 'pull_request'
