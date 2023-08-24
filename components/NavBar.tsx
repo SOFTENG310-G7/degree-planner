@@ -37,7 +37,10 @@ export default async function NavBar() {
           </nav>
           <div>
             {user ? (
-              <div>Hello, {user.email}</div>
+              <div>
+                <Link href="/profile" className="mr-5 hover:text-gray-900">{user.email}
+                </Link>
+              </div>
             ) : (
               <div>
                 <Link href="/login" className="mr-5 hover:text-gray-900">Login
