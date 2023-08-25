@@ -1,10 +1,4 @@
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
-import { cookies } from 'next/headers'
-import Link from 'next/link'
-import LogoutButton from '../components/LogoutButton'
-import SupabaseLogo from '../components/SupabaseLogo'
-import NextJsLogo from '../components/NextJsLogo'
-import { initializeCourses } from '@/seed/SeedCourses'
+import Link from "next/link";
 
 export const dynamic = "force-dynamic";
 
@@ -33,9 +27,9 @@ export default async function Index() {
                 <svg
                   fill="none"
                   stroke="#3d74ff"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="3"
+                  strokelinecap="round"
+                  strokelinejoin="round"
+                  strokewidth="3"
                   className="text-indigo-500 w-6 h-6 flex-shrink-0 mr-4"
                   viewBox="0 0 24 24"
                 >
@@ -52,9 +46,9 @@ export default async function Index() {
                 <svg
                   fill="none"
                   stroke="#3d74ff"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="3"
                   className="text-indigo-500 w-6 h-6 flex-shrink-0 mr-4"
                   viewBox="0 0 24 24"
                 >
@@ -84,9 +78,9 @@ export default async function Index() {
                   <svg
                     fill="none"
                     stroke="#3d74ff"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     className="w-8 h-8"
                     viewBox="0 0 24 24"
                   >
@@ -110,9 +104,9 @@ export default async function Index() {
                     <svg
                       fill="none"
                       stroke="#3d74ff"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       className="w-7 h-7 ml-2"
                       viewBox="0 0 24 24"
                     >
@@ -128,9 +122,9 @@ export default async function Index() {
                   <svg
                     fill="none"
                     stroke="#3d74ff"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     className="w-10 h-10"
                     viewBox="0 0 24 24"
                   >
@@ -154,9 +148,9 @@ export default async function Index() {
                     <svg
                       fill="none"
                       stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       className="w-7 h-78 ml-2"
                       viewBox="0 0 24 24"
                     >
