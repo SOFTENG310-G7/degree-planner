@@ -28,10 +28,10 @@ export default async function NavBar() {
             <Link href="/" className="mr-5 hover:text-gray-900">
               Degree Planner
             </Link>
-            <Link href="/" className="mr-5 hover:text-gray-900">
+            <Link href="/about" className="mr-5 hover:text-gray-900">
               About
             </Link>
-            <Link href="/" className="mr-5 hover:text-gray-900">
+            <Link href="/contact" className="mr-5 hover:text-gray-900">
               Contact
             </Link>
           </nav>
