@@ -31,3 +31,7 @@
     transform: translateY(0);
   }
 }
+
+.max-w-md-custom {
+  max-width: 56rem;
+}
