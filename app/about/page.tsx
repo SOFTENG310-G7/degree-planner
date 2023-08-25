@@ -1,11 +1,11 @@
-import "../globals.css"
+import "../globals.css";
 
 export default async function About() {
     return (
         <div className="flex justify-center items-center px-8 py-8">
             <div className="flex-1 flex flex-col w-full max-w-md-custom px-8 py-8 bg-white rounded-lg shadow-md">
                 <div className="text-center">
-                    <h1 className="text-2xl font-semibold">About Us</h1>
+                    <h1 className="text-2xl font-bold">About Us</h1>
                     <br/>
                     <p className="text-gray-600 font-bold">Welcome to the University of Auckland Degree Planner.</p>
                     <p className="text-gray-600 font-bold">A place for secondary and tertiary students to find their path.</p>
