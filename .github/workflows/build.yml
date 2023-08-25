@@ -15,7 +15,6 @@ jobs:
   Build:
     runs-on: ubuntu-latest
     steps:
-
       # For SonarCloud to analyse the code from pull request
       - name: Save PR number (for SonarCloud)
         if: github.event_name == 'pull_request'
