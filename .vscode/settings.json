@@ -1,2 +1,6 @@
 {
+    "sonarlint.connectedMode.project": {
+        "connectionId": "softeng310-g7",
+        "projectKey": "SOFTENG310-G7_degree-planner"
+    }
 }
