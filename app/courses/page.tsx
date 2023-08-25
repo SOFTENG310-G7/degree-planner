@@ -1,7 +1,7 @@
 "use client";
 import CourseBlock from "@/components/CourseBlock";
-import { data } from "./data";
 import { useState } from "react";
+import data from "./data.json";
 
 export default function Courses() {
   const [searchValue, setSearchValue] = useState("");
