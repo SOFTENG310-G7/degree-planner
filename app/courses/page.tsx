@@ -48,13 +48,13 @@ export default function Courses() {
         ) : null}
       </div>
       <div className="font-bold text-[40px] pt-[80px]">Courses</div>
-      <div className=" w-1/2 border-2 border-black px-2 py-4 rounded-full my-[80px] flex">
+      <div className=" w-1/2 border-2 border-grey-400 px-2 py-4 rounded-full my-[80px] flex">
         <div className="px-3">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="25"
             height="25"
-            fill="currentColor"
+            fill="grey"
             className="bi bi-search"
             viewBox="0 0 16 16"
           >
