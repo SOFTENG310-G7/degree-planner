@@ -76,6 +76,9 @@ export default function Courses() {
                 </div>
                 <hr className="py-2" />
                 <div className="pb-10">{openedData.description}</div>
+                <div className="pb-10 italic text-grey-300 ">
+                  {openedData.requirement_description}
+                </div>
               </div>
             </div>
           </div>
