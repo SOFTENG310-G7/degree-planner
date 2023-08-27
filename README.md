@@ -10,27 +10,31 @@ This website will assist potential tertiary education students in selecting thei
 
 ### Local Repository Deployment
 
-- Step 1
-```
-git clone https://github.com/SOFTENG310-G7/degree-planner.git
-```
-- Step 2
-```
-npm install
-```
-- Step 3
-Create an .env.local file in the root directory and insert with your specific settings:
-```
-NEXT_	PUBLIC_SUPABASE_URL=
-NEXT_PUBLIC_SUPABASE_ANON_KEY=
+**Step 1**
+  ```
+  git clone https://github.com/SOFTENG310-G7/degree-planner.git
+  ```
+**Step 2**
+  ```
+  npm install
+  ```
+**Step 3**: Create an .env.local file in the root directory and insert with your specific settings:
 
-UOA_CLIENT_ID=
-UOA_CLIENT_SECRET=
-````
-- Step 4
-```
-npm run dev
-```
+  ```
+  NEXT_PUBLIC_SUPABASE_URL=
+  NEXT_PUBLIC_SUPABASE_ANON_KEY=
+  SUPABASE_SERVICE_KEY=
+
+  UOA_CLIENT_ID=
+  UOA_CLIENT_SECRET=
+  ```
+
+  - The first three can be obtained from the properties of your Supabase instance. The last two will have to be generated [here](https://developer.auckland.ac.nz/prd/dashboard).
+
+**Step 4**
+  ```
+  npm run dev
+  ```
 
 
 ### Component Testing
