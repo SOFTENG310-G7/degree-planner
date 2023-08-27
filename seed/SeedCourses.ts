@@ -21,15 +21,16 @@ export const initializeCourses = async () => {
   const courses = engineering_courses.data;
   const { data } = await supabase
     .from("courses")
-    .insert(
+    .upsert(
       courses.map((course: any) => {
         return {
-            title:course.titleLong,
-            subject:course.subject,
-            description:course.description,
-            academic_group:course.acadGroup,
-            catalog_number:course.catalogNbr,
-            requirement_description:course.rqrmntDescr,
+            title: course.titleLong,
+            subject: course.subject,
+            description: course.description,
+            academic_group: course.acadGroup,
+            catalog_number: course.catalogNbr,
+            requirement_description: course.rqrmntDescr,
+            course_code: `${course.subject}${course.catalogNbr}`
         }
       }),
     )
