@@ -6,7 +6,13 @@ This project is a website for potential or current University of Auckland studen
 
 This website will assist potential tertiary education students in selecting their future degree at the University of Auckland and also help current students in assuring they will not deviate from their desired path until graduation. Our website will achieve these criterias by providing a user-friendly and easily accessible interface for users to navigate through efficiently and allow users the ability to achieve maximum progress with minimal actions.
 
-## Website Usage
+### Technology Stack
+
+This is a web-based project using React, Next.js and TypeScript, Tailwind CSS in conjunction with Supabase.
+
+### How You Can Contribute
+
+Please take a look at the [contributing guidelines](CONTRIBUTING.md) and [code of conduct](CODE_OF_CONDUCT.md)
 
 ### Local Repository Deployment
 
@@ -14,11 +20,16 @@ This website will assist potential tertiary education students in selecting thei
   ```
   git clone https://github.com/SOFTENG310-G7/degree-planner.git
   ```
+
 **Step 2**
+  Install Node.js version 18 LTS.
+
+**Step 3**
   ```
   npm install
   ```
-**Step 3**: Create an .env.local file in the root directory and insert with your specific settings:
+
+**Step 4**: Create an .env.local file in the root directory and insert with your specific settings:
 
   ```
   NEXT_PUBLIC_SUPABASE_URL=
@@ -31,27 +42,19 @@ This website will assist potential tertiary education students in selecting thei
 
   - The first three can be obtained from the properties of your Supabase instance. The last two will have to be generated [here](https://developer.auckland.ac.nz/prd/dashboard).
 
-**Step 4**
+**Step 5**
   ```
   npm run dev
   ```
-
-
-### Component Testing
-
-### Interface Testing
 
 ## Licensing
 
 This website is under the MIT license. This allows users almost unrestricted access to use, modification and distribution of the software as long as the copyright notice and license is included in all subsequent releases.
 
-## Version Release
+## Releases
 
-**Available releases**
-- v0.1.0
-The website features the template obtained from Vercel published by Supabase.
-- v0.2.0
-The website’s available version for the demo presentation.
+Check out all releases along with their notes [here](https://github.com/SOFTENG310-G7/degree-planner/releases/)
+
 
 ## Contact
 
@@ -65,21 +68,6 @@ For future developers, please include the contact information of your team leade
 
 ## Acknowledgements
 
-Huge credit goes towards all developers, testers and contributors who participated in the development of this website. Special mentions towards all developers throughout all sections of development who made major contributions.
+We've used the [Supabase Starter](https://github.com/vercel/next.js/tree/canary/examples/with-supabase) by Vercel under the MIT license.
 
-<!--Please input names in alphabetical order by last name–>
-- Tony Lu
-- Raymond Luo
-- Jason Perng
-- Dana Seong
-- Samuel Yoo
-
-## Miscellaneous
-
-### Technology Stack
-
-This is a web-based project with a focus on React, Next.js and TypeScript in conjunction with Supabase.
-
-### How You Can Contribute
-
-The following link navigates to the [contributing guidelines](CONTRIBUTING.md)
+Huge credit goes towards all developers, testers and contributors who participated in the development of this website. [](https://github.com/SOFTENG310-G7/degree-planner/wiki/Contributors)
