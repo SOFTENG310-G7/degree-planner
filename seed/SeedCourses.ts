@@ -1,4 +1,4 @@
-import { UOA_ENGINEERING_API, UOA_SCIENCE_API, getOAuthToken } from "@/utils/UoAAPI";
+import { UOA_ENGINEERING_API, getOAuthToken } from "@/utils/UoAAPI";
 import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
