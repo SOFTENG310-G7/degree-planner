@@ -18,12 +18,15 @@ To create a new pull request after having made changes to the code in your fork,
 
 A reviewer will then have to test the changes proposed by the pull request and request for any modifications required before giving their approval. The author or someone with authorization can then squash and merge the pull request into the main branch of the main repository.
 
-## Test Environment Setup
+## Testing Environment Setup
 
-## Potential Contribution Fields
+There is no testing environment setup currently. This will need to be integrated from scratch if desired in the future.
 
-## Contributions for Newcomers
+## Deployment
 
+You can make a production build of the Next.js app with `npm run build`
+
+Some good free options we've considered for hosting a Next.js app are Netlify, Vercel, and Cloudflare Pages
 ## Project Roadmap
 
 Our team has high aspirations for this website and aim to finish development and release the website regardless of the final status after the end of the three assignment rotations. We aim to bring this website to an audience and help any students who are interested in attending or already enrolled in the University of Auckland.
@@ -40,6 +43,7 @@ Our team has high aspirations for this website and aim to finish development and
 New and future functionality can be requested and suggested through filing new feature suggestions by all potential contributors.
 
 ## High Level Architecture Design
+For backend interactions with Supabase and the [UoA developer API](https://developer.auckland.ac.nz/prd/dashboard), we use [Next.js API routes](https://nextjs.org/docs/api-routes/introduction)
 
 ## Rules and Behaviour
 
@@ -47,7 +51,7 @@ Please respect everyone regardless of their status and have a positive attitude 
 
 ## Contact
 
-For general inquiries on the project, please contact the original team of developers through our team leader’s email (mseo477@aucklannduni.ac.nz) as stated in the README and avoid spamming emails in quick succession. For further information specific to each section of development, please contact the team leader of the respective section.
+For general inquiries on the project, please contact the original team of developers through our team leader’s email (mseo477@aucklanduni.ac.nz) as stated in the README and avoid spamming emails in quick succession. For further information specific to each section of development, please contact the team leader of the respective section.
 
 - A1 Team Leader: Dana Seong (mseo447@aucklanduni.ac.nz)
 - A2 Team Leader: <insert-name> (<insert-upi>@aucklanduni.ac.nz)
