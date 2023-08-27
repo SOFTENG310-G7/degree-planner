@@ -178,7 +178,7 @@ export default function Planner() {
                 <div className="text-2xl font-bold">Available Courses</div>
                 <Droppable droppableId={droppableIds.allCourses}>
                   {(provided) => (
-                    <div ref={provided.innerRef} {...provided.droppableProps}>
+                    <div className="w-80" ref={provided.innerRef} {...provided.droppableProps}>
                       <CourseList courses={allCourses.course} />
                       {provided.placeholder}
                     </div>
@@ -190,7 +190,7 @@ export default function Planner() {
 
                 <Droppable droppableId={droppableIds.selected}>
                   {(provided) => (
-                    <div ref={provided.innerRef} {...provided.droppableProps}>
+                    <div className="w-80" ref={provided.innerRef} {...provided.droppableProps}>
                       <CourseList courses={selected.course} />
                       {provided.placeholder}
                     </div>
