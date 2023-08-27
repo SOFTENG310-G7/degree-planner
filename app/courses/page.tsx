@@ -1,12 +1,25 @@
 "use client";
 import CourseBlock from "@/components/CourseBlock";
-import { useState } from "react";
-import data from "./data.json";
+import { useEffect, useState } from "react";
+
+type Course = {
+  id: string;
+  title: string;
+  description: string;
+  course_code: string;
+  academic_group: string;
+  subject: string;
+  catalog_number: string;
+  requirement_description: string;
+};
 
 export default function Courses() {
   const [searchValue, setSearchValue] = useState("");
+  const [courses, setCourses] = useState<Course[]>([]);
+  const [results, setResults] = useState<Course[]>([]);
+
   const [opened, setOpened] = useState(false);
-  const [openedData, setOpenedData] = useState(data[0]);
+  const [openedData, setOpenedData] = useState<Course>();
 
   const handleChange = (event: any) => {
     setSearchValue(event.target.value);
@@ -21,24 +34,45 @@ export default function Courses() {
     setOpened(false);
   };
 
+  useEffect(() => {
+    const fetchAPI = async () => {
+      const fetchdata = await fetch("http://localhost:3000/api/courses");
+      const data = await fetchdata.json();
+      console.log(data);
+
+      setCourses(data);
+      setResults(data);
+    };
+
+    fetchAPI();
+  }, []);
+
+  useEffect(() => {
+    const filteredArr = courses.filter((c) =>
+      c.course_code.toLowerCase().includes(searchValue.toLowerCase())
+    );
+
+    setResults(filteredArr);
+  }, [searchValue]);
+
   return (
     <div className="flex flex-col items-center">
       <div>
-        {opened ? (
+        {opened && openedData != null ? (
           <div
             id="popup"
             className="fixed left-0 right-0 top-0 bottom-0 flex items-center justify-center w-2/3 m-auto"
           >
-            <div className="border-2 border-black rounded-md mx-[200px] my-[300px] bg-white">
+            <div className="border-2 border-grey-300 rounded-lg mx-[200px] my-[300px] bg-white">
               <button className="text-right w-full p-2" onClick={closePopup}>
                 x
               </button>
               <div className="flex flex-col px-10 pb-10">
                 <div className="text-[26px] font-bold pt-10">
-                  {openedData.code}
+                  {openedData.course_code}
                 </div>
                 <div className="text-[18px] italic text-[#3d3d3d] pb-2">
-                  {openedData.name}
+                  {openedData.title}
                 </div>
                 <hr className="py-2" />
                 <div className="pb-10">{openedData.description}</div>
@@ -64,24 +98,26 @@ export default function Courses() {
 
         <input
           type="search"
-          className="search-bar outline-none w-full"
-          placeholder="Seach for a course..."
+          className="search-bar outline-none w-full bg-transparent"
+          placeholder="Search for a course..."
           onChange={handleChange}
         ></input>
       </div>
 
       <div className="mb-[200px]">
-        <div>
-          {data
-            .filter((c) =>
-              c.code.toLowerCase().includes(searchValue.toLowerCase())
-            )
-            .map((c) => (
-              <div key={c.code} onClick={() => handleClick(c)}>
-                <CourseBlock code={c.code} name={c.name} desc={c.description} />
+        {results.length != 0 ? (
+          <div>
+            {results.map((c) => (
+              <div key={c.id} onClick={() => handleClick(c)}>
+                <CourseBlock
+                  code={c.course_code}
+                  name={c.title}
+                  desc={c.description}
+                />
               </div>
             ))}
-        </div>
+          </div>
+        ) : null}
       </div>
     </div>
   );
