@@ -11,13 +11,12 @@ const StarRating = () => {
         {[...Array(5)].map((star, index) => {
           const id = index;
           const ratingValue = index + 1;
-          const starColor = ratingValue <= (hover !== undefined ? hover : rating || 0) ? "#ffc107" : "#e4e5e9";
           
           return (
             <FaStar
               key={id}
               className="star"
-              color={starColor}
+              color={ratingValue <= (hover ?? (rating ?? 0)) ? "#ffc107" : "#e4e5e9"}
               size={30}
               cursor="pointer"
               onMouseEnter={() => setHover(ratingValue)}
