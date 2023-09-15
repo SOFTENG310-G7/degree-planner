@@ -70,17 +70,17 @@ export default function Courses() {
   return (
     <div className="flex flex-col items-center">
       {opened && openedData != null && (
-        // Making the background darker when the popup is open
-        <div
-          className="fixed left-0 right-0 top-0 bottom-0 bg-black opacity-50"
-          onClick={closePopup}
-        ></div>
-      )}
-      <div>
-      {opened && openedData != null ? (
-        <Popup openedData={openedData} closePopup={closePopup} />
-      ) : null}
-      </div>
+          <>
+            {/* Overlay */}
+            <div
+              className="fixed left-0 right-0 top-0 bottom-0 bg-black opacity-50"
+              onClick={closePopup}
+            ></div>
+
+            {/* Popup */}
+            <Popup openedData={openedData} closePopup={closePopup} />
+          </>
+        )}
       <div className="font-bold text-[40px] pt-[80px]">Courses</div>
       <div className=" w-1/2 border-2 border-grey-400 px-2 py-4 rounded-full my-[80px] flex">
         <div className="px-3">
