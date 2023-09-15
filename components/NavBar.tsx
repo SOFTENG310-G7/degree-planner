@@ -22,28 +22,28 @@ export default async function NavBar() {
           </Link>
 
           <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center [&>a]:px-1">
-            <Link href="/courses" className={"mr-5 hover:text-gray-900"}>
+            <Link href="/pages/courses" className={"mr-5 hover:text-gray-900"}>
               Courses
             </Link>
-            <Link href="/planner" className="mr-5 hover:text-gray-900">
+            <Link href="/pages/planner" className="mr-5 hover:text-gray-900">
               Degree Planner
             </Link>
-            <Link href="/about" className="mr-5 hover:text-gray-900">
+            <Link href="/pages/about" className="mr-5 hover:text-gray-900">
               About
             </Link>
-            <Link href="/contact" className="mr-5 hover:text-gray-900">
+            <Link href="/pages/contact" className="mr-5 hover:text-gray-900">
               Contact
             </Link>
           </nav>
           <div>
             {user ? (
               <div>
-                <Link href="/profile" className="mr-5 hover:text-gray-900">{user.email}
+                <Link href="/pages/profile" className="mr-5 hover:text-gray-900">{user.email}
                 </Link>
               </div>
             ) : (
               <div>
-                <Link href="/login" className="mr-5 hover:text-gray-900">Login
+                <Link href="/pages/login" className="mr-5 hover:text-gray-900">Login
                 </Link>
               </div>
             )}
