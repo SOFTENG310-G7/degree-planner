@@ -21,7 +21,7 @@ const Popup: React.FC<PopupProps> = ({ openedData, closePopup }) => {
                         <div className="text-[26px] font-bold pt-10">
                             {openedData.course_code}
                         </div>
-                        <StarRating />
+                        <StarRating openedData={openedData}/>
                     </div>
                     <div className="text-[18px] italic text-[#3d3d3d] pb-2">
                         {openedData.title}

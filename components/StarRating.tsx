@@ -1,9 +1,52 @@
 import React, { useState } from "react";
 import { FaStar } from "react-icons/fa";
 
-const StarRating = () => {
+interface StarRatingProps {
+  openedData: any;
+}
+
+const StarRating: React.FC<StarRatingProps> = ({ openedData }) => {
   const [rating, setRating] = useState<number | null>(null);
   const [hover, setHover] = useState<number | undefined>(undefined);
+
+  console.log(openedData.id);
+
+  const handleRatingSubmit = async () => {
+    try {
+      // Replace with your actual cookie and route URL
+      const routeUrl = "/api/addReview"; // Update with your route URL
+
+      // Check if a rating has been selected
+      if (rating !== null) {
+        // Create a data object with the required information
+        const data = {
+          rating: rating,
+          courseId: openedData.id, // Assuming you have access to courseId in openedData
+        };
+
+        // Send a POST request to your route using fetch
+        const response = await fetch(routeUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+
+        if (response.ok) {
+          // Successfully added the review, you can handle this as needed
+          console.log("Review added successfully");
+        } else {
+          console.error("Failed to add review");
+        }
+      } else {
+        console.error("Please select a rating before submitting.");
+      }
+    } catch (error) {
+      console.error("Error while submitting the rating:", error);
+    }
+  };
+
 
   return (
     <div className="pt-10 ml-10">
