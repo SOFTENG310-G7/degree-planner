@@ -104,11 +104,14 @@ export default function Courses() {
         ></input>
       </div>
 
-      <div className="mb-[200px]">
-        {results.length != 0 ? (
-          <div>
+      <div className="mb-20">
+        {results.length !== 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 ml-10 mr-10">
             {results.map((c) => (
-              <div key={c.id} onClick={() => handleClick(c)}>
+              <div
+                key={c.id}
+                onClick={() => handleClick(c)}
+              >
                 <CourseBlock
                   code={c.course_code}
                   name={c.title}
