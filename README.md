@@ -23,7 +23,7 @@ Degree Planner is a React-based web app build with [Next.js](https://nextjs.org)
 
 ## 🫵 How you can contribute
 
-Thank you for your interest in contributing to degree planner! There are plenty of ways to help us build Degree Planner, only part of which is has to involve writing code. You could help us by reporting bugs, writing documentation, pitching design ideas, or just suggesting features or changes you’d like to see.
+Thank you for your interest in contributing to degree planner! There are plenty of ways to help us build Degree Planner, only part of which is has to involve writing code. You could help us by providing feedback, reporting bugs, writing documentation, testing, helping with design, or suggesting features and changes you’d like to see.
 
 It can be daunting to contribute to a project you aren’t familiar with. Simply using Degree Planner is a good place to start, and if you’ve got some ideas to contribute, check out our [contributing guidelines](/CONTRIBUTING.md) and [code of conduct](/CODE_OF_CONDUCT.md). Happy contributing!
 
