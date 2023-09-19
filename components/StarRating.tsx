@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaStar } from "react-icons/fa";
 
 interface StarRatingProps {
@@ -8,30 +8,81 @@ interface StarRatingProps {
 const StarRating: React.FC<StarRatingProps> = ({ openedData }) => {
   const [rating, setRating] = useState<number | null>(null);
   const [hover, setHover] = useState<number | undefined>(undefined);
+  const [ratingChanged, setRatingChanged] = useState<boolean>(false);
+  const [called, setCalled] = useState<boolean>(true);
+  const [hasRated, setHasRated] = useState<boolean>(false);
 
-  const handleRatingSubmitWithDelay = async (ratingValue: React.SetStateAction<number | null>) => {
-    setRating(ratingValue);
-    console.log("1");
-    //wait 1 second
-    await new Promise((r) => setTimeout(r, 500));
-    console.log("2");
-    
-    Promise.resolve(handleRatingSubmit());
-    console.log("3");
+  // check if the rating has been changed, if so, submit the rating
+  useEffect(() => {
+    if (ratingChanged) {
+      handleRatingSubmit();
+    }
+  }, [ratingChanged]);
+
+  // this useEffect is called when the popup is opened and never again, it renders the rating if the user has rated before
+  useEffect(() => {
+    if (called) {
+      handleGetSingleRating();
+      setCalled(false);
+    }
+  }, [called]);
+
+  // get the rating from the database if the user has rated before
+  const handleGetSingleRating = async () => {
+    try {
+      const data = { courseId: openedData.id };
+      const query = new URLSearchParams(data);
+      const response = await fetch(
+        `http://localhost:3000/api/ratings/GET_single?${query.toString()}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.ok) {
+        // render the rating because user has rated before
+        const ratingData = await response.json();
+        setRating(ratingData.rating);
+        setHasRated(true);
+      }
+    } catch (error) {
+      console.error("Error while getting the rating:", error);
+    }
   };
-  
+
   const handleRatingSubmit = async () => {
     try {
-      // Check if a rating has been selected
-      if (rating !== null) {
-        // Create a data object with the required information
-        const data = {
-          rating: rating,
-          courseId: openedData.id,
-        };
+      // Create a data object with the required information
+      const data = {
+        rating: rating,
+        courseId: openedData.id,
+      };
 
-        // Send a POST request to your route using fetch
-        const response = await fetch("http://localhost:3000/api/ratings", {
+      if (hasRated) {
+        //update the rating instead of posting new one
+        const response = await fetch(
+          "http://localhost:3000/api/ratings/PUT",
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          }
+        );
+
+        if (response.ok) {
+          // Successfully updated the review
+          console.log("Review updated successfully");
+        } else {
+          console.error("Failed to update review");
+        }
+      } else {
+        // Send a POST request to api/rating route using fetch
+        const response = await fetch("http://localhost:3000/api/ratings/POST", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -40,16 +91,23 @@ const StarRating: React.FC<StarRatingProps> = ({ openedData }) => {
         });
 
         if (response.ok) {
-          // Successfully added the review, you can handle this as needed
+          // Successfully added the review
           console.log("Review added successfully");
         } else {
           console.error("Failed to add review");
         }
-      } else {
-        console.error("Please select a rating before submitting.");
       }
+
     } catch (error) {
       console.error("Error while submitting the rating:", error);
+    }
+  };
+
+  // check if the rating has been changed
+  const updateRating = (ratingValue: number) => {
+    if (ratingValue !== rating) {
+      setRating(ratingValue);
+      setRatingChanged(true);
     }
   };
 
@@ -72,7 +130,7 @@ const StarRating: React.FC<StarRatingProps> = ({ openedData }) => {
               onMouseEnter={() => setHover(ratingValue)}
               onMouseLeave={() => setHover(undefined)}
               onClick={() => {
-                handleRatingSubmitWithDelay(ratingValue);
+                updateRating(ratingValue);
               }}
             />
           );
