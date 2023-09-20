@@ -11,6 +11,8 @@ const StarRating: React.FC<StarRatingProps> = ({ openedData }) => {
   const [ratingChanged, setRatingChanged] = useState<boolean>(false);
   const [called, setCalled] = useState<boolean>(true);
   const [hasRated, setHasRated] = useState<boolean>(false);
+  const [ratingCount, setRatingCount] = useState<number>(0);
+  const [averageRating, setAverageRating] = useState<number>(0);
 
   // check if the rating has been changed, if so, submit the rating
   useEffect(() => {
@@ -23,9 +25,37 @@ const StarRating: React.FC<StarRatingProps> = ({ openedData }) => {
   useEffect(() => {
     if (called) {
       handleGetSingleRating();
+      handleGetAllRatings();
       setCalled(false);
     }
   }, [called]);
+
+  // get average ratings and rating count
+  const handleGetAllRatings = async () => {
+    try {
+      const data = { courseId: openedData.id };
+      const query = new URLSearchParams(data);
+      const response = await fetch(
+        `http://localhost:3000/api/ratings/GET_all?${query.toString()}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.ok) {
+        // render the ratings
+        const ratingData = await response.json();
+        console.log(ratingData);
+        setRatingCount(ratingData.numberOfRatings);
+        setAverageRating(ratingData.averageRating);
+      }
+    } catch (error) {
+      console.error("Error while getting the rating:", error);
+    }
+  };
 
   // get the rating from the database if the user has rated before
   const handleGetSingleRating = async () => {
@@ -114,6 +144,7 @@ const StarRating: React.FC<StarRatingProps> = ({ openedData }) => {
   return (
     <div className="pt-10 ml-10">
       <div className="flex gap-2">
+        <h2 className="pt-1">{ averageRating }</h2>
         {[...Array(5)].map((star, index) => {
           const id = index;
           const ratingValue = index + 1;
@@ -135,7 +166,7 @@ const StarRating: React.FC<StarRatingProps> = ({ openedData }) => {
             />
           );
         })}
-        <h2 className="pt-1">(21 reviews)</h2>
+        <h2 className="pt-1">({ ratingCount })</h2>
       </div>
     </div>
   );
