@@ -53,7 +53,7 @@ const SearchBar = ({ onSearchClick }: SearchBarProps) => {
         />
         <button
           type="button"
-          className="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-4 py-2"
+          className="text-white absolute items-center top-2 right-1 bg-[#3d74ff] hover:bg-[#2853bf] font-medium rounded-lg text-sm px-4 py-2"
           onClick={() => onSearchClick(searchValue)}
         >
           Search
