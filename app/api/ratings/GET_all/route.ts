@@ -34,7 +34,7 @@ export async function GET(request: Request) {
         sum += rating.rating;
       }
       numberOfRatings = ratings.length;
-      averageRating = sum / ratings.length;
+      averageRating = parseFloat((sum / ratings.length).toFixed(2));
     }
 
     // Return the rating as a JSON response
