@@ -18,10 +18,10 @@ const Popup: React.FC<PopupProps> = ({ openedData, closePopup }) => {
                 </button>
                 <div className="flex flex-col px-10 pb-10">
                     <div className="flex justify-between">
-                        <div className="text-[26px] font-bold pt-10">
+                        <div className="text-[26px] font-bold pt-9">
                             {openedData.course_code}
                         </div>
-                        <StarRating />
+                        <StarRating openedData={openedData}/>
                     </div>
                     <div className="text-[18px] italic text-[#3d3d3d] pb-2">
                         {openedData.title}
