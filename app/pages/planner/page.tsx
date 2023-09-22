@@ -95,11 +95,7 @@ export default function Planner() {
 
   const onSearchClick = (searchValue: string) => {
     fetch(
-      "/api/courses?" +
-        new URLSearchParams({
-          textSearch: searchValue,
-          size: "10"
-        }),
+      "/api/courses?",
       {
         method: "GET",
         headers: {
@@ -109,6 +105,11 @@ export default function Planner() {
     ).then((response) => {
       if (response.ok) {
         response.json().then((data: CourseDTO[]) => {
+          // Filter with searchValue
+          data = data.filter((c) =>
+            c.course_code.toLowerCase().includes(searchValue.toLowerCase())
+          ).slice(0, 12);
+
           // Filter out courses that are already selected
           let outputData = [];
           for (const element of data) {
