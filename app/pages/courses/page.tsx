@@ -3,7 +3,7 @@ import CourseBlock from "@/components/CourseBlock";
 import Popup from "@/components/Popup";
 import { useEffect, useState } from "react";
 import { usePromiseTracker, trackPromise } from "react-promise-tracker";
-import { ThreeDots } from 'react-loader-spinner';
+import BeatLoader from "react-spinners/BeatLoader";
 
 type Course = {
   id: string;
@@ -106,13 +106,9 @@ export default function Courses() {
         ></input>
       </div>
       {promiseInProgress && (
-        <ThreeDots
-          height="80"
-          width="80"
-          radius="9"
+        <BeatLoader
+          size={20}
           color="#3d74ff"
-          ariaLabel="three-dots-loading"
-          visible={true}
         />
       )}
       <div className="mb-20">

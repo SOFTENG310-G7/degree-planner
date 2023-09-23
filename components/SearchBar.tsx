@@ -1,7 +1,6 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { AiOutlineClose, AiOutlineSearch } from 'react-icons/ai';
-import { IconContext } from 'react-icons';
 
 export interface SearchBarProps {
   onSearchClick: (searchValue: string) => void;
@@ -88,15 +87,13 @@ const SearchBar = ({ onSearchClick }: SearchBarProps) => {
         </label>
         <div className="relative">
           <div className="absolute inset-y-0 left-0 flex items-center pl-3">
-            <IconContext.Provider value={{ size: "1.3em" }}>
-              {text ? (
-                <button type="button" onClick={() => onSelectClear(searchValue)} className="hover:cursor-pointer">
-                  <AiOutlineClose />
-                </button>
-              ) : (
-                <AiOutlineSearch />
-              )}
-            </IconContext.Provider>
+            {text ? (
+              <button type="button" onClick={() => onSelectClear(searchValue)} className="hover:cursor-pointer">
+                <AiOutlineClose size={20} />
+              </button>
+            ) : (
+              <AiOutlineSearch size={20} />
+            )}
           </div>
           <input
             id="default-search"
