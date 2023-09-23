@@ -1,27 +1,17 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { AiOutlineClose, AiOutlineSearch } from 'react-icons/ai';
+import type { CourseDTO } from "@/types/CourseDTO";
 
 export interface SearchBarProps {
-  onSearchClick: (searchValue: string) => void;
+  onSearchClick: (searchValue: string, courseList: CourseDTO[]) => void;
 }
-
-type Course = {
-  id: string;
-  title: string;
-  description: string;
-  course_code: string;
-  academic_group: string;
-  subject: string;
-  catalog_number: string;
-  requirement_description: string;
-};
 
 const SearchBar = ({ onSearchClick }: SearchBarProps) => {
   const [searchValue, setSearchValue] = useState("");
   const [text, setText] = useState("");
-  const [courses, setCourses] = useState<Course[]>([]);
-  const [list, setList] = useState<Course[]>([]);
+  const [courses, setCourses] = useState<CourseDTO[]>([]);
+  const [list, setList] = useState<CourseDTO[]>([]);
 
   const handleSearchChange = (event: any) => {
     const currentValue = event.target.value
@@ -37,13 +27,13 @@ const SearchBar = ({ onSearchClick }: SearchBarProps) => {
   const onEnter = (searchValue: string) => {
     setText("");
     setSearchValue(searchValue);
-    onSearchClick(searchValue);
+    onSearchClick(searchValue, list);
   };
 
   const onSelect = (searchSuggestedValue: string) => {
     setText("");
     setSearchValue(searchSuggestedValue);
-    onSearchClick(searchSuggestedValue);
+    onSearchClick(searchSuggestedValue, list);
   };
 
   const onSelectClear = (searchValue: string) => {
@@ -63,7 +53,7 @@ const SearchBar = ({ onSearchClick }: SearchBarProps) => {
       }
     ).then((response) => {
       if (response.ok) {
-        response.json().then((data: Course[]) => {
+        response.json().then((data: CourseDTO[]) => {
           setCourses(data);
         });
       }
