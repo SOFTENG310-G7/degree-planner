@@ -100,10 +100,7 @@ export default function Planner() {
     );
     let outputData = [];
     for (const element of res) {
-      if (
-        selected.course.filter((c: CourseDTO) => c.id === element.id)
-          .length == 0
-      ) {
+      if (!(selected.course.filter((c: CourseDTO) => c.id === element.id).length)) {
         outputData.push(element);
       }
     }

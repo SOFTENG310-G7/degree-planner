@@ -51,7 +51,7 @@ const SearchBar = ({ onSearchClick }: SearchBarProps) => {
           "Content-Type": "application/json",
         },
       }
-    ).then((response) => {
+    ).then(response => {
       if (response.ok) {
         response.json().then((data: CourseDTO[]) => {
           setCourses(data);
