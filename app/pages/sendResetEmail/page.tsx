@@ -23,7 +23,7 @@ export default function sendResetEmail() {
             required
           />
           <button className="bg-green-700 rounded px-4 py-2 text-white mb-2">
-            Send Reset Password Email
+            Send Password Reset Email
           </button>
         </form>
         <Messages />
