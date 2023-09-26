@@ -93,7 +93,7 @@ The last two API keys need to be generated from the [University of Auckland Deve
 6. Click **CREATE API CREDENTIAL**. This will generate your `CLIENT_ID` and `CLIENT_SECRET` keys, which you can copy and paste into your `/.env.local` file.
 
 > [!NOTE]
-> If you get `400 Bad Request` when trying to access the University of Auckland Developer portal, try using private/incognito browsing, or clearing `auckland.ac.nz`’s in your browser settings.
+> If you get `400 Bad Request` when trying to access the University of Auckland Developer portal, try using private/incognito browsing, or clearing `auckland.ac.nz`’s cookies in your browser settings.
 
 In the root directory, there is [a (non-functional) example](/.env.local.example) of what your env file should look like.
 
