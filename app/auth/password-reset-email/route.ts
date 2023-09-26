@@ -28,7 +28,7 @@ export async function POST(request: Request) {
     // a 301 status is required to redirect from a POST to a GET route
     status: 301,
     headers: {
-      Location: `${requestUrl.origin}/pages/sendResetEmail`,
+      Location: `${requestUrl.origin}/pages/sendResetEmail?error=Email Sent Successfully`,
     },
   });
 }
