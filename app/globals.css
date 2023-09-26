@@ -35,3 +35,9 @@
 .max-w-md-custom {
   max-width: 56rem;
 }
+
+.check-icon-size {
+  width: 26px;
+  height: 26px;
+  margin-inline-end: 10px;
+}
