@@ -107,7 +107,7 @@ In the root directory, there is [a (non-functional) example](/.env.local.example
 npm run dev
 ```
 
-Look for a line that looks like `ready started server on [::]:3000, url: http://localhost:3000`. In this example, you can then load <http://localhost:3000> in your web browser to start using Degree Planner (though the port number may not always be `3000`). Press <kbd>⌃</kbd><kbd>C</kbd> (<kbd>Ctrl</kbd>+<kbd>C</kbd>) in this window to terminate the server.
+Look for a line similar to `ready started server on [::]:3000, url: http://localhost:3000`. In this example, you can then load <http://localhost:3000> in your web browser to start using Degree Planner (though the port number may not always be `3000`). Press <kbd>⌃</kbd><kbd>C</kbd> (<kbd>Ctrl</kbd>+<kbd>C</kbd>) in this window to terminate the server.
 
 ## ☎️ Contact
 
