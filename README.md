@@ -71,7 +71,7 @@ npm install
 
 ### Step 3
 
-Create an `.env.local` file in the root directory of your clone and insert with your specific settings:
+Create an `.env.local` file in the root directory of your clone and insert your API keys for Supabase and the University of Auckland Classes Api V2:
 
 ```
 NEXT_PUBLIC_SUPABASE_URL=
