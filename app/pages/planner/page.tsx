@@ -93,36 +93,18 @@ export default function Planner() {
   }, []);
 
 
-  const onSearchClick = (searchValue: string) => {
-    fetch(
-      "/api/courses?" +
-        new URLSearchParams({
-          textSearch: searchValue,
-          size: "10"
-        }),
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
+  const onSearchClick = (searchValue: string, courseList: CourseDTO[]) => {
+    // Filter out courses that are already selected
+    const res = courseList.filter((c) =>
+      c.course_code.toLowerCase().includes(searchValue.toLowerCase())
+    );
+    let outputData = [];
+    for (const element of res) {
+      if (!(selected.course.filter((c: CourseDTO) => c.id === element.id).length)) {
+        outputData.push(element);
       }
-    ).then((response) => {
-      if (response.ok) {
-        response.json().then((data: CourseDTO[]) => {
-          // Filter out courses that are already selected
-          let outputData = [];
-          for (const element of data) {
-            if (
-              selected.course.filter((c: CourseDTO) => c.id === element.id)
-                .length == 0
-            ) {
-              outputData.push(element);
-            }
-          }
-          setAllCourses({ course: outputData });
-        });
-      }
-    });
+    }
+    setAllCourses({ course: outputData });
   };
 
   const onDragEnd = (result: any) => {
