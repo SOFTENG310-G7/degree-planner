@@ -2,12 +2,12 @@ import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
-export const dynamic = 'force-dynamic'
+export const dynamic = "force-dynamic";
 
 export async function GET(request: Request) {
   const supabase = createRouteHandlerClient(
     { cookies },
-    { supabaseKey: process.env.SUPABASE_SERVICE_KEY }
+    { supabaseKey: process.env.SUPABASE_SERVICE_KEY },
   );
   const { searchParams } = new URL(request.url);
   const subject = searchParams.get("subject");
@@ -18,16 +18,15 @@ export async function GET(request: Request) {
   const size = searchParams.get("size");
   const textSearch = searchParams.get("textSearch");
 
-
   let query = supabase.from("courses").select();
-  
+
   if (size) {
     query = query.limit(parseInt(size));
   }
 
   if (textSearch) {
     query = query.or(`course_code.ilike.%${textSearch}%,description.ilike.%${textSearch}%`);
-    
+
     const data = await query;
 
     return NextResponse.json(data.data, { status: 200 });
@@ -47,12 +46,9 @@ export async function GET(request: Request) {
 
   if (has_requirements) {
     if (has_requirements === "false") {
-      query = query
-        .or("requirement_description.is.null,requirement_description.eq..")
+      query = query.or("requirement_description.is.null,requirement_description.eq..");
     } else if (has_requirements === "true") {
-      query = query
-        .neq("requirement_description", '.')
-        .neq("requirement_description", null);
+      query = query.neq("requirement_description", ".").neq("requirement_description", null);
     }
   }
 

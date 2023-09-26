@@ -7,7 +7,7 @@ export async function POST(request: Request) {
   try {
     const supabase = createRouteHandlerClient(
       { cookies },
-      { supabaseKey: process.env.SUPABASE_SERVICE_KEY }
+      { supabaseKey: process.env.SUPABASE_SERVICE_KEY },
     );
 
     const data = await request.json();
@@ -24,15 +24,13 @@ export async function POST(request: Request) {
     const { rating, courseId } = data;
 
     // Insert the data into Supabase table
-    const { error } = await supabase
-      .from("reviews")
-      .upsert([
-        {
-          profile_id: user.id,
-          rating: rating,
-          course_id: courseId,
-        },
-      ]);
+    const { error } = await supabase.from("reviews").upsert([
+      {
+        profile_id: user.id,
+        rating: rating,
+        course_id: courseId,
+      },
+    ]);
 
     if (error) {
       console.error("Error inserting data into Supabase:", error);

@@ -4,12 +4,14 @@ import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
 export const initializeCourses = async () => {
-  const supabase = createRouteHandlerClient({ cookies }, { supabaseKey: process.env.SUPABASE_SERVICE_KEY });
+  const supabase = createRouteHandlerClient(
+    { cookies },
+    { supabaseKey: process.env.SUPABASE_SERVICE_KEY },
+  );
 
   const access_token = await getOAuthToken();
 
   let engineering_courses = await (
-    
     await fetch(UOA_ENGINEERING_API, {
       headers: {
         authorization: `Bearer ${access_token}`,
@@ -24,16 +26,16 @@ export const initializeCourses = async () => {
     .upsert(
       courses.map((course: any) => {
         return {
-            title: course.titleLong,
-            subject: course.subject,
-            description: course.description,
-            academic_group: course.acadGroup,
-            catalog_number: course.catalogNbr,
-            requirement_description: course.rqrmntDescr,
-            course_code: `${course.subject}${course.catalogNbr}`
-        }
+          title: course.titleLong,
+          subject: course.subject,
+          description: course.description,
+          academic_group: course.acadGroup,
+          catalog_number: course.catalogNbr,
+          requirement_description: course.rqrmntDescr,
+          course_code: `${course.subject}${course.catalogNbr}`,
+        };
       }),
     )
     .select();
   return NextResponse.json(data, { status: 200 });
-}
+};

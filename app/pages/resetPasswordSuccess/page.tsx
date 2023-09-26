@@ -21,9 +21,7 @@ export default function resetPasswordSucess() {
             placeholder="••••••••"
             required
           />
-          <button className="bg-green-700 rounded px-4 py-2 text-white mb-2">
-            Reset
-          </button>
+          <button className="bg-green-700 rounded px-4 py-2 text-white mb-2">Reset</button>
         </form>
         <Messages />
       </div>

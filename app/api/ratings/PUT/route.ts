@@ -7,7 +7,7 @@ export async function PUT(request: Request) {
   try {
     const supabase = createRouteHandlerClient(
       { cookies },
-      { supabaseKey: process.env.SUPABASE_SERVICE_KEY }
+      { supabaseKey: process.env.SUPABASE_SERVICE_KEY },
     );
 
     const input = await request.json();
@@ -23,11 +23,12 @@ export async function PUT(request: Request) {
     const { rating, courseId } = input;
 
     // Update the rating in Supabase table based on courseId and profileId
-    const { error } = await supabase.from("reviews")
-        .update({ rating: rating })
-        .eq("course_id", courseId)
-        .eq("profile_id", user?.id)
-        .select();
+    const { error } = await supabase
+      .from("reviews")
+      .update({ rating: rating })
+      .eq("course_id", courseId)
+      .eq("profile_id", user?.id)
+      .select();
 
     if (error) {
       return new Response("Error updating rating", { status: 500 });

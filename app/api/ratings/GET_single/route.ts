@@ -7,12 +7,11 @@ export async function GET(request: Request) {
   try {
     // Initialize Supabase client
     const supabase = createRouteHandlerClient(
-      { cookies }, 
-      { supabaseKey: process.env.SUPABASE_SERVICE_KEY }
+      { cookies },
+      { supabaseKey: process.env.SUPABASE_SERVICE_KEY },
     );
 
     const { searchParams } = new URL(request.url);
-
 
     const {
       data: { user },
@@ -26,7 +25,7 @@ export async function GET(request: Request) {
       .select("rating")
       .eq("course_id", courseId)
       .eq("profile_id", user?.id)
-        .single();
+      .single();
 
     if (error) {
       console.error("Rating not found", error);
@@ -39,7 +38,7 @@ export async function GET(request: Request) {
     }
 
     const { rating } = data;
-    
+
     // Return the rating as a JSON response
     return new Response(JSON.stringify({ rating }), {
       headers: { "Content-Type": "application/json" },

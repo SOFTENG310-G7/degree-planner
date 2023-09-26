@@ -15,8 +15,8 @@ export default async function Index() {
               Plan your journey at UoA with us
             </h1>
             <p className=" mx-auto leading-relaxed text-lg">
-              If you are interested in studying at the University of Auckland,
-              try our degree planner to plan out your path.
+              If you are interested in studying at the University of Auckland, try our degree
+              planner to plan out your path.
             </p>
             <p className="lg:w-3/4 mx-auto leading-relaxed text-lg">
               Here are the degrees currently available on our website:
@@ -36,9 +36,7 @@ export default async function Index() {
             <div className="p-2 sm:w-1/2 w-full">
               <div className="bg-gray-100 rounded flex p-4 h-full items-center">
                 {checkIcon()}
-                <span className="title-font font-medium text-lg">
-                  Bachelor of Science
-                </span>
+                <span className="title-font font-medium text-lg">Bachelor of Science</span>
               </div>
             </div>
           </div>
@@ -59,13 +57,10 @@ export default async function Index() {
                   {courseIcon()}
                 </div>
                 <div className="flex-grow">
-                  <h2 className="text-gray-900 text-lg title-font font-medium mb-3">
-                    Courses
-                  </h2>
+                  <h2 className="text-gray-900 text-lg title-font font-medium mb-3">Courses</h2>
                   <p className="leading-relaxed text-base">
-                    All the courses from BE(Hons) and BSc are available on our
-                    website. You can view the details, including prerequisites
-                    and summaries on the "Courses" page.
+                    All the courses from BE(Hons) and BSc are available on our website. You can view
+                    the details, including prerequisites and summaries on the "Courses" page.
                   </p>
                   <Link
                     href="/pages/courses"
@@ -83,12 +78,10 @@ export default async function Index() {
                   {contactIcon()}
                 </div>
                 <div className="flex-grow">
-                  <h2 className="text-gray-900 text-lg title-font font-medium mb-3">
-                    Contact us
-                  </h2>
+                  <h2 className="text-gray-900 text-lg title-font font-medium mb-3">Contact us</h2>
                   <p className="leading-relaxed text-base">
-                    If you have any questions or messages, you can visit the
-                    contact page for more information.
+                    If you have any questions or messages, you can visit the contact page for more
+                    information.
                   </p>
                   <Link
                     href="/pages/contact"

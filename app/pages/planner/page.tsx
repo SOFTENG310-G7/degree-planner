@@ -47,22 +47,14 @@ function CourseDraggable({ course, index }: CourseDraggableProps) {
           {...provided.draggableProps}
           {...provided.dragHandleProps}
         >
-          <CourseBlock
-            code={course.course_code}
-            name={course.title}
-            desc={course.description}
-          />
+          <CourseBlock code={course.course_code} name={course.title} desc={course.description} />
         </div>
       )}
     </Draggable>
   );
 }
 
-const CourseList = React.memo(function QuoteList({
-  courses,
-}: {
-  courses: CourseDTO[];
-}) {
+const CourseList = React.memo(function QuoteList({ courses }: { courses: CourseDTO[] }) {
   return courses.map((course: CourseDTO, index: number) => (
     <CourseDraggable course={course} index={index} key={course.id} />
   ));
@@ -92,7 +84,6 @@ export default function Planner() {
     }
   }, []);
 
-
   const onSearchClick = (searchValue: string, courseList: CourseDTO[]) => {
     // Filter out courses that are already selected
     const res = courseList.filter((c) =>
@@ -100,7 +91,7 @@ export default function Planner() {
     );
     let outputData = [];
     for (const element of res) {
-      if (!(selected.course.filter((c: CourseDTO) => c.id === element.id).length)) {
+      if (!selected.course.filter((c: CourseDTO) => c.id === element.id).length) {
         outputData.push(element);
       }
     }
@@ -118,9 +109,7 @@ export default function Planner() {
     // Moving across lists
     if (source.droppableId === destination.droppableId) {
       const items = reorderDraggables(
-        source.droppableId === droppableIds.selected
-          ? selected.course
-          : allCourses.course,
+        source.droppableId === droppableIds.selected ? selected.course : allCourses.course,
         source.index,
         destination.index
       );
@@ -134,12 +123,8 @@ export default function Planner() {
     // Moving within the same list
     else {
       const result = moveDraggables(
-        source.droppableId === droppableIds.selected
-          ? selected.course
-          : allCourses.course,
-        source.droppableId === droppableIds.selected
-          ? allCourses.course
-          : selected.course,
+        source.droppableId === droppableIds.selected ? selected.course : allCourses.course,
+        source.droppableId === droppableIds.selected ? allCourses.course : selected.course,
         source,
         destination
       );

@@ -105,33 +105,23 @@ export default function Courses() {
           onChange={handleChange}
         ></input>
       </div>
-      {promiseInProgress && (
-        <BeatLoader
-          size={20}
-          color="#3d74ff"
-        />
-      )}
+      {promiseInProgress && <BeatLoader size={20} color="#3d74ff" />}
       <div className="mb-20">
         {results.length !== 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 ml-10 mr-10">
             {results.map((c) => (
-              <div
-                key={c.id}
-                onClick={() => handleClick(c)}
-              >
-                <CourseBlock
-                  code={c.course_code}
-                  name={c.title}
-                  desc={c.description}
-                />
+              <div key={c.id} onClick={() => handleClick(c)}>
+                <CourseBlock code={c.course_code} name={c.title} desc={c.description} />
               </div>
             ))}
           </div>
-        ) : !promiseInProgress && (
-          <div className="flex flex-col text-center w-full">
-            <h1 className="font-bold text-[20px]">No courses found</h1>
-            <p className="text-gray-600 text-[15px]">Please try again with another keyword</p>
-          </div>
+        ) : (
+          !promiseInProgress && (
+            <div className="flex flex-col text-center w-full">
+              <h1 className="font-bold text-[20px]">No courses found</h1>
+              <p className="text-gray-600 text-[15px]">Please try again with another keyword</p>
+            </div>
+          )
         )}
       </div>
     </div>

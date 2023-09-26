@@ -38,12 +38,14 @@ export default async function NavBar() {
           <div>
             {user ? (
               <div>
-                <Link href="/pages/profile" className="mr-5 hover:text-gray-900">{user.email}
+                <Link href="/pages/profile" className="mr-5 hover:text-gray-900">
+                  {user.email}
                 </Link>
               </div>
             ) : (
               <div>
-                <Link href="/pages/login" className="mr-5 hover:text-gray-900">Login
+                <Link href="/pages/login" className="mr-5 hover:text-gray-900">
+                  Login
                 </Link>
               </div>
             )}

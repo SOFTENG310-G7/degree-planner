@@ -6,8 +6,8 @@ export async function GET(request: Request) {
   try {
     // Initialize Supabase client
     const supabase = createRouteHandlerClient(
-      { cookies }, 
-      { supabaseKey: process.env.SUPABASE_SERVICE_KEY }
+      { cookies },
+      { supabaseKey: process.env.SUPABASE_SERVICE_KEY },
     );
 
     const { searchParams } = new URL(request.url);
