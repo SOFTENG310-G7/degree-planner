@@ -7,7 +7,7 @@ import arrowIcon from '@/assets/arrowIcon';
 
 export default async function Index() {
   return (
-            <div className="flex flex-col justify-center items-center text-3xl my-[130px]">
+    <div className="flex flex-col justify-center items-center text-3xl my-[130px]">
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-3 mx-auto">
           <div className="flex flex-col text-center w-full">
