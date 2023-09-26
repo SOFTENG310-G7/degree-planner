@@ -10,10 +10,17 @@ export async function GET(request: Request) {
   // https://supabase.com/docs/guides/auth/auth-helpers/nextjs#managing-sign-in-with-code-exchange
   const requestUrl = new URL(request.url);
   const code = requestUrl.searchParams.get("code");
+  const error = requestUrl.searchParams.get("error");
 
   if (code) {
     const supabase = createRouteHandlerClient({ cookies });
     await supabase.auth.exchangeCodeForSession(code);
+  }
+
+  if (error) {
+    return NextResponse.redirect(
+      `${requestUrl.origin}/pages/resetPasswordSuccess?error=Link Expired`
+    );
   }
 
   // URL to redirect to after sign in process completes
