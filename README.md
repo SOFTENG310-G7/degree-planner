@@ -21,7 +21,7 @@ Degree Planner is a React-based web app build with [Next.js](https://nextjs.org)
 > [!NOTE]
 > Degree Planner is tested with the latest **long-term support** version of  Node.js, version&nbsp;18. Though it is likely to work with newer releases, they are not officially supported.
 
-It also uses the University of Auckland’s [Classes Api&nbsp;V2](https://developer.auckland.ac.nz/prd/documentation/api-classes-v2). Access to this API will require a University of Auckland account. If you have ever applied, studied or worked at the University of Auckland, you should already have an account. Otherwise, to sign up:
+It also uses the University of Auckland’s [Course Catalog Api&nbsp;V3](https://developer.auckland.ac.nz/prd/documentation/api-course-catalog-v3). Access to this API will require a University of Auckland account. If you have ever applied, studied or worked at the University of Auckland, you should already have an account. Otherwise, to sign up:
 
 1. Visit the [University of Auckland website](https://www.auckland.ac.nz).
 1. Click **Sign In**.
@@ -71,7 +71,7 @@ npm install
 
 ### Step 3
 
-Create an `.env.local` file in the root directory of your clone and insert your API keys for [Supabase](https://supabase.com) and the University of Auckland [Classes Api&nbsp;V2](https://developer.auckland.ac.nz/prd/documentation/api-classes-v2):
+Create an `.env.local` file in the root directory of your clone and insert your API keys for [Supabase](https://supabase.com) and the University of Auckland [Course Catalog Api&nbsp;V3](https://developer.auckland.ac.nz/prd/documentation/api-course-catalog-v3):
 
 ```
 NEXT_PUBLIC_SUPABASE_URL=
