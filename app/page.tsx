@@ -1,9 +1,9 @@
-import Link from "next/link";
-export const dynamic = "force-dynamic";
-import checkIcon from "@/assets/checkIcon";
-import courseIcon from "@/assets/courseIcon";
-import contactIcon from "@/assets/contactIcon";
-import arrowIcon from "@/assets/arrowIcon";
+import Link from 'next/link';
+export const dynamic = 'force-dynamic';
+import checkIcon from '@/assets/checkIcon';
+import courseIcon from '@/assets/courseIcon';
+import contactIcon from '@/assets/contactIcon';
+import arrowIcon from '@/assets/arrowIcon';
 
 export default async function Index() {
   return (
@@ -29,7 +29,7 @@ export default async function Index() {
               <div className="bg-gray-100 rounded flex p-4 h-full items-center">
                 {checkIcon()}
                 <span className="title-font font-medium text-lg">
-                  {"Bachelor of Engineering (Honours)"}
+                  {'Bachelor of Engineering (Honours)'}
                 </span>
               </div>
             </div>

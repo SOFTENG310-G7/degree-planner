@@ -1,9 +1,9 @@
-"use client";
-import CourseBlock from "@/components/CourseBlock";
-import SearchBar from "@/components/SearchBar";
-import type { CourseDTO } from "@/types/CourseDTO";
-import React, { useEffect, useState } from "react";
-import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+'use client';
+import CourseBlock from '@/components/CourseBlock';
+import SearchBar from '@/components/SearchBar';
+import type { CourseDTO } from '@/types/CourseDTO';
+import React, { useEffect, useState } from 'react';
+import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 
 const reorderDraggables = (list: any[], startIndex: number, endIndex: number) => {
   const result = Array.from(list);
@@ -62,8 +62,8 @@ const CourseList = React.memo(function QuoteList({ courses }: { courses: CourseD
 
 export default function Planner() {
   const droppableIds = {
-    allCourses: "all_courses",
-    selected: "selected",
+    allCourses: 'all_courses',
+    selected: 'selected',
   };
 
   interface CourseState {
@@ -79,7 +79,7 @@ export default function Planner() {
 
   // Required for SSR bug in react-beautiful-dnd
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       setIsBrowser(true);
     }
   }, []);

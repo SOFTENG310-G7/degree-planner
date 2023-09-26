@@ -1,7 +1,7 @@
-import { UOA_ENGINEERING_API, getOAuthToken } from "@/utils/UoAAPI";
-import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
-import { NextResponse } from "next/server";
+import { UOA_ENGINEERING_API, getOAuthToken } from '@/utils/UoAAPI';
+import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs';
+import { cookies } from 'next/headers';
+import { NextResponse } from 'next/server';
 
 export const initializeCourses = async () => {
   const supabase = createRouteHandlerClient(
@@ -15,14 +15,14 @@ export const initializeCourses = async () => {
     await fetch(UOA_ENGINEERING_API, {
       headers: {
         authorization: `Bearer ${access_token}`,
-        accept: "*/*",
+        accept: '*/*',
       },
     })
   ).json();
 
   const courses = engineering_courses.data;
   const { data } = await supabase
-    .from("courses")
+    .from('courses')
     .upsert(
       courses.map((course: any) => {
         return {

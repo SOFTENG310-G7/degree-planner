@@ -3,7 +3,7 @@
   "semi": true,
   "tabWidth": 2,
   "trailingComma": "all",
-  "singleQuote": false,
+  "singleQuote": true,
   "bracketSpacing": true,
   "arrowParens": "always",
   "overrides": [
@@ -11,7 +11,7 @@
       "files": ["*.css", "*.scss", "*.less"],
       "options": {
         "parser": "css",
-        "singleQuote": false,
+        "singleQuote": true,
         "tabWidth": 4
       }
     },

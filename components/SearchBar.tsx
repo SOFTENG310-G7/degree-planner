@@ -1,15 +1,15 @@
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { AiOutlineClose, AiOutlineSearch } from "react-icons/ai";
-import type { CourseDTO } from "@/types/CourseDTO";
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { AiOutlineClose, AiOutlineSearch } from 'react-icons/ai';
+import type { CourseDTO } from '@/types/CourseDTO';
 
 export interface SearchBarProps {
   onSearchClick: (searchValue: string, courseList: CourseDTO[]) => void;
 }
 
 const SearchBar = ({ onSearchClick }: SearchBarProps) => {
-  const [searchValue, setSearchValue] = useState("");
-  const [text, setText] = useState("");
+  const [searchValue, setSearchValue] = useState('');
+  const [text, setText] = useState('');
   const [courses, setCourses] = useState<CourseDTO[]>([]);
   const [list, setList] = useState<CourseDTO[]>([]);
 
@@ -25,28 +25,28 @@ const SearchBar = ({ onSearchClick }: SearchBarProps) => {
   };
 
   const onEnter = (searchValue: string) => {
-    setText("");
+    setText('');
     setSearchValue(searchValue);
     onSearchClick(searchValue, list);
   };
 
   const onSelect = (searchSuggestedValue: string) => {
-    setText("");
+    setText('');
     setSearchValue(searchSuggestedValue);
     onSearchClick(searchSuggestedValue, list);
   };
 
   const onSelectClear = (searchValue: string) => {
     setSearchValue(searchValue);
-    setText("");
+    setText('');
   };
 
   // Getting course data from database
   useEffect(() => {
-    fetch("/api/courses?", {
-      method: "GET",
+    fetch('/api/courses?', {
+      method: 'GET',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     }).then((response) => {
       if (response.ok) {

@@ -1,7 +1,7 @@
-import React from "react";
-import Link from "next/link";
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
+import React from 'react';
+import Link from 'next/link';
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
+import { cookies } from 'next/headers';
 
 export default async function NavBar() {
   const supabase = createServerComponentClient({ cookies });
@@ -22,7 +22,7 @@ export default async function NavBar() {
           </Link>
 
           <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center [&>a]:px-1">
-            <Link href="/pages/courses" className={"mr-5 hover:text-gray-900"}>
+            <Link href="/pages/courses" className={'mr-5 hover:text-gray-900'}>
               Courses
             </Link>
             <Link href="/pages/planner" className="mr-5 hover:text-gray-900">

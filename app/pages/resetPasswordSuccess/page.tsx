@@ -1,5 +1,5 @@
-"use client";
-import Messages from "./messages";
+'use client';
+import Messages from './messages';
 
 export default function resetPasswordSucess() {
   return (

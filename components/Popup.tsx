@@ -1,5 +1,5 @@
-import React from "react";
-import StarRating from "./StarRating";
+import React from 'react';
+import StarRating from './StarRating';
 
 interface PopupProps {
   openedData: any;
