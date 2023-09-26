@@ -42,9 +42,10 @@ It can be daunting to contribute to a project you aren’t familiar with. Simply
 
 For most users, the easiest way to install Node.js is via [the Node.js website](https://nodejs.org/en/download); this will also install an appropriate version of npm.
 
-If you use the Homebrew package manager (macOS and Linux only), you may wish to use the following commands to install Node.js and npm.
+If you use the [Homebrew](https://brew.sh) package manager (macOS and Linux only), you may wish to use the following commands to install Node.js and npm.
 
 ```sh
+# If you use Homebrew
 brew install node@18
 brew install npm
 ```
