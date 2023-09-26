@@ -16,7 +16,7 @@ export async function POST(request: Request) {
 
   if (error) {
     return NextResponse.redirect(
-      `${requestUrl.origin}/pages/sendResetEmail?error=Email Limit Exeeded`,
+      `${requestUrl.origin}/pages/sendResetEmail?message=Email Limit Exeeded`,
       {
         // a 301 status is required to redirect from a POST to a GET route
         status: 301,
@@ -28,7 +28,7 @@ export async function POST(request: Request) {
     // a 301 status is required to redirect from a POST to a GET route
     status: 301,
     headers: {
-      Location: `${requestUrl.origin}/pages/sendResetEmail?error=Email Sent Successfully`,
+      Location: `${requestUrl.origin}/pages/sendResetEmail?message=Email Sent Successfully`,
     },
   });
 }
