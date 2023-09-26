@@ -2,6 +2,7 @@
 
 import Messages from "./messages";
 import React, { useState } from "react";
+import Link from "next/link";
 
 export default function Login() {
   const [showSignIn, setShowSignIn] = useState(true);
@@ -52,6 +53,11 @@ export default function Login() {
               <button onClick={handleForm}>
                 <u>Sign Up</u>
               </button>
+            </div>
+            <div className="flex-1 flex flex-row w-full justify-center items-center gap-2 text-foreground">
+              <Link href="/pages/sendResetEmail">
+                <u>Forgot Password</u>
+              </Link>
             </div>
           </>
         ) : (
