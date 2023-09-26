@@ -3,7 +3,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "format": "prettier --write --cache '**/*.{js,jsx,ts,tsx,css}'"
   },
   "dependencies": {
     "@supabase/auth-helpers-nextjs": "latest",
@@ -31,6 +32,7 @@
     "@types/react-beautiful-dnd": "^13.1.4",
     "@types/react-dom": "18.2.5",
     "encoding": "^0.1.13",
+    "prettier": "3.0.3",
     "supabase": "^1.86.2"
   }
 }

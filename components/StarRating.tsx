@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { FaStar } from "react-icons/fa";
+import React, { useState, useEffect } from 'react';
+import { FaStar } from 'react-icons/fa';
 
 interface StarRatingProps {
   openedData: any;
@@ -38,9 +38,9 @@ const StarRating: React.FC<StarRatingProps> = ({ openedData }) => {
       const response = await fetch(
         `http://localhost:3000/api/ratings/GET_all?${query.toString()}`,
         {
-          method: "GET",
+          method: 'GET',
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
         }
       );
@@ -53,7 +53,7 @@ const StarRating: React.FC<StarRatingProps> = ({ openedData }) => {
         setAverageRating(ratingData.averageRating);
       }
     } catch (error) {
-      console.error("Error while getting the rating:", error);
+      console.error('Error while getting the rating:', error);
     }
   };
 
@@ -65,9 +65,9 @@ const StarRating: React.FC<StarRatingProps> = ({ openedData }) => {
       const response = await fetch(
         `http://localhost:3000/api/ratings/GET_single?${query.toString()}`,
         {
-          method: "GET",
+          method: 'GET',
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
         }
       );
@@ -79,7 +79,7 @@ const StarRating: React.FC<StarRatingProps> = ({ openedData }) => {
         setHasRated(true);
       }
     } catch (error) {
-      console.error("Error while getting the rating:", error);
+      console.error('Error while getting the rating:', error);
     }
   };
 
@@ -93,43 +93,39 @@ const StarRating: React.FC<StarRatingProps> = ({ openedData }) => {
 
       if (hasRated) {
         //update the rating instead of posting new one
-        const response = await fetch(
-          "http://localhost:3000/api/ratings/PUT",
-          {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-          }
-        );
+        const response = await fetch('http://localhost:3000/api/ratings/PUT', {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
 
         if (response.ok) {
           // Successfully updated the review
-          console.log("Review updated successfully");
+          console.log('Review updated successfully');
         } else {
-          console.error("Failed to update review");
+          console.error('Failed to update review');
         }
       } else {
         // Send a POST request to api/rating route using fetch
-        const response = await fetch("http://localhost:3000/api/ratings/POST", {
-          method: "POST",
+        const response = await fetch('http://localhost:3000/api/ratings/POST', {
+          method: 'POST',
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify(data),
         });
 
         if (response.ok) {
           // Successfully added the review
-          console.log("Review added successfully");
+          console.log('Review added successfully');
         } else {
-          console.error("Failed to add review");
+          console.error('Failed to add review');
         }
       }
-
     } catch (error) {
-      console.error("Error while submitting the rating:", error);
+      console.error('Error while submitting the rating:', error);
     }
   };
 
@@ -144,7 +140,7 @@ const StarRating: React.FC<StarRatingProps> = ({ openedData }) => {
   return (
     <div className="pt-10 ml-10">
       <div className="flex gap-2">
-        <h2 className="pt-1">{ averageRating }</h2>
+        <h2 className="pt-1">{averageRating}</h2>
         {[...Array(5)].map((star, index) => {
           const id = index;
           const ratingValue = index + 1;
@@ -153,9 +149,7 @@ const StarRating: React.FC<StarRatingProps> = ({ openedData }) => {
             <FaStar
               key={id}
               className="star"
-              color={
-                ratingValue <= (hover ?? rating ?? 0) ? "#ffc107" : "#e4e5e9"
-              }
+              color={ratingValue <= (hover ?? rating ?? 0) ? '#ffc107' : '#e4e5e9'}
               size={30}
               cursor="pointer"
               onMouseEnter={() => setHover(ratingValue)}
@@ -166,7 +160,7 @@ const StarRating: React.FC<StarRatingProps> = ({ openedData }) => {
             />
           );
         })}
-        <h2 className="pt-1">({ ratingCount })</h2>
+        <h2 className="pt-1">({ratingCount})</h2>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import { createClient } from "@supabase/supabase-js";
+import { createClient } from '@supabase/supabase-js';
 
 // Replace these values with your actual Supabase project details
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;

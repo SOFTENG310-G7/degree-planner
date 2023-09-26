@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import Messages from "./messages";
+import Messages from './messages';
 
 export default function sendResetEmail() {
   return (

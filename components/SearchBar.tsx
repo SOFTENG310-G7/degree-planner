@@ -1,57 +1,54 @@
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { AiOutlineClose, AiOutlineSearch } from 'react-icons/ai';
-import type { CourseDTO } from "@/types/CourseDTO";
+import type { CourseDTO } from '@/types/CourseDTO';
 
 export interface SearchBarProps {
   onSearchClick: (searchValue: string, courseList: CourseDTO[]) => void;
 }
 
 const SearchBar = ({ onSearchClick }: SearchBarProps) => {
-  const [searchValue, setSearchValue] = useState("");
-  const [text, setText] = useState("");
+  const [searchValue, setSearchValue] = useState('');
+  const [text, setText] = useState('');
   const [courses, setCourses] = useState<CourseDTO[]>([]);
   const [list, setList] = useState<CourseDTO[]>([]);
 
   const handleSearchChange = (event: any) => {
-    const currentValue = event.target.value
+    const currentValue = event.target.value;
     setSearchValue(currentValue);
     setText(currentValue);
 
-    const res = courses.filter((c) =>
-      c.course_code.toLowerCase().includes(currentValue.toLowerCase())
-    ).slice(0, 12);
+    const res = courses
+      .filter((c) => c.course_code.toLowerCase().includes(currentValue.toLowerCase()))
+      .slice(0, 12);
     setList([...res]);
   };
 
   const onEnter = (searchValue: string) => {
-    setText("");
+    setText('');
     setSearchValue(searchValue);
     onSearchClick(searchValue, list);
   };
 
   const onSelect = (searchSuggestedValue: string) => {
-    setText("");
+    setText('');
     setSearchValue(searchSuggestedValue);
     onSearchClick(searchSuggestedValue, list);
   };
 
   const onSelectClear = (searchValue: string) => {
     setSearchValue(searchValue);
-    setText("");
+    setText('');
   };
 
   // Getting course data from database
   useEffect(() => {
-    fetch(
-      "/api/courses?",
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    ).then(response => {
+    fetch('/api/courses?', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then((response) => {
       if (response.ok) {
         response.json().then((data: CourseDTO[]) => {
           setCourses(data);
@@ -78,7 +75,11 @@ const SearchBar = ({ onSearchClick }: SearchBarProps) => {
         <div className="relative">
           <div className="absolute inset-y-0 left-0 flex items-center pl-3">
             {text ? (
-              <button type="button" onClick={() => onSelectClear(searchValue)} className="hover:cursor-pointer">
+              <button
+                type="button"
+                onClick={() => onSelectClear(searchValue)}
+                className="hover:cursor-pointer"
+              >
                 <AiOutlineClose size={20} />
               </button>
             ) : (
@@ -102,11 +103,19 @@ const SearchBar = ({ onSearchClick }: SearchBarProps) => {
           </button>
         </div>
       </form>
-      <motion.div layout className="absolute bg-white ml-10 mt-1 w-48 max-h-[150px] overflow-hidden overflow-y-auto rounded-md shadow-lg shadow-black-200/50">
+      <motion.div
+        layout
+        className="absolute bg-white ml-10 mt-1 w-48 max-h-[150px] overflow-hidden overflow-y-auto rounded-md shadow-lg shadow-black-200/50"
+      >
         {text ? (
           <>
             {list.map((c) => (
-              <motion.div layout key={c.id} onClick={() => onSelect(c.course_code)} className="hover:bg-gray-200 p-2.5 text-sm">
+              <motion.div
+                layout
+                key={c.id}
+                onClick={() => onSelect(c.course_code)}
+                className="hover:bg-gray-200 p-2.5 text-sm"
+              >
                 {c.course_code}
               </motion.div>
             ))}
