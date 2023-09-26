@@ -21,6 +21,12 @@ Degree Planner is a React-based web app build with [Next.js](https://nextjs.org)
 > [!NOTE]
 > Degree Planner is tested with the latest **long-term support** version of  Node.js, version&nbsp;18. Though it is likely to work with newer releases, they are not officially supported.
 
+It also uses the University of Auckland’s [Classes Api V2](https://developer.auckland.ac.nz/prd/documentation/api-classes-v2). Access to this API will require a University of Auckland account. If you have ever applied, studied or worked at the University of Auckland, you should already have an account. Otherwise, to sign up:
+
+1. Visit the [University of Auckland website](https://www.auckland.ac.nz).
+1. Click **Sign In**.
+2. Click **Register for a new account**, and follow the instructions from there.
+
 ## 🫵 How you can contribute
 
 Thank you for your interest in contributing to degree planner! There are plenty of ways to help us build Degree Planner, only part of which is has to involve writing code. You could help us by providing feedback, reporting bugs, writing documentation, testing, helping with design, or suggesting features and changes you’d like to see.
@@ -29,19 +35,36 @@ It can be daunting to contribute to a project you aren’t familiar with. Simply
 
 ## 🚀 Deploying locally
 
-### Step 1
+### Prerequisite
+
+> [!IMPORTANT]
+> You’ll need to have [Node.js **version 18**](https://nodejs.org) and [npm](https://www.npmjs.com) installed on your system to build and run Degree Planner locally on your computer.
+
+For most users, the easiest way to install Node.js is via [the Node.js website](https://nodejs.org/en/download); this will also install an appropriate version of npm.
+
+If you use the Homebrew package manager (macOS and Linux only), you may wish to use the following commands to install Node.js and npm.
 
 ```sh
-git clone https://github.com/SOFTENG310-G7/degree-planner.git
+brew install node@18
+brew install npm
 ```
 
-### Step 2
+### Step 1
 
-Install Node.js version 18 LTS.
+```sh
+# Clone the repository
+git clone https://github.com/SOFTENG310-G7/degree-planner.git
+
+# Navigate to its root
+cd degree-planner/
+```
+
+If you are contributing code, then [create a fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo) of this repository and clone that instead. We use the [fork and pull model](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/getting-started/about-collaborative-development-models) to accept code contributions from the community.
 
 ### Step 3
 
 ```sh
+# Install dependencies
 npm install
 ```
 
@@ -58,13 +81,32 @@ UOA_CLIENT_ID=
 UOA_CLIENT_SECRET=
 ```
 
-The first three can be obtained from the properties of your Supabase instance. The last two will have to be generated [here](https://developer.auckland.ac.nz/prd/dashboard).
+The first three can be obtained from the properties of your Supabase instance.
+
+The last two API keys need to be generated from the [University of Auckland Developer Portal](https://developer.auckland.ac.nz):
+
+1. Log into the [University of Auckland Developer Portal](https://developer.auckland.ac.nz) with your University of Auckland account.
+3. Go to [your dashboard](https://developer.auckland.ac.nz/prd/dashboard) (accessible by hovering over your username/email in the header, and clicking **Dashboard**).
+4. Under the *API Credentials* section, click **CREATE API CREDENTIAL**.
+5. In the modal which appears, give the credentials a name (e.g. `Degree Planner`). Leave the *‌Client\_id* and *Client\_secret* fields empty.
+6. Click **CREATE API CREDENTIAL**. This will generate your `CLIENT_ID` and `CLIENT_SECRET` keys, which you can copy and paste into your `/.env.local` file.
+
+> [!NOTE]
+> If you get `400 Bad Request` when trying to access the University of Auckland Developer portal, try using private/incognito browsing, or clearing `auckland.ac.nz`’s in your browser settings.
+
+In the root directory, there is [a (non-functional) example](/.env.local.example) of what your env file should look like.
+
+> [!IMPORTANT]
+> Do **not** commit your env file to version control. Git has been configured to ignore it (see the [gitignore](/.gitignore) file). It should exist only in your local clone.
 
 ### Step 5
 
 ```
+# Start the development server
 npm run dev
 ```
+
+Look for a line that looks like `ready started server on [::]:3000, url: http://localhost:3000`. In this example, you can then load <http://localhost:3000> in your web browser to start using Degree Planner (though the port number may not always be `3000`). Press <kbd>⌃</kbd><kbd>C</kbd> (<kbd>Ctrl</kbd>+<kbd>C</kbd>) in this window to terminate the server.
 
 ## ☎️ Contact
 
@@ -74,13 +116,13 @@ As new developers join the contributing team, more points of contact will be add
 
 ## 💝 Acknowledgements
 
-- The [Supabase Starter](https://github.com/vercel/next.js/tree/canary/examples/with-supabase) by Vercel, which we’ve used under the MIT license.
+- The [Supabase Starter](https://github.com/vercel/next.js/tree/canary/examples/with-supabase) by Vercel, which we’ve used under the MIT licence.
 - [Dr&nbsp;Kelly Blincoe](https://profiles.auckland.ac.nz/k-blincoe), [Dr&nbsp;James Tizard](https://profiles.auckland.ac.nz/james-tizard) and [Waipapa Taumata Rau](https://www.auckland.ac.nz) (University of Auckland); Degree Planner has its roots in an assignment for [SOFTENG&nbsp;310](https://courseoutline.auckland.ac.nz/dco/course/SOFTENG/310) *Software Evolution and Maintenance*.
 - The [developers, testers and contributors](https://github.com/SOFTENG310-G7/degree-planner/wiki/Contributors) who have participated in the development of Degree Planner.
 - And you, for your interest in this project!
 
-## ⚖️ License
+## ⚖️ Licence
 
-Degree Planner is distributed under the [MIT license](/LICENSE).
+Degree Planner is distributed under the [MIT licence](/LICENSE).
 
 In short, you’re free to use, modify and redistribute project materials, but please keep the copyright notice and licence intact when you do. Our contributors have been gracious to volunteer their time and effort, and they deserve to be credited!
