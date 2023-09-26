@@ -16,11 +16,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+
+      - name: Set node version to 18
+        uses: actions/setup-node@v3
         with:
           node-version: 18
-      - run: npm ci
-      - run: npm run build
+
+      - name: Clean install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
       
       # For SonarCloud to analyse the code from pull request
       - name: Save PR number (for SonarCloud)
@@ -33,3 +39,25 @@ jobs:
         with:
           name: PR_NUMBER
           path: PR_NUMBER.txt
+
+  check-formatting:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Set node version to 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Clean install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Check formatting
+        run: npm run check-formatting
