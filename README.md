@@ -98,7 +98,7 @@ The last two API keys need to be generated from the [University of Auckland Deve
 In the root directory, there is [a (non-functional) example](/.env.local.example) of what your env file should look like.
 
 > [!IMPORTANT]
-> Do **not** commit your env file to version control. Git has been configured to ignore it (see the [gitignore](/.gitignore) file). It should exist only in your local clone.
+> Do **not** commit your env file to version control. Git has been [configured to ignore it](/.gitignore). It should exist only in your local clone.
 
 ### Step 4
 
