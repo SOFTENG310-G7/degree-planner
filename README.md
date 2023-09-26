@@ -62,14 +62,14 @@ cd degree-planner/
 
 If you are contributing code, then [create a fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo) of this repository and clone that instead. We use the [fork and pull model](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/getting-started/about-collaborative-development-models) to accept code contributions from the community.
 
-### Step 3
+### Step 2
 
 ```sh
 # Install dependencies
 npm install
 ```
 
-### Step 4
+### Step 3
 
 Create an `.env.local` file in the root directory of your clone and insert with your specific settings:
 
@@ -100,7 +100,7 @@ In the root directory, there is [a (non-functional) example](/.env.local.example
 > [!IMPORTANT]
 > Do **not** commit your env file to version control. Git has been configured to ignore it (see the [gitignore](/.gitignore) file). It should exist only in your local clone.
 
-### Step 5
+### Step 4
 
 ```
 # Start the development server
