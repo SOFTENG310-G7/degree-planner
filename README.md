@@ -38,7 +38,7 @@ It can be daunting to contribute to a project you aren’t familiar with. Simply
 ### Prerequisite
 
 > [!IMPORTANT]
-> You’ll need to have [Node.js **version 18**](https://nodejs.org) and [npm](https://www.npmjs.com) installed on your system to build and run Degree Planner locally on your computer.
+> You’ll need to have [Node.js **version 18**](https://nodejs.org) and [npm](https://www.npmjs.com) installed on your system to build and run Degree Planner.
 
 For most users, the easiest way to install Node.js is via [the Node.js website](https://nodejs.org/en/download); this will also install an appropriate version of npm.
 
