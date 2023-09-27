@@ -111,14 +111,12 @@ Look for a line similar to `ready started server on [::]:3000, url: http://local
 
 ### Additional tools
 
-The project is configured with Prettier to ensure a consistent code style.
+This project is configured with [Prettier](https://prettier.io) to ensure a consistent code style. If you are contributing code, then we recommend you:
 
-For a smoother contribution process, we recommend you:
+- configure your code editor to use the Prettier extension; and
+- enable your editor’s *format on save* option.
 
-* configure your code editor to use the Prettier extension; and
-* enable your editor’s format on save option.
-
-Additionally, the following npm scripts have been provided to ensure formatting checks are passed.
+This will help improve the speed and quality of code reviews. The following npm commands may be useful for verifying that your code is consistently formatted with the rest of the project:
 
 ```
 # Run Prettier to format source code
