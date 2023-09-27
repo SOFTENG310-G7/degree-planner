@@ -19,7 +19,7 @@ export async function GET(request: Request) {
 
   if (error) {
     return NextResponse.redirect(
-      `${requestUrl.origin}/pages/resetPasswordSuccess?error=Link Expired`,
+      `${requestUrl.origin}/pages/resetPasswordSuccess?message=Link Expired`,
     );
   }
 
