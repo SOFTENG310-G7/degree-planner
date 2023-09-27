@@ -4,7 +4,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "format": "prettier --write --cache '**/*.{js,jsx,ts,tsx,css}'"
+    "format": "prettier --write --cache '**/*.{js,jsx,ts,tsx,css}'",
+    "check-formatting": "prettier --check ."
   },
   "dependencies": {
     "@supabase/auth-helpers-nextjs": "latest",
