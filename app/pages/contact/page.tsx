@@ -23,14 +23,14 @@ export default async function About() {
           </p>
           <p className="text-gray-600">
             Original Dev Team Email:&nbsp;
-            <a href="mailto:example@example.com" className="text-blue-500 hover:underline">
+            <a href="mailto:mseo447@aucklanduni.ac.nz" className="text-blue-500 hover:underline">
               mseo447@aucklanduni.ac.nz
             </a>
           </p>
           <p className="text-gray-600">
             Second Dev Team Email:&nbsp;
-            <a href="mailto:example@example.com" className="text-blue-500 hover:underline">
-              example@aucklanduni.ac.nz
+            <a href="mailto:hwan513@aucklanduni.ac.nz" className="text-blue-500 hover:underline">
+              hwan513@aucklanduni.ac.nz
             </a>
           </p>
           <p className="text-gray-600 pb-2">
