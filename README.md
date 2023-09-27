@@ -109,6 +109,23 @@ npm run dev
 
 Look for a line similar to `ready started server on [::]:3000, url: http://localhost:3000`. In this example, you can then load <http://localhost:3000> in your web browser to start using Degree Planner (though the port number may not always be `3000`). Press <kbd>⌃</kbd><kbd>C</kbd> (<kbd>Ctrl</kbd>+<kbd>C</kbd>) in this window to terminate the server.
 
+### Additional tools
+
+This project is configured with [Prettier](https://prettier.io) to ensure a consistent code style. If you are contributing code, then we recommend you:
+
+- configure your code editor to use the Prettier extension; and
+- enable your editor’s *format on save* option.
+
+This will help improve the speed and quality of code reviews. The following npm commands may be useful for verifying that your code is consistently formatted with the rest of the project:
+
+```
+# Run Prettier to format source code
+npm run format
+
+# Run Prettier locally to check if code will pass PR checks
+npm run check-formatting
+```
+
 ## ☎️ Contact
 
 If you have questions, feel free to [open a new issue](https://github.com/SOFTENG310-G7/degree-planner/issues/new/choose) or [email Dana](mailto:mseo447@aucklanduni.ac.nz), one of the founding contributors.
