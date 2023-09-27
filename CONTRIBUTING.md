@@ -54,6 +54,5 @@ Please respect everyone regardless of their status and have a positive attitude 
 For general inquiries on the project, please contact the original team of developers through our team leader’s email (mseo477@aucklanduni.ac.nz) as stated in the README and avoid spamming emails in quick succession. For further information specific to each section of development, please contact the team leader of the respective section.
 
 - A1 Team Leader: Dana Seong (mseo447@aucklanduni.ac.nz)
-- A2 Team Leader: <insert-name> (<insert-upi>@aucklanduni.ac.nz)
+- A2 Team Leader: Henry Wang (hwan513@aucklanduni.ac.nz)
 - A3 Team Leader: <insert-name>  (<insert-upi>@aucklanduni.ac.nz)
-
