@@ -27,13 +27,8 @@ const ContactForm: React.FC = () => {
         body: json,
       });
 
-      if (response.status === 200) {
-        const jsonResponse = await response.json();
-        setResultMessage(jsonResponse.message);
-      } else {
-        const jsonResponse = await response.json();
-        setResultMessage(jsonResponse.message);
-      }
+      const jsonResponse = await response.json();
+      setResultMessage(jsonResponse.message);
     } catch (error) {
       console.error(error);
       setResultMessage('Something went wrong!');
