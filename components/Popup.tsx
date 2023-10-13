@@ -1,6 +1,6 @@
-import React from "react";
-import StarRating from "./StarRating";
-import DisqusComments from "./Disqus";
+import React from 'react';
+import StarRating from './StarRating';
+import DisqusComments from './Disqus';
 
 interface PopupProps {
   openedData: any;
@@ -19,22 +19,16 @@ const Popup: React.FC<PopupProps> = ({ openedData, closePopup }) => {
         </button>
         <div
           className="flex flex-col px-10 pb-10"
-          style={{ maxHeight: "500px", overflowY: "auto" }}
+          style={{ maxHeight: '500px', overflowY: 'auto' }}
         >
           <div className="flex justify-between">
-            <div className="text-[26px] font-bold pt-9">
-              {openedData.course_code}
-            </div>
+            <div className="text-[26px] font-bold pt-9">{openedData.course_code}</div>
             <StarRating openedData={openedData} />
           </div>
-          <div className="text-[18px] italic text-[#3d3d3d] pb-2">
-            {openedData.title}
-          </div>
+          <div className="text-[18px] italic text-[#3d3d3d] pb-2">{openedData.title}</div>
           <hr className="py-2" />
           <div className="pb-10">{openedData.description}</div>
-          <div className="pb-10 italic text-grey-300 ">
-            {openedData.requirement_description}
-          </div>
+          <div className="pb-10 italic text-grey-300 ">{openedData.requirement_description}</div>
           <hr className="py-2" />
           <div>
             <DisqusComments openedData={openedData} />
