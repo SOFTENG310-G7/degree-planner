@@ -1,6 +1,5 @@
 import React from "react";
 import StarRating from "./StarRating";
-import Script from "next/script";
 import DisqusComments from "./Disqus";
 
 interface PopupProps {

@@ -1,0 +1,17 @@
+public
+node_modules
+.github
+*/assets
+
+# ignore dependency locks
+package-lock.json
+
+# ignore the ignore files
+.gitignore
+.prettierignore
+
+# ignore other filetypes
+*.md
+*.cjs
+*.config.js
+settings.json

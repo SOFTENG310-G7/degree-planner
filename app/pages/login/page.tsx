@@ -1,7 +1,8 @@
-"use client";
+'use client';
 
-import Messages from "./messages";
-import React, { useState } from "react";
+import Messages from './messages';
+import React, { useState } from 'react';
+import Link from 'next/link';
 
 export default function Login() {
   const [showSignIn, setShowSignIn] = useState(true);
@@ -42,9 +43,7 @@ export default function Login() {
                 placeholder="••••••••"
                 required
               />
-              <button className="bg-green-700 rounded px-4 py-2 text-white mb-2">
-                Sign In
-              </button>
+              <button className="bg-green-700 rounded px-4 py-2 text-white mb-2">Sign In</button>
               <Messages />
             </form>
             <div className="flex-1 flex flex-row w-full justify-center items-center gap-2 text-foreground">
@@ -52,6 +51,11 @@ export default function Login() {
               <button onClick={handleForm}>
                 <u>Sign Up</u>
               </button>
+            </div>
+            <div className="flex-1 flex flex-row w-full justify-center items-center gap-2 text-foreground">
+              <Link href="/pages/sendResetEmail">
+                <u>Forgot Password</u>
+              </Link>
             </div>
           </>
         ) : (
@@ -94,9 +98,7 @@ export default function Login() {
                 placeholder="••••••••"
                 required
               />
-              <button className="bg-green-700 rounded px-4 py-2 text-white mb-2">
-                Sign Up
-              </button>
+              <button className="bg-green-700 rounded px-4 py-2 text-white mb-2">Sign Up</button>
               <Messages />
             </form>
             <div className="flex-1 flex flex-row w-full justify-center items-center gap-2 text-foreground">

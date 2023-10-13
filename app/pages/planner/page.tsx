@@ -1,9 +1,9 @@
-"use client";
-import CourseBlock from "@/components/CourseBlock";
-import SearchBar from "@/components/SearchBar";
-import type { CourseDTO } from "@/types/CourseDTO";
-import React, { useEffect, useState } from "react";
-import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+'use client';
+import CourseBlock from '@/components/CourseBlock';
+import SearchBar from '@/components/SearchBar';
+import type { CourseDTO } from '@/types/CourseDTO';
+import React, { useEffect, useState } from 'react';
+import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 
 const reorderDraggables = (list: any[], startIndex: number, endIndex: number) => {
   const result = Array.from(list);
@@ -47,22 +47,14 @@ function CourseDraggable({ course, index }: CourseDraggableProps) {
           {...provided.draggableProps}
           {...provided.dragHandleProps}
         >
-          <CourseBlock
-            code={course.course_code}
-            name={course.title}
-            desc={course.description}
-          />
+          <CourseBlock code={course.course_code} name={course.title} desc={course.description} />
         </div>
       )}
     </Draggable>
   );
 }
 
-const CourseList = React.memo(function QuoteList({
-  courses,
-}: {
-  courses: CourseDTO[];
-}) {
+const CourseList = React.memo(function QuoteList({ courses }: { courses: CourseDTO[] }) {
   return courses.map((course: CourseDTO, index: number) => (
     <CourseDraggable course={course} index={index} key={course.id} />
   ));
@@ -70,8 +62,8 @@ const CourseList = React.memo(function QuoteList({
 
 export default function Planner() {
   const droppableIds = {
-    allCourses: "all_courses",
-    selected: "selected",
+    allCourses: 'all_courses',
+    selected: 'selected',
   };
 
   interface CourseState {
@@ -87,11 +79,10 @@ export default function Planner() {
 
   // Required for SSR bug in react-beautiful-dnd
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       setIsBrowser(true);
     }
   }, []);
-
 
   const onSearchClick = (searchValue: string, courseList: CourseDTO[]) => {
     // Filter out courses that are already selected
@@ -100,7 +91,7 @@ export default function Planner() {
     );
     let outputData = [];
     for (const element of res) {
-      if (!(selected.course.filter((c: CourseDTO) => c.id === element.id).length)) {
+      if (!selected.course.filter((c: CourseDTO) => c.id === element.id).length) {
         outputData.push(element);
       }
     }
@@ -118,9 +109,7 @@ export default function Planner() {
     // Moving across lists
     if (source.droppableId === destination.droppableId) {
       const items = reorderDraggables(
-        source.droppableId === droppableIds.selected
-          ? selected.course
-          : allCourses.course,
+        source.droppableId === droppableIds.selected ? selected.course : allCourses.course,
         source.index,
         destination.index
       );
@@ -134,12 +123,8 @@ export default function Planner() {
     // Moving within the same list
     else {
       const result = moveDraggables(
-        source.droppableId === droppableIds.selected
-          ? selected.course
-          : allCourses.course,
-        source.droppableId === droppableIds.selected
-          ? allCourses.course
-          : selected.course,
+        source.droppableId === droppableIds.selected ? selected.course : allCourses.course,
+        source.droppableId === droppableIds.selected ? allCourses.course : selected.course,
         source,
         destination
       );
