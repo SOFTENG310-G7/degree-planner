@@ -11,8 +11,6 @@ export async function GET(request: Request) {
       { supabaseKey: process.env.SUPABASE_SERVICE_KEY },
     );
 
-    const { searchParams } = new URL(request.url);
-
     const {
       data: { user },
     } = await supabase.auth.getUser();
