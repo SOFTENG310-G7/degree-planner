@@ -18,15 +18,12 @@ export default function Profile() {
   }, []);
 
   const fetchUserCourses = async () => {
-    const response = await fetch(
-      `http://localhost:3000/api/ratings/GET_user`,
-      {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-    );
+    const response = await fetch(`http://localhost:3000/api/ratings/GET_user`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
     if (response.ok) {
       // Storing the ratings associated with the user
@@ -34,7 +31,7 @@ export default function Profile() {
       setCourses(ratingData.ratings);
       console.log(ratingData);
     }
-  }
+  };
 
   return (
     <div className="flex flex-col text-3xl">
@@ -46,7 +43,7 @@ export default function Profile() {
           <p className="mb-5 font-bold">Courses Ratings</p>
           {courses.map((c) => (
             <div key={c.courses.id} className="flex flex-row mt-4 mb-4">
-              <p className='pr-6 '>{c.courses.title}</p>
+              <p className="pr-6 ">{c.courses.title}</p>
               {[...Array(5)].map((star, index) => {
                 const id = index;
                 const ratingValue = index + 1;
