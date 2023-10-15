@@ -34,16 +34,16 @@ export default function Profile() {
   };
 
   return (
-    <div className="flex flex-col text-3xl">
-      <div className="mt-12 font-bold text-center">
-        <p>Welcome to your profile page.</p>
+    <div className="flex flex-col">
+      <div className="mt-12 text-center">
+        <p className="font-bold text-3xl">Welcome to your profile page.</p>
       </div>
       {courses.length !== 0 ? (
         <div className="mt-12 text-left ml-12">
-          <p className="mb-5 font-bold">Courses Ratings</p>
+          <p className="mb-5 font-bold text-3xl">Courses Ratings</p>
           {courses.map((c) => (
-            <div key={c.courses.id} className="flex flex-row mt-4 mb-4">
-              <p className="pr-6 ">{c.courses.title}</p>
+            <div key={c.courses.id} className="flex flex-row mt-4 mb-4 rounded-md py-5 px-5 w-1/2 bg-gray-100">
+              <p className="pr-6 font-size text-xl">{c.courses.course_code} - {c.courses.title}</p>
               {[...Array(5)].map((star, index) => {
                 const id = index;
                 const ratingValue = index + 1;
