@@ -34,42 +34,42 @@ export default function Profile() {
   };
 
   return (
-    <div className="flex flex-col">
-      <div className="mt-12 text-center">
+    <div className="flex flex-col mb-12">
+      <div className="flex flex-row justify-between mt-6 text-left ml-12">
         <p className="font-bold text-3xl">Welcome to your profile page.</p>
+        <div className="mr-12">
+          <LogoutButton />
+        </div>
       </div>
       {courses.length !== 0 ? (
         <div className="mt-12 text-left ml-12">
-          <p className="mb-5 font-bold text-3xl">Courses Ratings</p>
+          <p className="mb-5 font-bold text-2xl">Courses Ratings</p>
           {courses.map((c) => (
             <div
               key={c.courses.id}
-              className="flex flex-row mt-4 mb-4 rounded-md py-5 px-5 w-1/2 bg-gray-100"
+              className="flex flex-row justify-between mt-4 mb-4 rounded-md py-5 px-5 w-1/2 border-2 border-black"
             >
               <p className="pr-6 font-size text-xl">
                 {c.courses.course_code} - {c.courses.title}
               </p>
-              {[...Array(5)].map((star, index) => {
-                const id = index;
-                const ratingValue = index + 1;
-                return (
-                  <FaStar
-                    key={id}
-                    className="star"
-                    color={ratingValue <= (c.rating ?? 0) ? '#ffc107' : '#e4e5e9'}
-                    size={30}
-                  />
-                );
-              })}
+              <div className="flex">
+                {[...Array(5)].map((star, index) => {
+                  const id = index;
+                  const ratingValue = index + 1;
+                  return (
+                    <FaStar
+                      key={id}
+                      className="star"
+                      color={ratingValue <= (c.rating ?? 0) ? '#ffc107' : '#e4e5e9'}
+                      size={30}
+                    />
+                  );
+                })}
+              </div>
             </div>
           ))}
         </div>
       ) : null}
-      <div className="flex justify-center pb-[100px]">
-        <div className="mt-12">
-          <LogoutButton />
-        </div>
-      </div>
     </div>
   );
 }
