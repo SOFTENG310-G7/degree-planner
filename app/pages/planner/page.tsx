@@ -172,15 +172,31 @@ export default function Planner() {
                 <div className="flex flex-row justify-between gap-5">
                   <div className="text-2xl font-bold">Selected Courses</div>
                   <div style={{ width: 30, height: 30 }}>
-                    <CircularProgressbar
-                      value={numSelectedCourses}
-                      maxValue={12}
-                      text={`${numSelectedCourses}`}
-                      styles={buildStyles({
-                        textSize: '3rem',
-                        pathColor: '#3d74ff',
-                      })}
-                    />
+                    {numSelectedCourses < 12 ? (
+                      <>
+                        <CircularProgressbar
+                          value={numSelectedCourses}
+                          maxValue={12}
+                          text={`${numSelectedCourses}`}
+                          styles={buildStyles({
+                            textSize: '3rem',
+                            pathColor: '#3d74ff',
+                            textColor: '#3d74ff',
+                          })}
+                        />
+                      </>
+                    ) : (
+                      <CircularProgressbar
+                        value={numSelectedCourses}
+                        maxValue={12}
+                        text={`${numSelectedCourses}`}
+                        styles={buildStyles({
+                          textSize: '3rem',
+                          pathColor: '#FF3D74',
+                          textColor: '#FF3D74',
+                        })}
+                      />
+                    )}
                   </div>
                 </div>
                 <Droppable droppableId={droppableIds.selected}>
