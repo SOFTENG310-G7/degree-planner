@@ -147,8 +147,6 @@ export default function Planner() {
           setSelected({ course: result[droppableIds.selected] });
         }
       }
-      setAllCourses({ course: result[droppableIds.allCourses] });
-      setSelected({ course: result[droppableIds.selected] });
     }
   };
 
