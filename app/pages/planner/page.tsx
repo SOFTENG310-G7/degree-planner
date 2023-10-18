@@ -4,6 +4,8 @@ import SearchBar from '@/components/SearchBar';
 import type { CourseDTO } from '@/types/CourseDTO';
 import React, { useEffect, useState } from 'react';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 const reorderDraggables = (list: any[], startIndex: number, endIndex: number) => {
   const result = Array.from(list);
@@ -76,6 +78,7 @@ export default function Planner() {
     course: [],
   });
   const [isBrowser, setIsBrowser] = useState(false);
+  const [numSelectedCourses, setNumSelectedCourses] = useState(0);
 
   // Required for SSR bug in react-beautiful-dnd
   useEffect(() => {
@@ -106,7 +109,7 @@ export default function Planner() {
       return;
     }
 
-    // Moving across lists
+    // Moving within the same list
     if (source.droppableId === destination.droppableId) {
       const items = reorderDraggables(
         source.droppableId === droppableIds.selected ? selected.course : allCourses.course,
@@ -120,7 +123,7 @@ export default function Planner() {
         setAllCourses({ course: items });
       }
     }
-    // Moving within the same list
+    // Moving across to another list
     else {
       const result = moveDraggables(
         source.droppableId === droppableIds.selected ? selected.course : allCourses.course,
@@ -129,8 +132,21 @@ export default function Planner() {
         destination
       );
 
-      setAllCourses({ course: result[droppableIds.allCourses] });
-      setSelected({ course: result[droppableIds.selected] });
+      // If a course is dragged to selected
+      if (droppableIds.selected === destination.droppableId) {
+        if (numSelectedCourses < 12) {
+          setNumSelectedCourses(numSelectedCourses + 1);
+          setAllCourses({ course: result[droppableIds.allCourses] });
+          setSelected({ course: result[droppableIds.selected] });
+        }
+      }
+      if (destination.droppableId === droppableIds.allCourses) {
+        if (numSelectedCourses > 0) {
+          setNumSelectedCourses(numSelectedCourses - 1);
+          setAllCourses({ course: result[droppableIds.allCourses] });
+          setSelected({ course: result[droppableIds.selected] });
+        }
+      }
     }
   };
 
@@ -153,8 +169,36 @@ export default function Planner() {
                 </Droppable>
               </div>
               <div className="flex flex-col items-center gap-5">
-                <div className="text-2xl font-bold">Selected Courses</div>
-
+                <div className="flex flex-row justify-between gap-5">
+                  <div className="text-2xl font-bold">Selected Courses</div>
+                  <div style={{ width: 30, height: 30 }}>
+                    {numSelectedCourses < 12 ? (
+                      <>
+                        <CircularProgressbar
+                          value={numSelectedCourses}
+                          maxValue={12}
+                          text={`${numSelectedCourses}`}
+                          styles={buildStyles({
+                            textSize: '3rem',
+                            pathColor: '#3d74ff',
+                            textColor: '#3d74ff',
+                          })}
+                        />
+                      </>
+                    ) : (
+                      <CircularProgressbar
+                        value={numSelectedCourses}
+                        maxValue={12}
+                        text={`${numSelectedCourses}`}
+                        styles={buildStyles({
+                          textSize: '3rem',
+                          pathColor: '#FF3D74',
+                          textColor: '#FF3D74',
+                        })}
+                      />
+                    )}
+                  </div>
+                </div>
                 <Droppable droppableId={droppableIds.selected}>
                   {(provided) => (
                     <div className="w-80" ref={provided.innerRef} {...provided.droppableProps}>
