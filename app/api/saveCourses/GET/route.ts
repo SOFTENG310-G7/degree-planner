@@ -30,10 +30,6 @@ export async function GET(request: Request) {
       return new Response('Courses not found', { status: 404 });
     }
 
-    if (courses) {
-      console.log('Courses found:', courses[0].saved_courses);
-    }
-
     if (!courses || courses.length === 0) {
       return new Response('No courses found', { status: 404 });
     }

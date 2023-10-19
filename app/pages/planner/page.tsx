@@ -227,14 +227,6 @@ export default function Planner() {
 
   return (
     <div className="flex flex-col justify-center items-center my-5">
-      {/* temp styling for button need to fix */}
-      <button
-        onClick={() => {
-          handleCourseSaving();
-        }}
-      >
-        Save
-      </button>
       <section className="flex flex-col gap-3">
         <SearchBar onSearchClick={onSearchClick} />
         {isBrowser ? (
@@ -280,6 +272,17 @@ export default function Planner() {
                         })}
                       />
                     )}
+                  </div>
+                  <div>
+                    <button
+                      className="text-white bg-blue-600 hover:bg-blue-800 font-medium rounded-lg text-base px-2 py-1"
+                      type="button"
+                      onClick={() => {
+                        handleCourseSaving();
+                      }}
+                    >
+                      Save
+                    </button>
                   </div>
                 </div>
                 <Droppable droppableId={droppableIds.selected}>
