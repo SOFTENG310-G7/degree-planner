@@ -80,12 +80,87 @@ export default function Planner() {
   const [isBrowser, setIsBrowser] = useState(false);
   const [numSelectedCourses, setNumSelectedCourses] = useState(0);
 
+  const [hasSaved, setHasSaved] = useState<boolean>(false);
+  const [called, setCalled] = useState<boolean>(true);
+
   // Required for SSR bug in react-beautiful-dnd
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setIsBrowser(true);
     }
   }, []);
+
+  useEffect(() => {
+    if (called) {
+      handleGetCourses();
+      setCalled(false);
+    }
+  }, [called]);
+
+  //this pulls from backend and sets the hasSaved state to true if there is a saved course
+  const handleGetCourses = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/api/saveCourses/GET', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        const courses = await response.json();
+        console.log(courses);
+        setHasSaved(true);
+      }
+    } catch (error) {
+      console.error('Error while getting the rating:', error);
+    }
+  };
+
+  const handleCourseSaving = async () => {
+    try {
+      // Create a data object with the required information
+      const data = {
+        courses: selected.course,
+      };
+
+      if (hasSaved) {
+        //update the rating instead of posting new one
+        const response = await fetch('http://localhost:3000/api/saveCourses/PUT', {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+
+        if (response.ok) {
+          // Successfully updated the review
+          console.log('Courses updated successfully');
+        } else {
+          console.error('Failed to update courses');
+        }
+      } else {
+        // Send a POST request to api/rating route using fetch
+        const response = await fetch('http://localhost:3000/api/saveCourses/POST', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+
+        if (response.ok) {
+          // Successfully added the review
+          console.log('Courses saved successfully');
+        } else {
+          console.error('Failed to save');
+        }
+      }
+    } catch (error) {
+      console.error('Error while saving:', error);
+    }
+  };
 
   const onSearchClick = (searchValue: string, courseList: CourseDTO[]) => {
     // Filter out courses that are already selected
@@ -152,6 +227,14 @@ export default function Planner() {
 
   return (
     <div className="flex flex-col justify-center items-center my-5">
+      {/* temp styling for button need to fix */}
+      <button
+        onClick={() => {
+          handleCourseSaving();
+        }}
+      >
+        Save
+      </button>
       <section className="flex flex-col gap-3">
         <SearchBar onSearchClick={onSearchClick} />
         {isBrowser ? (
