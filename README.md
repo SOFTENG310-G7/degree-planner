@@ -102,7 +102,7 @@ In the root directory, there is [a (non-functional) example](/.env.local.example
 
 ### Step 4
 
-```
+```sh
 # Start the development server
 npm run dev
 ```
@@ -118,7 +118,7 @@ This project is configured with [Prettier](https://prettier.io) to ensure a cons
 
 This will help improve the speed and quality of code reviews. The following npm commands may be useful for verifying that your code is consistently formatted with the rest of the project:
 
-```
+```sh
 # Run Prettier to format source code
 npm run format
 
