@@ -13,7 +13,7 @@ export default async function About() {
         </div>
         <div className="my-8 text-gray-600">
           <p className="mb-4">
-            In 2023, as part of the SOFTENG&nbsb;310 paper at Waipapa Taumata Rau (the University of
+            In 2023, as part of the SOFTENG&nbsp;310 paper at Waipapa Taumata Rau (the University of
             Auckland), the G7s were tasked with building website for students to plan their future
             education.
           </p>
