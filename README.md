@@ -16,7 +16,7 @@ Planned features include:
 
 ## 🍔 Technology stack
 
-Degree Planner is a React-based web app build with [Next.js](https://nextjs.org), [TypeScript](https://www.typescriptlang.org) and [Tailwind CSS](https://tailwindcss.com), backed by a [Supabase](https://supabase.com) data store.
+Degree Planner is a React-based web app built with [Next.js](https://nextjs.org), [TypeScript](https://www.typescriptlang.org) and [Tailwind CSS](https://tailwindcss.com), backed by a [Supabase](https://supabase.com) data store.
 
 > [!NOTE]
 > Degree Planner is tested with the latest **long-term support** version of  Node.js, version&nbsp;18. Though it is likely to work with newer releases, they are not officially supported.
@@ -98,7 +98,7 @@ The last two API keys need to be generated from the [University of Auckland Deve
 In the root directory, there is [a (non-functional) example](/.env.local.example) of what your env file should look like.
 
 > [!IMPORTANT]
-> Do **not** commit your env file to version control. Git has been [configured to ignore it](/.gitignore). It should exist only in your local clone.
+> Do **not** commit your env file to version control. Git has been [configured to ignore it](https://github.com/SOFTENG310-G7/degree-planner/blob/main/.gitignore). It should exist only in your local clone.
 
 ### Step 4
 
