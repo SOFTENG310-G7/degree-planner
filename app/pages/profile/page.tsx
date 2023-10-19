@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import LogoutButton from '@/components/LogoutButton';
 import { CourseDTO } from '@/types/CourseDTO';
 import { FaStar } from 'react-icons/fa';
@@ -10,19 +10,29 @@ interface CourseRating {
 }
 
 interface SavedCourse {
-  title: string;
-  course_code: string;
+  course: CourseDTO[];
 }
 
 export default function Profile() {
   const [courses, setCourses] = useState<CourseRating[]>([]);
-  const [savedCourses, setSavedCourses] = useState<SavedCourse[]>([]);
+  const [savedCourses, setSavedCourses] = useState<SavedCourse>({
+    course: [],
+  });
+
+  const prevSavedCourses = useRef(savedCourses);
 
   useEffect(() => {
     // Fetching data from API
     fetchUserCourses();
     handleGetCourses();
   }, []);
+
+  useEffect(() => {
+    if (prevSavedCourses.current !== savedCourses) {
+      handleCourseUpdate();
+      prevSavedCourses.current = savedCourses;
+    }
+  }, [savedCourses]);
 
   const fetchUserCourses = async () => {
     const response = await fetch(`http://localhost:3000/api/ratings/GET_user`, {
@@ -36,7 +46,6 @@ export default function Profile() {
       // Storing the ratings associated with the user
       const ratingData = await response.json();
       setCourses(ratingData.ratings);
-      // console.log(ratingData);
     }
   };
 
@@ -51,12 +60,40 @@ export default function Profile() {
 
       if (response.ok) {
         const courses = await response.json();
-        // console.log(courses.courses[0].saved_courses);
-        setSavedCourses(courses.courses[0].saved_courses);
-        // console.log(savedCourses);
+        setSavedCourses({ course: courses.courses[0].saved_courses });
       }
     } catch (error) {
       console.error('Error while getting saved courses:', error);
+    }
+  };
+
+  const handleRemoveCourse = async (course_code: string) => {
+    const updatedCourses = savedCourses.course.filter((c) => c.course_code !== course_code);
+    setSavedCourses({ course: updatedCourses });
+  };
+
+  const handleCourseUpdate = async () => {
+    try {
+      const data = {
+        courses: savedCourses.course,
+      };
+
+      const response = await fetch('http://localhost:3000/api/saveCourses/PUT', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        // Successfully updated the review
+        console.log('Courses updated successfully');
+      } else {
+        console.error('Failed to update courses');
+      }
+    } catch (error) {
+      console.error('Error while saving:', error);
     }
   };
 
@@ -104,7 +141,8 @@ export default function Profile() {
           {savedCourses ? (
             <div className="mt-12 text-left ml-12">
               <p className="mb-5 font-bold text-2xl">Degree Plan</p>
-              {savedCourses.map((c) => (
+
+              {savedCourses.course.map((c) => (
                 <div
                   key={c.course_code}
                   className="flex flex-row justify-between mt-4 mb-4 rounded-md py-5 px-5 border-2 border-black"
@@ -112,6 +150,7 @@ export default function Profile() {
                   <p className="pr-6 font-size text-xl">
                     {c.course_code} - {c.title}
                   </p>
+                  <button onClick={() => handleRemoveCourse(c.course_code)}>Remove</button>
                 </div>
               ))}
             </div>

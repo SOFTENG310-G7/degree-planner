@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import { useSpring, animated } from 'react-spring';
 
 const reorderDraggables = (list: any[], startIndex: number, endIndex: number) => {
   const result = Array.from(list);
@@ -82,6 +83,14 @@ export default function Planner() {
 
   const [hasSaved, setHasSaved] = useState<boolean>(false);
   const [called, setCalled] = useState<boolean>(true);
+  const [show, setShow] = useState<boolean>(false);
+
+  const animationProps = useSpring({
+    opacity: show ? 1 : 0,
+    transform: show ? 'transformX(0)' : 'transformX(-100%)',
+    onRest: () => setShow(false),
+    marginTop: '3px',
+  });
 
   // Required for SSR bug in react-beautiful-dnd
   useEffect(() => {
@@ -110,6 +119,8 @@ export default function Planner() {
       if (response.ok) {
         const courses = await response.json();
         console.log(courses);
+        setSelected({ course: courses.courses[0].saved_courses });
+        setNumSelectedCourses(courses.courses[0].saved_courses.length);
         setHasSaved(true);
       }
     } catch (error) {
@@ -125,7 +136,7 @@ export default function Planner() {
       };
 
       if (hasSaved) {
-        //update the rating instead of posting new one
+        //update the saved courses instead of posting new one
         const response = await fetch('http://localhost:3000/api/saveCourses/PUT', {
           method: 'PUT',
           headers: {
@@ -137,11 +148,12 @@ export default function Planner() {
         if (response.ok) {
           // Successfully updated the review
           console.log('Courses updated successfully');
+          setShow(true);
         } else {
           console.error('Failed to update courses');
         }
       } else {
-        // Send a POST request to api/rating route using fetch
+        // Send a POST request to api/saveCourse route using fetch
         const response = await fetch('http://localhost:3000/api/saveCourses/POST', {
           method: 'POST',
           headers: {
@@ -153,6 +165,7 @@ export default function Planner() {
         if (response.ok) {
           // Successfully added the review
           console.log('Courses saved successfully');
+          setShow(true);
         } else {
           console.error('Failed to save');
         }
@@ -232,7 +245,7 @@ export default function Planner() {
         {isBrowser ? (
           <DragDropContext onDragEnd={onDragEnd}>
             <div className="flex flex-row justify-between gap-5">
-              <div className="flex flex-col items-center gap-5">
+              <div className="flex flex-col items-center gap-5 bg-gray-100 rounded-lg px-16 pt-10">
                 <div className="text-2xl font-bold">Available Courses</div>
                 <Droppable droppableId={droppableIds.allCourses}>
                   {(provided) => (
@@ -243,9 +256,8 @@ export default function Planner() {
                   )}
                 </Droppable>
               </div>
-              <div className="flex flex-col items-center gap-5">
-                <div className="flex flex-row justify-between gap-5">
-                  <div className="text-2xl font-bold">Selected Courses</div>
+              <div className="flex flex-col items-center gap-5 bg-gray-100 rounded-lg pt-10">
+                <div className="flex flex-row justify-between gap-3 pl-16">
                   <div style={{ width: 30, height: 30 }}>
                     {numSelectedCourses < 12 ? (
                       <>
@@ -273,6 +285,7 @@ export default function Planner() {
                       />
                     )}
                   </div>
+                  <div className="text-2xl font-bold">Selected Courses</div>
                   <div>
                     <button
                       className="text-white bg-blue-600 hover:bg-blue-800 font-medium rounded-lg text-base px-2 py-1"
@@ -284,6 +297,7 @@ export default function Planner() {
                       Save
                     </button>
                   </div>
+                  <animated.div style={animationProps}>Saved!</animated.div>
                 </div>
                 <Droppable droppableId={droppableIds.selected}>
                   {(provided) => (
