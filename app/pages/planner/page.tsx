@@ -256,7 +256,7 @@ export default function Planner() {
                   )}
                 </Droppable>
               </div>
-              <div className="flex flex-col items-center gap-5 bg-gray-100 rounded-lg pt-10">
+              <div className="flex flex-col items-center gap-5 bg-slate-100 rounded-lg pt-10">
                 <div className="flex flex-row justify-between gap-3 pl-16">
                   <div style={{ width: 30, height: 30 }}>
                     {numSelectedCourses < 12 ? (
