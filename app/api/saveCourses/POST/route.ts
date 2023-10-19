@@ -27,7 +27,7 @@ export async function POST(request: Request) {
     const { error } = await supabase.from('coursesSaved').upsert([
       {
         profile_id: user.id,
-        saved_courses: courses
+        saved_courses: courses,
       },
     ]);
 
