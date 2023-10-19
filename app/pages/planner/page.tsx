@@ -245,7 +245,7 @@ export default function Planner() {
         {isBrowser ? (
           <DragDropContext onDragEnd={onDragEnd}>
             <div className="flex flex-row justify-between gap-5">
-              <div className="flex flex-col items-center gap-5 bg-gray-100 rounded-lg px-16 pt-10">
+              <div className="flex flex-col items-center gap-5 bg-slate-100 rounded-lg px-16 pt-10">
                 <div className="text-2xl font-bold">Available Courses</div>
                 <Droppable droppableId={droppableIds.allCourses}>
                   {(provided) => (
