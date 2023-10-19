@@ -16,7 +16,7 @@ Planned features include:
 
 ## 🍔 Technology stack
 
-Degree Planner is a React-based web app build with [Next.js](https://nextjs.org), [TypeScript](https://www.typescriptlang.org) and [Tailwind CSS](https://tailwindcss.com), backed by a [Supabase](https://supabase.com) data store.
+Degree Planner is a React-based web app built with [Next.js](https://nextjs.org), [TypeScript](https://www.typescriptlang.org) and [Tailwind CSS](https://tailwindcss.com), backed by a [Supabase](https://supabase.com) data store.
 
 > [!NOTE]
 > Degree Planner is tested with the latest **long-term support** version of  Node.js, version&nbsp;18. Though it is likely to work with newer releases, they are not officially supported.
