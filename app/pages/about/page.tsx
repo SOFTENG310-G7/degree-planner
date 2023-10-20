@@ -15,14 +15,14 @@ export default async function About() {
           <p className="mb-4">
             In 2023, as part of the{' '}
             <a
-              className="text-blue-500 hover:underline transition-text-decoration"
+              className="text-cyan-600 hover:underline transition-text-decoration"
               href="https://courseoutline.auckland.ac.nz/dco/course/SOFTENG/310"
             >
               SOFTENG&nbsp;310
             </a>{' '}
             paper at{' '}
             <a
-              className="text-blue-500 hover:underline transition-text-decoration"
+              className="text-cyan-600 hover:underline transition-text-decoration"
               href="https://www.auckland.ac.nz"
             >
               Waipapa Taumata Rau
