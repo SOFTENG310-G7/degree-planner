@@ -48,8 +48,8 @@ const ContactForm: React.FC = () => {
         <input type="hidden" name="subject" value="New Submission from Degree Planner" />
         <input type="checkbox" name="botcheck" style={{ display: 'none' }} />
 
-        <label className="text-md" htmlFor="email">
-          Email
+        <label className="text-base text-slate-700 font-semibold" htmlFor="email">
+          Your email
         </label>
         <input
           id="email"
@@ -60,22 +60,22 @@ const ContactForm: React.FC = () => {
           type="email"
           required
         />
-        <label className="text-md" htmlFor="subject">
+        <label className="text-base text-slate-700 font-semibold" htmlFor="subject">
           Subject
         </label>
         <select id="subject" className="rounded-md px-4 py-2 bg-inherit border mb-6" name="Subject">
           <option value="query">Query</option>
+          <option value="bug">Bug report</option>
           <option value="feedback">Feedback</option>
-          <option value="bug">Bug Report</option>
         </select>
-        <label className="text-md" htmlFor="message">
+        <label className="text-base text-slate-700 font-semibold" htmlFor="message">
           Description
         </label>
         <textarea
           id="message"
           className="rounded-md px-4 py-2 bg-inherit border mb-6 min-h-[8rem]"
           name="Message"
-          placeholder="Enter your message..."
+          placeholder="Enter your message…"
           rows={4}
           required
         ></textarea>
