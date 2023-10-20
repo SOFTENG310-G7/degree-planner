@@ -29,7 +29,7 @@ export default async function Index() {
           </div>
         </div>
         <Link href="/pages/planner">
-          <button className="flex mx-auto mt-16 text-slate-50 font-medium bg-cyan-600 hover:bg-cyan-600 focus:bg-cyan-600 focus-visible:bg-cyan-600 transition-colors border-0 py-3 px-10 focus:outline-none rounded-full text-lg">
+          <button className="flex mx-auto mt-16 text-slate-50 font-medium bg-cyan-700 hover:bg-cyan-600 focus:bg-cyan-600 focus-visible:bg-cyan-600 transition-colors border-0 py-3 px-10 focus:outline-none rounded-full text-lg">
             Plan your degree
           </button>
         </Link>
