@@ -83,14 +83,14 @@ export default function Courses() {
           <Popup openedData={openedData} closePopup={closePopup} />
         </>
       )}
-      <div className="font-bold text-[40px] pt-[80px]">Courses</div>
-      <div className=" w-1/2 border-2 border-grey-400 px-2 py-4 rounded-full my-[80px] flex">
+      <h1 className="font-semibold text-4xl my-16">Courses</h1>
+      <div className=" w-1/2 border-2 border-slate-400 px-2 py-4 rounded-full mb-24 flex">
         <div className="px-3">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="25"
             height="25"
-            fill="grey"
+            fill="slate"
             className="bi bi-search"
             viewBox="0 0 16 16"
           >
@@ -105,7 +105,7 @@ export default function Courses() {
           onChange={handleChange}
         ></input>
       </div>
-      {promiseInProgress && <BeatLoader size={20} color="#3d74ff" />}
+      {promiseInProgress && <BeatLoader size={20} color="#0891b2" />}
       <div className="mb-20">
         {results.length !== 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 ml-10 mr-10">
@@ -118,8 +118,8 @@ export default function Courses() {
         ) : (
           !promiseInProgress && (
             <div className="flex flex-col text-center w-full">
-              <h1 className="font-bold text-[20px]">No courses found</h1>
-              <p className="text-gray-600 text-[15px]">Please try again with another keyword</p>
+              <h2 className="font-bold text-xl">No courses found</h2>
+              <p className="text-slate-600 text-base">Please try again with another keyword</p>
             </div>
           )
         )}
