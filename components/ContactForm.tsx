@@ -83,12 +83,12 @@ const ContactForm: React.FC = () => {
         <div className="mb-6">
           <button
             type="submit"
-            className="w-full px-3 py-4 text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none"
+            className="w-full px-3 py-4 font-medium text-slate-50 bg-cyan-700 hover:bg-cyan-600 rounded-md active:bg-cyan-700 focus:bg-cyan-600 focus:outline-none transition-colors"
           >
-            Send Message
+            Send message
           </button>
         </div>
-        <p className="text-base text-center text-gray-400" id="result">
+        <p className="text-base text-center text-slate-400" id="result">
           {resultMessage}
         </p>
       </form>
