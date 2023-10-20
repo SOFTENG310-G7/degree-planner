@@ -84,7 +84,7 @@ export default function Courses() {
         </>
       )}
       <h1 className="font-semibold text-4xl my-16">Courses</h1>
-      <div className="w-1/2 border-2 border-slate-400 px-2 py-4 rounded-full mb-24 flex focus-within:border-cyan-600">
+      <div className="w-1/2 border-2 border-slate-400 px-2 py-4 rounded-full mb-24 flex focus-within:border-cyan-600 transition-colors">
         <div className="px-3">
           <svg
             xmlns="http://www.w3.org/2000/svg"
