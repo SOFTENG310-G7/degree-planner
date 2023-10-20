@@ -64,7 +64,7 @@ const SearchBar = ({ onSearchClick }: SearchBarProps) => {
           e.preventDefault();
           onEnter(searchValue);
         }}
-        className="w-full border-2 border-slate-400 my-12 rounded-full bg-transparent px-2 caret-cyan-600 focus-within:border-cyan-600 transition-colors"
+        className="w-full border-2 border-slate-400 rounded-full bg-transparent px-2 caret-cyan-600 focus-within:border-cyan-600 transition-colors"
       >
         <label
           htmlFor="default-search"

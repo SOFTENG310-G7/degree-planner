@@ -239,8 +239,8 @@ export default function Planner() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center my-5">
-      <section className="flex flex-col gap-3">
+    <div className="flex flex-col justify-center items-center my-24">
+      <section className="flex flex-col gap-24">
         <SearchBar onSearchClick={onSearchClick} />
         {isBrowser ? (
           <DragDropContext onDragEnd={onDragEnd}>
