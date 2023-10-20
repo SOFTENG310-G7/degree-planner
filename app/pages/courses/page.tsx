@@ -101,7 +101,7 @@ export default function Courses() {
         <input
           type="search"
           className="search-bar outline-none w-full bg-transparent"
-          placeholder="Search for a course..."
+          placeholder="Search for a course…"
           onChange={handleChange}
         ></input>
       </div>
