@@ -35,34 +35,21 @@ export default async function About() {
             >
               new issue
             </a>
-            . If you’re unfamiliar with GitHub, you’re also welcome to contact our volunteer
-            developers by email (two of them are listed below), or use the contact form.
+            .
           </p>
-          <p className="mb-4">
-            Dana Seong:{' '}
+          <p>
+            If you’re unfamiliar with GitHub, you’re also welcome to contact our volunteer
+            developers by email at{' '}
             <a
-              href="mailto:mseo447@aucklanduni.ac.nz"
               className="text-blue-500 hover:underline transition-text-decoration"
+              href="mailto:degreeplanner90@gmail.com"
             >
-              mseo447@aucklanduni.ac.nz
+              degreeplanner90@gmail.com
             </a>
-          </p>
-          <p className="mb-4">
-            Henry Wang:{' '}
-            <a
-              href="mailto:hwan513@aucklanduni.ac.nz"
-              className="text-blue-500 hover:underline transition-text-decoration"
-            >
-              hwan513@aucklanduni.ac.nz
-            </a>
+            , or use the contact form below.
           </p>
         </div>
-        <div className="text-center  mt-4">
-          <p className="text-slate-600 font-bold">
-            Alternatively, fill and submit the contact form below.
-          </p>
-          <ContactForm />
-        </div>
+        <ContactForm />
       </div>
     </div>
   );
