@@ -54,7 +54,7 @@ const ContactForm: React.FC = () => {
         <input
           id="email"
           autoComplete="on"
-          className="rounded-md px-4 py-2 bg-inherit border mb-6"
+          className="rounded-md px-4 py-2 bg-inherit border mb-6 focus-visible:outline-cyan-600 transition-colors"
           name="email"
           placeholder="example@domain.com"
           type="email"
@@ -63,7 +63,11 @@ const ContactForm: React.FC = () => {
         <label className="text-base text-slate-700 font-semibold" htmlFor="subject">
           Subject
         </label>
-        <select id="subject" className="rounded-md px-4 py-2 bg-inherit border mb-6" name="Subject">
+        <select
+          id="subject"
+          className="rounded-md px-4 py-2 bg-inherit border mb-6 focus-visible:outline-cyan-600 transition-colors"
+          name="Subject"
+        >
           <option value="query">Query</option>
           <option value="bug">Bug report</option>
           <option value="feedback">Feedback</option>
@@ -73,7 +77,7 @@ const ContactForm: React.FC = () => {
         </label>
         <textarea
           id="message"
-          className="rounded-md px-4 py-2 bg-inherit border mb-6 min-h-[8rem]"
+          className="rounded-md px-4 py-2 bg-inherit border mb-6 min-h-[8rem] focus-visible:outline-cyan-600 transition-colors"
           name="Message"
           placeholder="Enter your message…"
           rows={4}
