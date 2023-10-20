@@ -38,66 +38,60 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto">
-      <div className="m-7">
-        <form
-          className="flex-1 flex flex-col mx-auto w-full max-w-md justify-center text-left gap-2 text-foreground"
-          onSubmit={handleFormSubmit}
-        >
-          {/* Access key for webforms sends a response to the email account degreeplanner90@gmail.com */}
-          <input type="hidden" name="access_key" value="8347a957-fbc8-4284-9c75-27c5dbe46292" />
-          <input type="hidden" name="subject" value="New Submission from Degree Planner" />
-          <input type="checkbox" name="botcheck" style={{ display: 'none' }} />
+    <div className="container mx-auto text-center m-7">
+      <form
+        className="flex-1 flex flex-col mx-auto w-full max-w-md justify-center text-left gap-2 text-foreground"
+        onSubmit={handleFormSubmit}
+      >
+        {/* Access key for webforms sends a response to the email account degreeplanner90@gmail.com */}
+        <input type="hidden" name="access_key" value="8347a957-fbc8-4284-9c75-27c5dbe46292" />
+        <input type="hidden" name="subject" value="New Submission from Degree Planner" />
+        <input type="checkbox" name="botcheck" style={{ display: 'none' }} />
 
-          <label className="text-md" htmlFor="email">
-            Email
-          </label>
-          <input
-            id="email"
-            autoComplete="on"
-            className="rounded-md px-4 py-2 bg-inherit border mb-6"
-            name="email"
-            placeholder="example@domain.com"
-            type="email"
-            required
-          />
-          <label className="text-md" htmlFor="subject">
-            Subject
-          </label>
-          <select
-            id="subject"
-            className="rounded-md px-4 py-2 bg-inherit border mb-6"
-            name="Subject"
+        <label className="text-md" htmlFor="email">
+          Email
+        </label>
+        <input
+          id="email"
+          autoComplete="on"
+          className="rounded-md px-4 py-2 bg-inherit border mb-6"
+          name="email"
+          placeholder="example@domain.com"
+          type="email"
+          required
+        />
+        <label className="text-md" htmlFor="subject">
+          Subject
+        </label>
+        <select id="subject" className="rounded-md px-4 py-2 bg-inherit border mb-6" name="Subject">
+          <option value="query">Query</option>
+          <option value="feedback">Feedback</option>
+          <option value="bug">Bug Report</option>
+        </select>
+        <label className="text-md" htmlFor="message">
+          Description
+        </label>
+        <textarea
+          id="message"
+          className="rounded-md px-4 py-2 bg-inherit border mb-6 min-h-[8rem]"
+          name="Message"
+          placeholder="Enter your message..."
+          rows={4}
+          required
+        ></textarea>
+
+        <div className="mb-6">
+          <button
+            type="submit"
+            className="w-full px-3 py-4 text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none"
           >
-            <option value="query">Query</option>
-            <option value="feedback">Feedback</option>
-            <option value="bug">Bug Report</option>
-          </select>
-          <label className="text-md" htmlFor="message">
-            Description
-          </label>
-          <textarea
-            id="message"
-            className="rounded-md px-4 py-2 bg-inherit border mb-6 min-h-[8rem]"
-            name="Message"
-            placeholder="Enter your message..."
-            rows={4}
-            required
-          ></textarea>
-
-          <div className="mb-6">
-            <button
-              type="submit"
-              className="w-full px-3 py-4 text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none"
-            >
-              Send Message
-            </button>
-          </div>
-          <p className="text-base text-center text-gray-400" id="result">
-            {resultMessage}
-          </p>
-        </form>
-      </div>
+            Send Message
+          </button>
+        </div>
+        <p className="text-base text-center text-gray-400" id="result">
+          {resultMessage}
+        </p>
+      </form>
     </div>
   );
 };
