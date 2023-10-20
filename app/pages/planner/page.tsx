@@ -292,7 +292,7 @@ export default function Planner() {
                   <h2 className="text-2xl font-bold">Selected courses</h2>
                   <div>
                     <button
-                      className="text-white bg-cyan-600 hover:bg-cyan-500 active:bg-cyan-600 focus-visible:bg-cyan-500 transition-colors font-medium rounded-full text-base px-3 py-1"
+                      className="text-white bg-cyan-700 hover:bg-cyan-600 active:bg-cyan-700 focus-visible:bg-cyan-600 transition-colors font-medium rounded-full text-base px-3 py-1"
                       type="button"
                       onClick={() => {
                         handleCourseSaving();
