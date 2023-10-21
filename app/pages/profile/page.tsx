@@ -111,7 +111,7 @@ export default function Profile() {
       <div className="flex flex-col w-full max-w-4xl gap-5">
         <h2 className="font-bold text-2xl">Degree Plan</h2>
         {savedCourses.course.length !== 0 ? (
-          <>{savedCourses.course.map((c) => DegreePlannerCard(c))}</>
+          <>{savedCourses.course.map((c) => DegreePlanCard(c, handleRemoveCourse))}</>
         ) : (
           <p className="text-l">You have not added any courses yet</p>
         )}
@@ -122,50 +122,50 @@ export default function Profile() {
       </div>
     </main>
   );
+}
 
-  function DegreePlannerCard(c: Readonly<CourseDTO>) {
-    return (
-      <div
-        key={c.course_code}
-        className="flex flex-row justify-between rounded-md p-5 border-2 border-black gap-8"
+function DegreePlanCard(c: CourseDTO, handleRemoveCourse: (course_code: string) => Promise<void>) {
+  return (
+    <div
+      key={c.course_code}
+      className="flex flex-row justify-between rounded-md p-5 border-2 border-black gap-8"
+    >
+      <p className="font-size text-xl">
+        {c.course_code} - {c.title}
+      </p>
+      <button
+        className="text-slate-100 bg-red-500 hover:bg-red-700 transition-colors px-4 py-2 rounded-lg -m-2"
+        onClick={() => handleRemoveCourse(c.course_code)}
       >
-        <p className="font-size text-xl">
-          {c.course_code} - {c.title}
-        </p>
-        <button
-          className="text-slate-100 bg-red-500 hover:bg-red-700 transition-colors px-4 py-2 rounded-lg -m-2"
-          onClick={() => handleRemoveCourse(c.course_code)}
-        >
-          Remove
-        </button>
-      </div>
-    );
-  }
+        Remove
+      </button>
+    </div>
+  );
+}
 
-  function CourseRatingCard(c: Readonly<CourseRating>) {
-    return (
-      <div
-        key={c.courses.id}
-        className="flex flex-row justify-between rounded-md p-5 border-2 border-black"
-      >
-        <p className="font-size text-xl">
-          {c.courses.course_code} - {c.courses.title}
-        </p>
-        <div className="flex">
-          {[...Array(5)].map((star, index) => {
-            const id = index;
-            const ratingValue = index + 1;
-            return (
-              <FaStar
-                key={id}
-                className="star"
-                color={ratingValue <= (c.rating ?? 0) ? '#ffc107' : '#e4e5e9'}
-                size={30}
-              />
-            );
-          })}
-        </div>
+function CourseRatingCard(c: Readonly<CourseRating>) {
+  return (
+    <div
+      key={c.courses.id}
+      className="flex flex-row justify-between rounded-md p-5 border-2 border-black"
+    >
+      <p className="font-size text-xl">
+        {c.courses.course_code} - {c.courses.title}
+      </p>
+      <div className="flex">
+        {[...Array(5)].map((star, index) => {
+          const id = index;
+          const ratingValue = index + 1;
+          return (
+            <FaStar
+              key={id}
+              className="star"
+              color={ratingValue <= (c.rating ?? 0) ? '#ffc107' : '#e4e5e9'}
+              size={30}
+            />
+          );
+        })}
       </div>
-    );
-  }
+    </div>
+  );
 }
