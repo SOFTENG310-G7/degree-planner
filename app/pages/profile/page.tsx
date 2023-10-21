@@ -101,20 +101,12 @@ export default function Profile() {
     <main className="flex flex-col items-center py-16 gap-8">
       <h1 className="text-4xl font-bold">Profile</h1>
       <div className="flex flex-col w-1/2 gap-5">
-        {courses.length !== 0 ? (
-          <>
-            <h2 className="font-bold text-2xl">Courses Ratings</h2>
-            {courses.map((c) => CourseRatingCard(c))}
-          </>
-        ) : null}
+        <h2 className="font-bold text-2xl">Courses Ratings</h2>
+        {courses.length !== 0 ? <>{courses.map((c) => CourseRatingCard(c))}</> : null}
       </div>
       <div className="flex flex-col w-1/2 gap-5">
-        {savedCourses ? (
-          <>
-            <h2 className="font-bold text-2xl">Degree Plan</h2>
-            {savedCourses.course.map((c) => DegreePlannerCard(c))}
-          </>
-        ) : null}
+        <h2 className="font-bold text-2xl">Degree Plan</h2>
+        {savedCourses ? <>{savedCourses.course.map((c) => DegreePlannerCard(c))}</> : null}
       </div>
       <LogoutButton />
     </main>
