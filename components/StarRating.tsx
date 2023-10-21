@@ -138,9 +138,9 @@ const StarRating: React.FC<StarRatingProps> = ({ openedData }) => {
   };
 
   return (
-    <div className="pt-10 ml-10">
-      <div className="flex gap-2">
-        <h2 className="pt-1">{averageRating}</h2>
+    <div className="flex flex-row items-center gap-2 pt-10 ml-10">
+      <p className="font-medium text-slate-700">{averageRating}</p>
+      <div className="flex flex-row gap-1">
         {[...Array(5)].map((star, index) => {
           const id = index;
           const ratingValue = index + 1;
@@ -148,8 +148,8 @@ const StarRating: React.FC<StarRatingProps> = ({ openedData }) => {
           return (
             <FaStar
               key={id}
-              className="star"
-              color={ratingValue <= (hover ?? rating ?? 0) ? '#ffc107' : '#e4e5e9'}
+              className="star transition-colors"
+              color={ratingValue <= (hover ?? rating ?? 0) ? '#fcd34d' : '#e2e8f0'}
               size={30}
               cursor="pointer"
               onMouseEnter={() => setHover(ratingValue)}
@@ -160,8 +160,8 @@ const StarRating: React.FC<StarRatingProps> = ({ openedData }) => {
             />
           );
         })}
-        <h2 className="pt-1">({ratingCount})</h2>
       </div>
+      <p className="font-medium text-slate-700">({ratingCount})</p>
     </div>
   );
 };

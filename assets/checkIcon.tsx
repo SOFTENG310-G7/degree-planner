@@ -4,7 +4,7 @@ export default function checkIcon() {
   return (
     <svg
       fill="none"
-      stroke="#3d74ff"
+      stroke="#0891b2"
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth="3"

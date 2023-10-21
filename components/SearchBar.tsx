@@ -58,17 +58,17 @@ const SearchBar = ({ onSearchClick }: SearchBarProps) => {
   }, []);
 
   return (
-    <div className="search-bar">
+    <search className="search-bar">
       <form
         onSubmit={(e) => {
           e.preventDefault();
           onEnter(searchValue);
         }}
-        className="w-full border-2 border-black rounded-full bg-transparent px-2"
+        className="w-full border-2 border-slate-400 rounded-full bg-transparent px-2 caret-cyan-600 focus-within:border-cyan-600 transition-colors"
       >
         <label
           htmlFor="default-search"
-          className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+          className="mb-2 text-sm font-medium text-slate-900 sr-only dark:text-slate-100"
         >
           Search
         </label>
@@ -88,8 +88,8 @@ const SearchBar = ({ onSearchClick }: SearchBarProps) => {
           </div>
           <input
             id="default-search"
-            className="block w-full p-4 pl-10 text-sm bg-transparent rounded-full focus:outline-none"
-            placeholder="Search for courses..."
+            className="block w-full p-4 pl-10 text-lg bg-transparent rounded-full focus:outline-none"
+            placeholder="Search for courses…"
             onChange={handleSearchChange}
             value={text}
             autoComplete="off"
@@ -97,7 +97,7 @@ const SearchBar = ({ onSearchClick }: SearchBarProps) => {
           />
           <button
             type="submit"
-            className="text-white absolute items-center top-2 right-1 bg-[#3d74ff] hover:bg-[#2853bf] font-medium rounded-lg text-sm px-4 py-2"
+            className="text-slate-100 absolute items-center top-2 right-1 bg-cyan-700 hover:bg-cyan-600 font-medium rounded-full transition-colors text-lg px-4 py-2"
           >
             Search
           </button>
@@ -105,7 +105,7 @@ const SearchBar = ({ onSearchClick }: SearchBarProps) => {
       </form>
       <motion.div
         layout
-        className="absolute bg-white ml-10 mt-1 w-48 max-h-[150px] overflow-hidden overflow-y-auto rounded-md shadow-lg shadow-black-200/50"
+        className="absolute bg-slate-100 ml-10 mt-1 w-48 max-h-[150px] overflow-hidden overflow-y-auto rounded-md shadow-lg shadow-black-200/50"
       >
         {text ? (
           <>
@@ -114,7 +114,7 @@ const SearchBar = ({ onSearchClick }: SearchBarProps) => {
                 layout
                 key={c.id}
                 onClick={() => onSelect(c.course_code)}
-                className="hover:bg-gray-200 p-2.5 text-sm"
+                className="hover:bg-slate-200 p-2.5 text-sm"
               >
                 {c.course_code}
               </motion.div>
@@ -122,7 +122,7 @@ const SearchBar = ({ onSearchClick }: SearchBarProps) => {
           </>
         ) : null}
       </motion.div>
-    </div>
+    </search>
   );
 };
 
