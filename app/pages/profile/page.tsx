@@ -126,7 +126,7 @@ export default function Profile() {
         key={c.course_code}
         className="flex flex-row justify-between mt-4 mb-4 rounded-md py-5 px-5 border-2 border-black"
       >
-        <p className="pr-6 font-size text-xl">
+        <p className="font-size text-xl">
           {c.course_code} - {c.title}
         </p>
         <button onClick={() => handleRemoveCourse(c.course_code)}>Remove</button>
@@ -140,7 +140,7 @@ export default function Profile() {
         key={c.courses.id}
         className="flex flex-row justify-between mt-4 mb-4 rounded-md py-5 px-5 border-2 border-black"
       >
-        <p className="pr-6 font-size text-xl">
+        <p className="font-size text-xl">
           {c.courses.course_code} - {c.courses.title}
         </p>
         <div className="flex">
