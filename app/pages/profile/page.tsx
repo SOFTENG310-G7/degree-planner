@@ -102,11 +102,19 @@ export default function Profile() {
       <h1 className="text-4xl font-bold">Profile</h1>
       <div className="flex flex-col w-1/2 gap-5">
         <h2 className="font-bold text-2xl">Courses Ratings</h2>
-        {courses.length !== 0 ? <>{courses.map((c) => CourseRatingCard(c))}</> : null}
+        {courses.length !== 0 ? (
+          <>{courses.map((c) => CourseRatingCard(c))}</>
+        ) : (
+          <p className="text-l">You have not rated any courses yet</p>
+        )}
       </div>
       <div className="flex flex-col w-1/2 gap-5">
         <h2 className="font-bold text-2xl">Degree Plan</h2>
-        {savedCourses ? <>{savedCourses.course.map((c) => DegreePlannerCard(c))}</> : null}
+        {savedCourses.course.length !== 0 ? (
+          <>{savedCourses.course.map((c) => DegreePlannerCard(c))}</>
+        ) : (
+          <p className="text-l">You have not added any courses yet</p>
+        )}
       </div>
       <LogoutButton />
     </main>
