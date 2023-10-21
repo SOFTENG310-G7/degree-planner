@@ -129,7 +129,12 @@ export default function Profile() {
         <p className="font-size text-xl">
           {c.course_code} - {c.title}
         </p>
-        <button onClick={() => handleRemoveCourse(c.course_code)}>Remove</button>
+        <button
+          className="text-slate-100 bg-red-500 hover:bg-red-700 transition-colors px-4 py-2 rounded-lg -m-2"
+          onClick={() => handleRemoveCourse(c.course_code)}
+        >
+          Remove
+        </button>
       </div>
     );
   }
