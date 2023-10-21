@@ -123,7 +123,7 @@ export default function Profile() {
     </main>
   );
 
-  function DegreePlannerCard(c: CourseDTO) {
+  function DegreePlannerCard(c: Readonly<CourseDTO>) {
     return (
       <div
         key={c.course_code}
@@ -142,7 +142,7 @@ export default function Profile() {
     );
   }
 
-  function CourseRatingCard(c: CourseRating) {
+  function CourseRatingCard(c: Readonly<CourseRating>) {
     return (
       <div
         key={c.courses.id}
