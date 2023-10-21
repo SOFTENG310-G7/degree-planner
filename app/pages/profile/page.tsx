@@ -124,7 +124,7 @@ export default function Profile() {
     return (
       <div
         key={c.course_code}
-        className="flex flex-row justify-between mt-4 mb-4 rounded-md py-5 px-5 border-2 border-black"
+        className="flex flex-row justify-between my-4 rounded-md p-5 border-2 border-black"
       >
         <p className="font-size text-xl">
           {c.course_code} - {c.title}
@@ -138,7 +138,7 @@ export default function Profile() {
     return (
       <div
         key={c.courses.id}
-        className="flex flex-row justify-between mt-4 mb-4 rounded-md py-5 px-5 border-2 border-black"
+        className="flex flex-row justify-between my-4 rounded-md p-5 border-2 border-black"
       >
         <p className="font-size text-xl">
           {c.courses.course_code} - {c.courses.title}
