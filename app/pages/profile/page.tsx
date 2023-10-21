@@ -1,9 +1,10 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import LogoutButton from '@/components/LogoutButton';
+import Popup from '@/components/Popup';
 import { CourseDTO } from '@/types/CourseDTO';
 import { FaStar } from 'react-icons/fa';
-import Popup from '@/components/Popup';
+import { AiOutlineClose } from 'react-icons/ai';
 
 interface CourseRating {
   courses: CourseDTO;
@@ -22,7 +23,6 @@ export default function Profile() {
   const prevSavedCourses = useRef(savedCourses);
   const [opened, setOpened] = useState(false);
   const [openedData, setOpenedData] = useState<CourseDTO>();
-
 
   const handleClick = (course: any) => {
     setOpenedData(course);
@@ -179,8 +179,14 @@ export default function Profile() {
               <p className="mb-5 font-bold text-2xl">Degree Plan</p>
               {savedCourses.course.map((c) => (
                 <div key={c.course_code}>
-                  <div className="absolute right-0 mt-[24px] mr-16">
-                    <button onClick={() => handleRemoveCourse(c.course_code)}>Remove</button>
+                  <div className="absolute right-0 mt-[25px] mr-16">
+                    <button
+                      type="button"
+                      onClick={() => handleRemoveCourse(c.course_code)}
+                      className="hover:cursor-pointer"
+                    >
+                      <AiOutlineClose size={20} />
+                    </button>
                   </div>
                   <div
                     key={c.course_code}
