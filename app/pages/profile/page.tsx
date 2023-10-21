@@ -116,7 +116,10 @@ export default function Profile() {
           <p className="text-l">You have not added any courses yet</p>
         )}
       </div>
-      <LogoutButton />
+      <div className="flex flex-col w-full max-w-4xl gap-5">
+        <h2 className="font-bold text-2xl">Profile Actions</h2>
+        <LogoutButton />
+      </div>
     </main>
   );
 
