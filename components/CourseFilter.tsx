@@ -1,14 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 type CourseFilterProps = {
   handleCategoryChange: (category: string) => void;
 };
 
 const CourseFilter: React.FC<CourseFilterProps> = ({ handleCategoryChange }) => {
-  const [selectedCategory, SetSelectedCategory] = useState('All');
+  const [selectedCategory, setSelectedCategory] = useState('All');
 
   const handleSelectChange = (category: string) => {
-    SetSelectedCategory(category);
+    setSelectedCategory(category);
     handleCategoryChange(category);
   };
 
