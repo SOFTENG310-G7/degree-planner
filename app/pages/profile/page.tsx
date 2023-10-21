@@ -98,7 +98,7 @@ export default function Profile() {
   };
 
   return (
-    <main className="flex flex-col items-center py-16 gap-8">
+    <main className="flex flex-col items-center py-16 px-8 gap-8">
       <h1 className="text-4xl font-bold">Profile</h1>
       <div className="flex flex-col w-full max-w-4xl gap-5">
         <h2 className="font-bold text-2xl">Courses Ratings</h2>
