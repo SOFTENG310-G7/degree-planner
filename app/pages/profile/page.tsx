@@ -100,57 +100,55 @@ export default function Profile() {
   return (
     <div className="flex flex-col items-center mb-12">
       <h1 className="text-4xl text-medium font-bold my-8">Profile</h1>
-      <div className="flex flex-row">
-        <div className="flex flex-col w-1/2 mr-10">
-          {courses.length !== 0 ? (
-            <div className="mt-12 text-left ml-12">
-              <p className="mb-5 font-bold text-2xl">Courses Ratings</p>
-              {courses.map((c) => (
-                <div
-                  key={c.courses.id}
-                  className="flex flex-row justify-between mt-4 mb-4 rounded-md py-5 px-5 border-2 border-black"
-                >
-                  <p className="pr-6 font-size text-xl">
-                    {c.courses.course_code} - {c.courses.title}
-                  </p>
-                  <div className="flex">
-                    {[...Array(5)].map((star, index) => {
-                      const id = index;
-                      const ratingValue = index + 1;
-                      return (
-                        <FaStar
-                          key={id}
-                          className="star"
-                          color={ratingValue <= (c.rating ?? 0) ? '#ffc107' : '#e4e5e9'}
-                          size={30}
-                        />
-                      );
-                    })}
-                  </div>
+      <div className="flex flex-col w-1/2 mr-10">
+        {courses.length !== 0 ? (
+          <div className="mt-12 text-left ml-12">
+            <p className="mb-5 font-bold text-2xl">Courses Ratings</p>
+            {courses.map((c) => (
+              <div
+                key={c.courses.id}
+                className="flex flex-row justify-between mt-4 mb-4 rounded-md py-5 px-5 border-2 border-black"
+              >
+                <p className="pr-6 font-size text-xl">
+                  {c.courses.course_code} - {c.courses.title}
+                </p>
+                <div className="flex">
+                  {[...Array(5)].map((star, index) => {
+                    const id = index;
+                    const ratingValue = index + 1;
+                    return (
+                      <FaStar
+                        key={id}
+                        className="star"
+                        color={ratingValue <= (c.rating ?? 0) ? '#ffc107' : '#e4e5e9'}
+                        size={30}
+                      />
+                    );
+                  })}
                 </div>
-              ))}
-            </div>
-          ) : null}
-        </div>
-        <div className="flex flex-col w-1/2 mr-12">
-          {savedCourses ? (
-            <div className="mt-12 text-left ml-12">
-              <p className="mb-5 font-bold text-2xl">Degree Plan</p>
+              </div>
+            ))}
+          </div>
+        ) : null}
+      </div>
+      <div className="flex flex-col w-1/2 mr-12">
+        {savedCourses ? (
+          <div className="mt-12 text-left ml-12">
+            <p className="mb-5 font-bold text-2xl">Degree Plan</p>
 
-              {savedCourses.course.map((c) => (
-                <div
-                  key={c.course_code}
-                  className="flex flex-row justify-between mt-4 mb-4 rounded-md py-5 px-5 border-2 border-black"
-                >
-                  <p className="pr-6 font-size text-xl">
-                    {c.course_code} - {c.title}
-                  </p>
-                  <button onClick={() => handleRemoveCourse(c.course_code)}>Remove</button>
-                </div>
-              ))}
-            </div>
-          ) : null}
-        </div>
+            {savedCourses.course.map((c) => (
+              <div
+                key={c.course_code}
+                className="flex flex-row justify-between mt-4 mb-4 rounded-md py-5 px-5 border-2 border-black"
+              >
+                <p className="pr-6 font-size text-xl">
+                  {c.course_code} - {c.title}
+                </p>
+                <button onClick={() => handleRemoveCourse(c.course_code)}>Remove</button>
+              </div>
+            ))}
+          </div>
+        ) : null}
       </div>
       <LogoutButton />
     </div>
