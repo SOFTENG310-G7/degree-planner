@@ -15,7 +15,7 @@ const Popup: React.FC<PopupProps> = ({ openedData, closePopup }) => {
     >
       <div className="border-2 border-grey-300 rounded-lg mx-[200px] my-[300px] bg-white">
         <button className="text-right w-full p-2" onClick={closePopup}>
-          x
+          ×
         </button>
         <div
           className="flex flex-col px-10 pb-10"
