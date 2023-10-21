@@ -46,6 +46,11 @@
     label {
         @apply font-semibold text-slate-700;
     }
+
+    nav > a {
+        /* TODO: Make navbar links a component and apply styling there */
+        @apply hover:text-cyan-600 transition-colors;
+    }
 }
 
 .animate-in {
