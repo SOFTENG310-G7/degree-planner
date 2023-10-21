@@ -98,11 +98,11 @@ export default function Profile() {
   };
 
   return (
-    <main className="flex flex-col items-center mb-12">
+    <main className="flex flex-col items-center mb-12 gap-8">
       <h1 className="text-4xl text-medium font-bold my-16">Profile</h1>
-      <div className="flex flex-col w-1/2 mr-10">
+      <div className="flex flex-col w-1/2">
         {courses.length !== 0 ? (
-          <div className="mt-12 text-left ml-12">
+          <div className="text-left">
             <p className="mb-5 font-bold text-2xl">Courses Ratings</p>
             {courses.map((c) => (
               <div
@@ -131,9 +131,9 @@ export default function Profile() {
           </div>
         ) : null}
       </div>
-      <div className="flex flex-col w-1/2 mr-12">
+      <div className="flex flex-col w-1/2">
         {savedCourses ? (
-          <div className="mt-12 text-left ml-12">
+          <div className="text-left">
             <p className="mb-5 font-bold text-2xl">Degree Plan</p>
 
             {savedCourses.course.map((c) => (
