@@ -99,7 +99,7 @@ export default function Profile() {
 
   return (
     <main className="flex flex-col items-center mb-12">
-      <h1 className="text-4xl text-medium font-bold my-8">Profile</h1>
+      <h1 className="text-4xl text-medium font-bold my-16">Profile</h1>
       <div className="flex flex-col w-1/2 mr-10">
         {courses.length !== 0 ? (
           <div className="mt-12 text-left ml-12">
