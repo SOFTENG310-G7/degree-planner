@@ -28,7 +28,6 @@ const CourseFilter: React.FC<CourseFilterProps> = ({ handleCategoryChange }) => 
         <option value="COMPSYS">Computer Systems Engineering</option>
         <option value="ENGSCI">Engineering Science</option>
         <option value="MECHENG">Mechanical Engineering</option>
-        <option value="MECHENG">Mechatronics Engineering</option>
         <option value="STRCTENG">Structural Engineering</option>
       </select>
     </div>
