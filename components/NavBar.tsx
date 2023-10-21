@@ -22,7 +22,7 @@ export default async function NavBar() {
           </Link>
 
           <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-slate-400 font-medium flex flex-row gap-4 items-center text-base justify-center [&>a]:px-1">
-            <Link href="/pages/courses" className={'hover:text-cyan-600 transition-colors'}>
+            <Link href="/pages/courses" className="hover:text-cyan-600 transition-colors">
               Courses
             </Link>
             <Link href="/pages/planner" className="hover:text-cyan-600 transition-colors">
