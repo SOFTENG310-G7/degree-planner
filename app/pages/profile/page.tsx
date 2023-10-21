@@ -99,7 +99,7 @@ export default function Profile() {
 
   return (
     <main className="flex flex-col items-center py-16 gap-8">
-      <h1 className="text-4xl text-medium font-bold">Profile</h1>
+      <h1 className="text-4xl font-bold">Profile</h1>
       <div className="flex flex-col w-1/2">
         {courses.length !== 0 ? (
           <div className="text-left">
