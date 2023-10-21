@@ -98,7 +98,7 @@ export default function Profile() {
   };
 
   return (
-    <div className="flex flex-col items-center mb-12">
+    <main className="flex flex-col items-center mb-12">
       <h1 className="text-4xl text-medium font-bold my-8">Profile</h1>
       <div className="flex flex-col w-1/2 mr-10">
         {courses.length !== 0 ? (
@@ -151,6 +151,6 @@ export default function Profile() {
         ) : null}
       </div>
       <LogoutButton />
-    </div>
+    </main>
   );
 }
