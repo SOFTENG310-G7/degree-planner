@@ -104,30 +104,7 @@ export default function Profile() {
         {courses.length !== 0 ? (
           <div className="text-left">
             <p className="mb-5 font-bold text-2xl">Courses Ratings</p>
-            {courses.map((c) => (
-              <div
-                key={c.courses.id}
-                className="flex flex-row justify-between mt-4 mb-4 rounded-md py-5 px-5 border-2 border-black"
-              >
-                <p className="pr-6 font-size text-xl">
-                  {c.courses.course_code} - {c.courses.title}
-                </p>
-                <div className="flex">
-                  {[...Array(5)].map((star, index) => {
-                    const id = index;
-                    const ratingValue = index + 1;
-                    return (
-                      <FaStar
-                        key={id}
-                        className="star"
-                        color={ratingValue <= (c.rating ?? 0) ? '#ffc107' : '#e4e5e9'}
-                        size={30}
-                      />
-                    );
-                  })}
-                </div>
-              </div>
-            ))}
+            {courses.map((c) => CourseRatingCard(c))}
           </div>
         ) : null}
       </div>
@@ -135,22 +112,52 @@ export default function Profile() {
         {savedCourses ? (
           <div className="text-left">
             <p className="mb-5 font-bold text-2xl">Degree Plan</p>
-
-            {savedCourses.course.map((c) => (
-              <div
-                key={c.course_code}
-                className="flex flex-row justify-between mt-4 mb-4 rounded-md py-5 px-5 border-2 border-black"
-              >
-                <p className="pr-6 font-size text-xl">
-                  {c.course_code} - {c.title}
-                </p>
-                <button onClick={() => handleRemoveCourse(c.course_code)}>Remove</button>
-              </div>
-            ))}
+            {savedCourses.course.map((c) => DegreePlannerCard(c))}
           </div>
         ) : null}
       </div>
       <LogoutButton />
     </main>
   );
+
+  function DegreePlannerCard(c: CourseDTO) {
+    return (
+      <div
+        key={c.course_code}
+        className="flex flex-row justify-between mt-4 mb-4 rounded-md py-5 px-5 border-2 border-black"
+      >
+        <p className="pr-6 font-size text-xl">
+          {c.course_code} - {c.title}
+        </p>
+        <button onClick={() => handleRemoveCourse(c.course_code)}>Remove</button>
+      </div>
+    );
+  }
+
+  function CourseRatingCard(c: CourseRating) {
+    return (
+      <div
+        key={c.courses.id}
+        className="flex flex-row justify-between mt-4 mb-4 rounded-md py-5 px-5 border-2 border-black"
+      >
+        <p className="pr-6 font-size text-xl">
+          {c.courses.course_code} - {c.courses.title}
+        </p>
+        <div className="flex">
+          {[...Array(5)].map((star, index) => {
+            const id = index;
+            const ratingValue = index + 1;
+            return (
+              <FaStar
+                key={id}
+                className="star"
+                color={ratingValue <= (c.rating ?? 0) ? '#ffc107' : '#e4e5e9'}
+                size={30}
+              />
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
 }
