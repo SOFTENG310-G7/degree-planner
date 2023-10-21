@@ -100,7 +100,7 @@ export default function Profile() {
   return (
     <div className="flex flex-col items-center mb-12">
       <div className="flex flex-row justify-between mt-6 text-left ml-12">
-        <p className="font-bold text-3xl">Welcome to your profile page.</p>
+        <h1 className="text-4xl text-medium font-bold">Profile</h1>
         <div className="mr-12">
           <LogoutButton />
         </div>
