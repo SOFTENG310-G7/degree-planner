@@ -100,7 +100,7 @@ export default function Profile() {
   return (
     <main className="flex flex-col items-center py-16 gap-8">
       <h1 className="text-4xl font-bold">Profile</h1>
-      <div className="flex flex-col w-1/2 gap-5">
+      <div className="flex flex-col w-full max-w-4xl gap-5">
         <h2 className="font-bold text-2xl">Courses Ratings</h2>
         {courses.length !== 0 ? (
           <>{courses.map((c) => CourseRatingCard(c))}</>
@@ -108,7 +108,7 @@ export default function Profile() {
           <p className="text-l">You have not rated any courses yet</p>
         )}
       </div>
-      <div className="flex flex-col w-1/2 gap-5">
+      <div className="flex flex-col w-full max-w-4xl gap-5">
         <h2 className="font-bold text-2xl">Degree Plan</h2>
         {savedCourses.course.length !== 0 ? (
           <>{savedCourses.course.map((c) => DegreePlannerCard(c))}</>
