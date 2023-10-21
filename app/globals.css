@@ -47,9 +47,13 @@
         @apply font-semibold text-slate-700;
     }
 
-    nav > a {
+    a {
+        @apply transition-colors;
+    }
+
+    header a:hover {
         /* TODO: Make navbar links a component and apply styling there */
-        @apply hover:text-cyan-600 transition-colors;
+        @apply hover:text-cyan-600;
     }
 }
 
