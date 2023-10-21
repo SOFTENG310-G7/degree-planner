@@ -15,7 +15,7 @@ const CourseFilter: React.FC<CourseFilterProps> = ({ handleCategoryChange }) => 
     return (
         <div className="w-1/2 mb-20">
         <select
-          className="w-full border-2 border-slate-400 p-2 rounded-full"
+          className="w-full border-2 border-slate-400 p-2 rounded-full focus-within:border-cyan-600 transition-colors"
           value={selectedCategory}
           onChange={(e: React.ChangeEvent<HTMLSelectElement>) => handleSelectChange(e.target.value)}
         >
@@ -29,7 +29,7 @@ const CourseFilter: React.FC<CourseFilterProps> = ({ handleCategoryChange }) => 
           <option value="ENGSCI">Engineering Science</option>
           <option value="MECHENG">Mechanical Engineering</option>
           <option value="MECHENG">Mechatronics Engineering</option>
-          <option value="STRCTENG 200">Structural Engineering</option>
+          <option value="STRCTENG">Structural Engineering</option>
         </select>
       </div>
     )

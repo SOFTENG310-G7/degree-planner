@@ -68,6 +68,7 @@ export default function Courses() {
     }
   }, [opened]);
 
+  // Filtering Courses depending on the category chosen
   const handleCategoryChange = (category: string) => {
     if (category === 'All') {
       setResults(courses);
