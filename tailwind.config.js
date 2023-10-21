@@ -14,6 +14,9 @@ module.exports = {
           "background-hover": "hsl(var(--btn-background-hover))",
         },
       },
+      transitionProperty: {
+        'text-decoration': 'text-decoration-thickness, text-decoration-style, text-decoration-color',
+      }
     },
   },
   plugins: [],

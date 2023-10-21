@@ -239,14 +239,14 @@ export default function Planner() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center my-5">
-      <section className="flex flex-col gap-3">
+    <div className="flex flex-col justify-center items-center my-24">
+      <section className="flex flex-col gap-24">
         <SearchBar onSearchClick={onSearchClick} />
         {isBrowser ? (
           <DragDropContext onDragEnd={onDragEnd}>
             <div className="flex flex-row justify-between gap-5">
               <div className="flex flex-col items-center gap-5 bg-slate-100 rounded-lg px-16 pt-10">
-                <div className="text-2xl font-bold">Available Courses</div>
+                <h2 className="text-2xl font-bold">Available courses</h2>
                 <Droppable droppableId={droppableIds.allCourses}>
                   {(provided) => (
                     <div
@@ -289,10 +289,10 @@ export default function Planner() {
                       />
                     )}
                   </div>
-                  <div className="text-2xl font-bold">Selected Courses</div>
+                  <h2 className="text-2xl font-bold">Selected courses</h2>
                   <div>
                     <button
-                      className="text-white bg-blue-600 hover:bg-blue-800 font-medium rounded-lg text-base px-2 py-1"
+                      className="text-white bg-cyan-700 hover:bg-cyan-600 active:bg-cyan-700 focus-visible:bg-cyan-600 transition-colors font-medium rounded-full text-base px-3 py-1"
                       type="button"
                       onClick={() => {
                         handleCourseSaving();

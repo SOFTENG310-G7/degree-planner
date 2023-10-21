@@ -7,52 +7,49 @@ export default async function About() {
     <div className="flex justify-center items-center px-8 py-8">
       <div className="flex-1 flex flex-col w-full max-w-md-custom px-8 py-8 bg-white rounded-lg shadow-md">
         <div className="text-center">
-          <h1 className="text-2xl font-bold">Contact Us</h1>
-          <br />
-          <p className="text-gray-600 font-bold">
-            For any queries, feedback or bug reports, please feel free to email us or submit a
-            contact form below.
-          </p>
-          <p className="text-gray-600 font-bold">
-            Our team will strive to get back to you as soon as possible within 2 working days.
-          </p>
-          <br />
-        </div>
-        <div className="mt-4">
-          <p className="text-gray-600">
-            For any major occurrences, please contact our original development team's leader, Dana
-            Seong.
-          </p>
-          <p className="text-gray-600">
-            Original Dev Team Email:&nbsp;
-            <a href="mailto:mseo447@aucklanduni.ac.nz" className="text-blue-500 hover:underline">
-              mseo447@aucklanduni.ac.nz
+          <h1 className="text-4xl text-medium font-bold">Contact Us</h1>
+          <p className="text-slate-600 font-semibold my-4">
+            For feedback and bug reports, the best place to lodge them is{' '}
+            <a
+              className="text-cyan-600 hover:underline transition-text-decoration"
+              href="https://github.com/SOFTENG310-G7/degree-planner"
+            >
+              via GitHub
             </a>
+            .
           </p>
-          <p className="text-gray-600">
-            Second Dev Team Email:&nbsp;
-            <a href="mailto:hwan513@aucklanduni.ac.nz" className="text-blue-500 hover:underline">
-              hwan513@aucklanduni.ac.nz
-            </a>
-          </p>
-          <p className="text-gray-600 pb-2">
-            Third Dev Team Email:&nbsp;
-            <a href="mailto:example@example.com" className="text-blue-500 hover:underline">
-              example@aucklanduni.ac.nz
-            </a>
-          </p>
-          <p className="text-gray-600">Office Operation Hours: 9am to 5pm, Monday to Friday</p>
-          <p className="text-gray-600">3 Grafton Road</p>
-          <p className="text-gray-600">Auckland CBD, Auckland 1010</p>
         </div>
-        <div className="text-center mt-4">
-          <br />
-          <p className="text-gray-600 font-bold">
-            Alternatively, please fill and submit the contact form below.
+        <div className="mt-4 text-slate-600">
+          <p className="mb-4">
+            If there isn’t already an{' '}
+            <a
+              className="text-cyan-600 hover:underline transition-text-decoration"
+              href="https://github.com/SOFTENG310-G7/degree-planner/issues"
+            >
+              open thread
+            </a>{' '}
+            about your query, feel free to open a{' '}
+            <a
+              className="text-cyan-600 hover:underline transition-text-decoration"
+              href="https://github.com/SOFTENG310-G7/degree-planner/issues/new/choose"
+            >
+              new issue
+            </a>
+            .
           </p>
-          <br />
-          <ContactForm />
+          <p>
+            If you’re unfamiliar with GitHub, you’re also welcome to contact our volunteer
+            developers by email at{' '}
+            <a
+              className="text-cyan-600 hover:underline transition-text-decoration"
+              href="mailto:degreeplanner90@gmail.com"
+            >
+              degreeplanner90@gmail.com
+            </a>
+            , or use the contact form below.
+          </p>
         </div>
+        <ContactForm />
       </div>
     </div>
   );

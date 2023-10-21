@@ -1,10 +1,12 @@
 export default function CourseBlock(props: any) {
   return (
-    <div className="border-2 border-black rounded-md py-5 px-5 w-full h-32 flex items-center hover:cursor-pointer hover:shadow-lg bg-white">
-      <div className="flex flex-col my-2">
-        <div className="courseCode text-xl font-bold text-left w-full">{props.code}</div>
-        <div id="courseName">{props.name}</div>
-      </div>
+    <div className="border-2 border-slate-500 flex flex-col items-stretch rounded-lg py-4 px-6 w-full h-32 hover:cursor-pointer shadow hover:shadow-lg transition-shadow bg-white">
+      <h2 className="courseCode text-lg text-slate-800 font-semibold tracking-wide">
+        {props.code}
+      </h2>
+      <p className="text-slate-900" id="courseName">
+        {props.name}
+      </p>
     </div>
   );
 }
