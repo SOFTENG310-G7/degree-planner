@@ -76,7 +76,7 @@ export default function Courses() {
       const filteredArr = courses.filter((c) => c.subject === category);
       setResults(filteredArr);
     }
-  }
+  };
 
   return (
     <div className="flex flex-col items-center">
@@ -114,7 +114,7 @@ export default function Courses() {
           onChange={handleChange}
         ></input>
       </div>
-      <CourseFilter handleCategoryChange={handleCategoryChange}/>
+      <CourseFilter handleCategoryChange={handleCategoryChange} />
       {promiseInProgress && <BeatLoader size={20} color="#0891b2" />}
       <div className="mb-20">
         {results.length !== 0 ? (
