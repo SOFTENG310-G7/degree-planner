@@ -124,7 +124,7 @@ export default function Profile() {
     return (
       <div
         key={c.course_code}
-        className="flex flex-row justify-between rounded-md p-5 border-2 border-black"
+        className="flex flex-row justify-between rounded-md p-5 border-2 border-black gap-8"
       >
         <p className="font-size text-xl">
           {c.course_code} - {c.title}
