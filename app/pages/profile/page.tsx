@@ -103,7 +103,7 @@ export default function Profile() {
       <div className="flex flex-col w-1/2">
         {courses.length !== 0 ? (
           <div className="text-left">
-            <p className="mb-5 font-bold text-2xl">Courses Ratings</p>
+            <h2 className="mb-5 font-bold text-2xl">Courses Ratings</h2>
             {courses.map((c) => CourseRatingCard(c))}
           </div>
         ) : null}
@@ -111,7 +111,7 @@ export default function Profile() {
       <div className="flex flex-col w-1/2">
         {savedCourses ? (
           <div className="text-left">
-            <p className="mb-5 font-bold text-2xl">Degree Plan</p>
+            <h2 className="mb-5 font-bold text-2xl">Degree Plan</h2>
             {savedCourses.course.map((c) => DegreePlannerCard(c))}
           </div>
         ) : null}
