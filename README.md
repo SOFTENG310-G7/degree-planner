@@ -4,9 +4,9 @@ A website for potential or current University of Auckland students to view the l
 
 Degree Planner will assist potential tertiary education students in selecting their future degree at the University of Auckland and also help current students in assuring they will not deviate from their desired path until graduation.
 
-> [!IMPORTANT]
-> **Degree Planner is in alpha.**\
-> Degree Planner is not feature complete, and not yet ready for widespread adoption. However, it is important to the contributing community that we develop openly and transparently. If you’re interested in helping us build Degree Planner, we do recommend you use it. Then, check out the [open issues](https://github.com/SOFTENG310-G7/degree-planner/issues), and perhaps [open a new one](https://github.com/SOFTENG310-G7/degree-planner/issues/new/choose) if you see fit!
+> [!NOTE]
+> **Degree Planner is stable, but in early stages.**\
+> If you’re interested in helping us build Degree Planner, we do recommend trying it out first. Then, check out the [open issues](https://github.com/SOFTENG310-G7/degree-planner/issues), and perhaps [open a new one](https://github.com/SOFTENG310-G7/degree-planner/issues/new/choose) if you see fit!
 
 Planned features include:
 
