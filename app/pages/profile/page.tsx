@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import LogoutButton from '@/components/LogoutButton';
+import Popup from '@/components/Popup';
 import { CourseDTO } from '@/types/CourseDTO';
 import { DegreePlanCard } from '../../../components/DegreePlanCard';
 import { CourseRatingCard } from '../../../components/CourseRatingCard';
@@ -19,8 +20,20 @@ export default function Profile() {
   const [savedCourses, setSavedCourses] = useState<SavedCourse>({
     course: [],
   });
-
   const prevSavedCourses = useRef(savedCourses);
+  const [opened, setOpened] = useState(false);
+  const [openedData, setOpenedData] = useState<CourseDTO>();
+
+  const openPopup = (course: any) => {
+    setOpenedData(course);
+    setOpened(true);
+  };
+
+  const closePopup = () => {
+    fetchUserCourses();
+    setOpened(false);
+    document.body.style.overflow = ''; // Enable scrolling
+  };
 
   useEffect(() => {
     // Fetching data from API
@@ -34,6 +47,15 @@ export default function Profile() {
       prevSavedCourses.current = savedCourses;
     }
   }, [savedCourses]);
+
+  // Controlling scrolling depending on if the popup is open
+  useEffect(() => {
+    if (opened) {
+      document.body.style.overflow = 'hidden'; // Disable scrolling
+    } else {
+      document.body.style.overflow = ''; // Enable scrolling
+    }
+  }, [opened]);
 
   const fetchUserCourses = async () => {
     const response = await fetch(`http://localhost:3000/api/ratings/GET_user`, {
@@ -100,11 +122,23 @@ export default function Profile() {
 
   return (
     <main className="flex flex-col items-center py-16 px-8 gap-8">
+      {opened && openedData != null && (
+        <>
+          {/* Overlay */}
+          <div
+            className="fixed left-0 right-0 top-0 bottom-0 bg-black opacity-50"
+            onClick={closePopup}
+          ></div>
+
+          {/* Popup */}
+          <Popup openedData={openedData} closePopup={closePopup} />
+        </>
+      )}
       <h1 className="text-4xl font-bold">Profile</h1>
       <div className="flex flex-col w-full max-w-4xl gap-5">
         <h2 className="font-bold text-2xl">Courses Ratings</h2>
         {courses.length !== 0 ? (
-          <>{courses.map((c) => CourseRatingCard(c))}</>
+          <>{courses.map((c) => CourseRatingCard(c, openPopup))}</>
         ) : (
           <p className="text-l">You have not rated any courses yet</p>
         )}
@@ -112,7 +146,7 @@ export default function Profile() {
       <div className="flex flex-col w-full max-w-4xl gap-5">
         <h2 className="font-bold text-2xl">Degree Plan</h2>
         {savedCourses.course.length !== 0 ? (
-          <>{savedCourses.course.map((c) => DegreePlanCard(c, handleRemoveCourse))}</>
+          <>{savedCourses.course.map((c) => DegreePlanCard(c, handleRemoveCourse, openPopup))}</>
         ) : (
           <p className="text-l">You have not added any courses yet</p>
         )}

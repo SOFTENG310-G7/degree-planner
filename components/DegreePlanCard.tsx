@@ -1,20 +1,28 @@
 'use client';
 import { CourseDTO } from '@/types/CourseDTO';
+import { AiOutlineClose } from 'react-icons/ai';
 
-export function DegreePlanCard(c: CourseDTO, handleRemoveCourse: (course_code: string) => Promise<void>) {
+export function DegreePlanCard(
+  c: CourseDTO,
+  handleRemoveCourse: (course_code: string) => Promise<void>,
+  openPopup: (course: any) => void
+) {
   return (
     <div
       key={c.course_code}
-      className="flex flex-row justify-between rounded-md p-5 border-2 border-black gap-8"
+      onClick={() => openPopup(c)}
+      className="flex flex-row justify-between rounded-md p-5 border-2 border-black gap-8
+      hover:cursor-pointer shadow hover:shadow-lg transition-shadow bg-white"
     >
       <p className="font-size text-xl">
         {c.course_code} - {c.title}
       </p>
       <button
-        className="text-slate-100 bg-red-500 hover:bg-red-700 transition-colors px-4 py-2 rounded-lg -m-2"
+        type="button"
         onClick={() => handleRemoveCourse(c.course_code)}
+        className="hover:cursor-pointer"
       >
-        Remove
+        <AiOutlineClose size={20} className="hover:fill-cyan-600" />
       </button>
     </div>
   );

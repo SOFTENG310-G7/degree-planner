@@ -45,7 +45,7 @@ function CourseDraggable({ course, index }: CourseDraggableProps) {
     <Draggable draggableId={course.id.toString()} index={index}>
       {(provided) => (
         <div
-          className="mb-2"
+          className="mb-2 select-none"
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
