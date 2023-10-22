@@ -2,9 +2,10 @@
 import { useState, useEffect, useRef } from 'react';
 import LogoutButton from '@/components/LogoutButton';
 import { CourseDTO } from '@/types/CourseDTO';
-import { FaStar } from 'react-icons/fa';
+import { DegreePlanCard } from '../../../components/DegreePlanCard';
+import { CourseRatingCard } from '../../../components/CourseRatingCard';
 
-interface CourseRating {
+export interface CourseRating {
   courses: CourseDTO;
   rating: number;
 }
@@ -121,51 +122,5 @@ export default function Profile() {
         <LogoutButton />
       </div>
     </main>
-  );
-}
-
-function DegreePlanCard(c: CourseDTO, handleRemoveCourse: (course_code: string) => Promise<void>) {
-  return (
-    <div
-      key={c.course_code}
-      className="flex flex-row justify-between rounded-md p-5 border-2 border-black gap-8"
-    >
-      <p className="font-size text-xl">
-        {c.course_code} - {c.title}
-      </p>
-      <button
-        className="text-slate-100 bg-red-500 hover:bg-red-700 transition-colors px-4 py-2 rounded-lg -m-2"
-        onClick={() => handleRemoveCourse(c.course_code)}
-      >
-        Remove
-      </button>
-    </div>
-  );
-}
-
-function CourseRatingCard(c: Readonly<CourseRating>) {
-  return (
-    <div
-      key={c.courses.id}
-      className="flex flex-row justify-between rounded-md p-5 border-2 border-black"
-    >
-      <p className="font-size text-xl">
-        {c.courses.course_code} - {c.courses.title}
-      </p>
-      <div className="flex">
-        {[...Array(5)].map((star, index) => {
-          const id = index;
-          const ratingValue = index + 1;
-          return (
-            <FaStar
-              key={id}
-              className="star"
-              color={ratingValue <= (c.rating ?? 0) ? '#ffc107' : '#e4e5e9'}
-              size={30}
-            />
-          );
-        })}
-      </div>
-    </div>
   );
 }
