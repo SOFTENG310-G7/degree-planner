@@ -1,8 +1,10 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import LogoutButton from '@/components/LogoutButton';
+import Popup from '@/components/Popup';
 import { CourseDTO } from '@/types/CourseDTO';
 import { FaStar } from 'react-icons/fa';
+import { AiOutlineClose } from 'react-icons/ai';
 
 interface CourseRating {
   courses: CourseDTO;
@@ -18,8 +20,20 @@ export default function Profile() {
   const [savedCourses, setSavedCourses] = useState<SavedCourse>({
     course: [],
   });
-
   const prevSavedCourses = useRef(savedCourses);
+  const [opened, setOpened] = useState(false);
+  const [openedData, setOpenedData] = useState<CourseDTO>();
+
+  const handleClick = (course: any) => {
+    setOpenedData(course);
+    setOpened(true);
+  };
+
+  const closePopup = () => {
+    fetchUserCourses();
+    setOpened(false);
+    document.body.style.overflow = ''; // Enable scrolling
+  };
 
   useEffect(() => {
     // Fetching data from API
@@ -33,6 +47,15 @@ export default function Profile() {
       prevSavedCourses.current = savedCourses;
     }
   }, [savedCourses]);
+
+  // Controlling scrolling depending on if the popup is open
+  useEffect(() => {
+    if (opened) {
+      document.body.style.overflow = 'hidden'; // Disable scrolling
+    } else {
+      document.body.style.overflow = ''; // Enable scrolling
+    }
+  }, [opened]);
 
   const fetchUserCourses = async () => {
     const response = await fetch(`http://localhost:3000/api/ratings/GET_user`, {
@@ -99,6 +122,18 @@ export default function Profile() {
 
   return (
     <div className="flex flex-col mb-12">
+      {opened && openedData != null && (
+        <>
+          {/* Overlay */}
+          <div
+            className="fixed left-0 right-0 top-0 bottom-0 bg-black opacity-50"
+            onClick={closePopup}
+          ></div>
+
+          {/* Popup */}
+          <Popup openedData={openedData} closePopup={closePopup} />
+        </>
+      )}
       <div className="flex flex-row justify-between mt-6 text-left ml-12">
         <p className="font-bold text-3xl">Welcome to your profile page.</p>
         <div className="mr-12">
@@ -113,7 +148,9 @@ export default function Profile() {
               {courses.map((c) => (
                 <div
                   key={c.courses.id}
-                  className="flex flex-row justify-between mt-4 mb-4 rounded-md py-5 px-5 border-2 border-black"
+                  onClick={() => handleClick(c.courses)}
+                  className="flex flex-row justify-between mt-4 mb-4 rounded-md py-5 px-5 border-2 border-black
+                  hover:cursor-pointer shadow hover:shadow-lg transition-shadow bg-white"
                 >
                   <p className="pr-6 font-size text-xl">
                     {c.courses.course_code} - {c.courses.title}
@@ -141,16 +178,27 @@ export default function Profile() {
           {savedCourses ? (
             <div className="mt-12 text-left ml-12">
               <p className="mb-5 font-bold text-2xl">Degree Plan</p>
-
               {savedCourses.course.map((c) => (
-                <div
-                  key={c.course_code}
-                  className="flex flex-row justify-between mt-4 mb-4 rounded-md py-5 px-5 border-2 border-black"
-                >
-                  <p className="pr-6 font-size text-xl">
-                    {c.course_code} - {c.title}
-                  </p>
-                  <button onClick={() => handleRemoveCourse(c.course_code)}>Remove</button>
+                <div key={c.course_code}>
+                  <div className="absolute right-0 mt-[25px] mr-16">
+                    <button
+                      type="button"
+                      onClick={() => handleRemoveCourse(c.course_code)}
+                      className="hover:cursor-pointer"
+                    >
+                      <AiOutlineClose size={20} className="hover:fill-cyan-600" />
+                    </button>
+                  </div>
+                  <div
+                    key={c.course_code}
+                    onClick={() => handleClick(c)}
+                    className="flex flex-row justify-between mt-4 mb-4 rounded-md py-5 px-5 border-2 
+                    border-black hover:cursor-pointer shadow hover:shadow-lg transition-shadow bg-white"
+                  >
+                    <p className="pr-6 font-size text-xl">
+                      {c.course_code} - {c.title}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
