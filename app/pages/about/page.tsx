@@ -14,21 +14,12 @@ export default async function About() {
         <div className="my-8 text-gray-600">
           <p className="mb-4">
             In 2023, as part of the{' '}
-            <a
-              className="text-cyan-600 hover:underline transition-text-decoration"
-              href="https://courseoutline.auckland.ac.nz/dco/course/SOFTENG/310"
-            >
+            <a href="https://courseoutline.auckland.ac.nz/dco/course/SOFTENG/310">
               SOFTENG&nbsp;310
             </a>{' '}
-            paper at{' '}
-            <a
-              className="text-cyan-600 hover:underline transition-text-decoration"
-              href="https://www.auckland.ac.nz"
-            >
-              Waipapa Taumata Rau
-            </a>{' '}
-            (the University of Auckland), the G7s were tasked with building website for students to
-            plan their future education.
+            paper at <a href="https://www.auckland.ac.nz">Waipapa Taumata Rau</a> (the University of
+            Auckland), the G7s were tasked with building website for students to plan their future
+            education.
           </p>
           <p className="mb-4">
             Degree Planner features a complete list of courses available for the university’s

@@ -48,12 +48,22 @@
     }
 
     a {
-        @apply transition-colors;
+        @apply text-cyan-600 no-underline;
+    }
+
+    a:hover,
+    a:focus,
+    a:focus-visible {
+        @apply underline decoration-from-font;
+    }
+
+    header a {
+        @apply text-slate-600 no-underline transition-colors;
     }
 
     header a:hover {
         /* TODO: Make navbar links a component and apply styling there */
-        @apply hover:text-cyan-600;
+        @apply text-cyan-600;
     }
 }
 
