@@ -19,7 +19,10 @@ export function DegreePlanCard(
       </p>
       <button
         type="button"
-        onClick={() => handleRemoveCourse(c.course_code)}
+        onClick={(e) => {
+          e.stopPropagation();
+          handleRemoveCourse(c.course_code);
+        }}
         className="hover:cursor-pointer"
       >
         <AiOutlineClose size={20} className="hover:fill-cyan-600" />
