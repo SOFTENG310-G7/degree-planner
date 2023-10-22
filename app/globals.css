@@ -61,11 +61,13 @@
         @apply underline decoration-from-font;
     }
 
-    header a {
-        @apply text-slate-600 no-underline transition-colors;
+    header a,
+    footer a {
+        @apply text-slate-600 font-medium no-underline transition-colors;
     }
 
-    header a:hover {
+    header a:hover,
+    footer a:hover {
         /* TODO: Make navbar links a component and apply styling there */
         @apply text-cyan-600 no-underline;
     }
