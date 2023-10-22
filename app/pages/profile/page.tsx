@@ -134,26 +134,25 @@ export default function Profile() {
           <Popup openedData={openedData} closePopup={closePopup} />
         </>
       )}
-      <div className="flex flex-row justify-between mt-6 text-left ml-12">
-        <p className="font-bold text-3xl">Welcome to your profile page.</p>
-        <div className="mr-12">
-          <LogoutButton />
-        </div>
+      <div className="flex flex-row justify-between mt-6 text-left mx-12">
+        <h1 className="font-semibold text-3xl">Welcome to your profile</h1>
+        <LogoutButton />
       </div>
       <div className="flex flex-row">
         <div className="flex flex-col w-1/2 mr-10">
           {courses.length !== 0 ? (
             <div className="mt-12 text-left ml-12">
-              <p className="mb-5 font-bold text-2xl">Courses Ratings</p>
+              <p className="mb-5 font-semibold text-2xl">Course ratings</p>
               {courses.map((c) => (
                 <div
                   key={c.courses.id}
                   onClick={() => handleClick(c.courses)}
-                  className="flex flex-row justify-between mt-4 mb-4 rounded-md py-5 px-5 border-2 border-black
+                  className="flex flex-row justify-between mt-4 mb-4 rounded-md py-5 px-5 border-2 border-slate-500
                   hover:cursor-pointer shadow hover:shadow-lg transition-shadow bg-white"
                 >
-                  <p className="pr-6 font-size text-xl">
-                    {c.courses.course_code} - {c.courses.title}
+                  <p className="pr-6 text-slate-600 text-xl">
+                    <span className="font-semibold text-slate-800">{c.courses.course_code}</span>{' '}
+                    {c.courses.title}
                   </p>
                   <div className="flex">
                     {[...Array(5)].map((star, index) => {
@@ -177,7 +176,7 @@ export default function Profile() {
         <div className="flex flex-col w-1/2 mr-12">
           {savedCourses ? (
             <div className="mt-12 text-left ml-12">
-              <p className="mb-5 font-bold text-2xl">Degree Plan</p>
+              <p className="mb-5 font-semibold text-2xl">Degree plan</p>
               {savedCourses.course.map((c) => (
                 <div key={c.course_code}>
                   <div className="absolute right-0 mt-[25px] mr-16">
@@ -193,10 +192,11 @@ export default function Profile() {
                     key={c.course_code}
                     onClick={() => handleClick(c)}
                     className="flex flex-row justify-between mt-4 mb-4 rounded-md py-5 px-5 border-2 
-                    border-black hover:cursor-pointer shadow hover:shadow-lg transition-shadow bg-white"
+                    border-slate-500 hover:cursor-pointer shadow hover:shadow-lg transition-shadow bg-white"
                   >
-                    <p className="pr-6 font-size text-xl">
-                      {c.course_code} - {c.title}
+                    <p className="pr-6 text-slate-600 text-xl">
+                      <span className="font-semibold text-slate-800">{c.course_code}</span>{' '}
+                      {c.title}
                     </p>
                   </div>
                 </div>

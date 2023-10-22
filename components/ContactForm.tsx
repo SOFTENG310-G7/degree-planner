@@ -85,10 +85,7 @@ const ContactForm: React.FC = () => {
         ></textarea>
 
         <div className="mb-6">
-          <button
-            type="submit"
-            className="w-full px-3 py-4 font-medium text-slate-50 bg-cyan-700 hover:bg-cyan-600 rounded-md active:bg-cyan-700 focus:bg-cyan-600 focus:outline-none transition-colors"
-          >
+          <button type="submit" className="btn w-full px-3 py-4">
             Send message
           </button>
         </div>
