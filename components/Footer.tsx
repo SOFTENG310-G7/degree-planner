@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="flex flex-row justify-between items-baseline border-t border-slate-300 text-slate-600 px-16 py-7 tracking-wide min-h-[12rem]">
+    <footer className="flex flex-row flex-wrap justify-between items-baseline border-t border-slate-300 text-slate-600 px-16 py-7 tracking-wide min-h-[12rem]">
       <Link href="/" className="flex text-xl font-semibold text-cyan-900 tracking-tight">
         Degree Planner
       </Link>
