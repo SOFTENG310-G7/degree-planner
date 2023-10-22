@@ -134,17 +134,15 @@ export default function Profile() {
           <Popup openedData={openedData} closePopup={closePopup} />
         </>
       )}
-      <div className="flex flex-row justify-between mt-6 text-left ml-12">
-        <h1 className="font-bold text-3xl">Welcome to your profile</h1>
-        <div className="mr-12">
-          <LogoutButton />
-        </div>
+      <div className="flex flex-row justify-between mt-6 text-left mx-12">
+        <h1 className="font-semibold text-3xl">Welcome to your profile</h1>
+        <LogoutButton />
       </div>
       <div className="flex flex-row">
         <div className="flex flex-col w-1/2 mr-10">
           {courses.length !== 0 ? (
             <div className="mt-12 text-left ml-12">
-              <p className="mb-5 font-bold text-2xl">Course ratings</p>
+              <p className="mb-5 font-semibold text-2xl">Course ratings</p>
               {courses.map((c) => (
                 <div
                   key={c.courses.id}
@@ -178,7 +176,7 @@ export default function Profile() {
         <div className="flex flex-col w-1/2 mr-12">
           {savedCourses ? (
             <div className="mt-12 text-left ml-12">
-              <p className="mb-5 font-bold text-2xl">Degree plan</p>
+              <p className="mb-5 font-semibold text-2xl">Degree plan</p>
               {savedCourses.course.map((c) => (
                 <div key={c.course_code}>
                   <div className="absolute right-0 mt-[25px] mr-16">
