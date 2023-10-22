@@ -11,9 +11,7 @@ export default function sendResetEmail() {
           action="/auth/password-reset-email"
           method="post"
         >
-          <label className="text-md" htmlFor="email">
-            Email
-          </label>
+          <label htmlFor="email">Email</label>
           <input
             id="email"
             autoComplete="on"
@@ -22,9 +20,7 @@ export default function sendResetEmail() {
             placeholder="example@domain.com"
             required
           />
-          <button className="bg-green-700 rounded px-4 py-2 text-white mb-2">
-            Send Password Reset Email
-          </button>
+          <button className="btn-green">Send password reset email</button>
         </form>
         <Messages />
       </div>
