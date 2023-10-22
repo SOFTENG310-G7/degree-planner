@@ -121,7 +121,7 @@ export default function Profile() {
   };
 
   return (
-    <main className="flex flex-col items-center mt-6 mx-12 gap-8">
+    <main className="flex flex-col items-center my-6 mx-12 gap-8">
       {opened && openedData != null && (
         <>
           {/* Overlay */}
