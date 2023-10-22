@@ -3,10 +3,10 @@ import { useState, useEffect, useRef } from 'react';
 import LogoutButton from '@/components/LogoutButton';
 import Popup from '@/components/Popup';
 import { CourseDTO } from '@/types/CourseDTO';
-import { FaStar } from 'react-icons/fa';
-import { AiOutlineClose } from 'react-icons/ai';
+import { DegreePlanCard } from '../../../components/DegreePlanCard';
+import { CourseRatingCard } from '../../../components/CourseRatingCard';
 
-interface CourseRating {
+export interface CourseRating {
   courses: CourseDTO;
   rating: number;
 }
@@ -24,7 +24,7 @@ export default function Profile() {
   const [opened, setOpened] = useState(false);
   const [openedData, setOpenedData] = useState<CourseDTO>();
 
-  const handleClick = (course: any) => {
+  const openPopup = (course: any) => {
     setOpenedData(course);
     setOpened(true);
   };
@@ -121,7 +121,7 @@ export default function Profile() {
   };
 
   return (
-    <div className="flex flex-col mb-12">
+    <main className="flex flex-col items-center my-16 mx-12 gap-8">
       {opened && openedData != null && (
         <>
           {/* Overlay */}
@@ -134,77 +134,27 @@ export default function Profile() {
           <Popup openedData={openedData} closePopup={closePopup} />
         </>
       )}
-      <div className="flex flex-row justify-between mt-6 text-left mx-12">
-        <h1 className="font-semibold text-3xl">Welcome to your profile</h1>
+      <h1 className="text-4xl font-semibold">Profile Page</h1>
+      <div className="flex flex-col w-full max-w-4xl gap-5">
+        <h2 className="font-semibold text-2xl">Courses ratings</h2>
+        {courses.length !== 0 ? (
+          <>{courses.map((c) => CourseRatingCard(c, openPopup))}</>
+        ) : (
+          <p className="text-l">You have not rated any courses yet</p>
+        )}
+      </div>
+      <div className="flex flex-col w-full max-w-4xl gap-5">
+        <h2 className="font-semibold text-2xl">Degree plan</h2>
+        {savedCourses.course.length !== 0 ? (
+          <>{savedCourses.course.map((c) => DegreePlanCard(c, handleRemoveCourse, openPopup))}</>
+        ) : (
+          <p className="text-l">You have not added any courses yet</p>
+        )}
+      </div>
+      <div className="flex flex-col w-full max-w-4xl gap-5">
+        <h2 className="font-bold text-2xl">Profile Actions</h2>
         <LogoutButton />
       </div>
-      <div className="flex flex-row">
-        <div className="flex flex-col w-1/2 mr-10">
-          {courses.length !== 0 ? (
-            <div className="mt-12 text-left ml-12">
-              <p className="mb-5 font-semibold text-2xl">Course ratings</p>
-              {courses.map((c) => (
-                <div
-                  key={c.courses.id}
-                  onClick={() => handleClick(c.courses)}
-                  className="flex flex-row justify-between mt-4 mb-4 rounded-md py-5 px-5 border-2 border-slate-500
-                  hover:cursor-pointer shadow hover:shadow-lg transition-shadow bg-white"
-                >
-                  <p className="pr-6 text-slate-600 text-xl">
-                    <span className="font-semibold text-slate-800">{c.courses.course_code}</span>{' '}
-                    {c.courses.title}
-                  </p>
-                  <div className="flex">
-                    {[...Array(5)].map((star, index) => {
-                      const id = index;
-                      const ratingValue = index + 1;
-                      return (
-                        <FaStar
-                          key={id}
-                          className="star"
-                          color={ratingValue <= (c.rating ?? 0) ? '#ffc107' : '#e4e5e9'}
-                          size={30}
-                        />
-                      );
-                    })}
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : null}
-        </div>
-        <div className="flex flex-col w-1/2 mr-12">
-          {savedCourses ? (
-            <div className="mt-12 text-left ml-12">
-              <p className="mb-5 font-semibold text-2xl">Degree plan</p>
-              {savedCourses.course.map((c) => (
-                <div key={c.course_code}>
-                  <div className="absolute right-0 mt-[25px] mr-16">
-                    <button
-                      type="button"
-                      onClick={() => handleRemoveCourse(c.course_code)}
-                      className="hover:cursor-pointer"
-                    >
-                      <AiOutlineClose size={20} className="hover:fill-cyan-600" />
-                    </button>
-                  </div>
-                  <div
-                    key={c.course_code}
-                    onClick={() => handleClick(c)}
-                    className="flex flex-row justify-between mt-4 mb-4 rounded-md py-5 px-5 border-2 
-                    border-slate-500 hover:cursor-pointer shadow hover:shadow-lg transition-shadow bg-white"
-                  >
-                    <p className="pr-6 text-slate-600 text-xl">
-                      <span className="font-semibold text-slate-800">{c.course_code}</span>{' '}
-                      {c.title}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : null}
-        </div>
-      </div>
-    </div>
+    </main>
   );
 }
