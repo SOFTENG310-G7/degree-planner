@@ -121,7 +121,7 @@ export default function Profile() {
   };
 
   return (
-    <main className="flex flex-col items-center py-16 px-8 gap-8">
+    <main className="flex flex-col items-center mt-6 mx-12 gap-8">
       {opened && openedData != null && (
         <>
           {/* Overlay */}
@@ -134,9 +134,9 @@ export default function Profile() {
           <Popup openedData={openedData} closePopup={closePopup} />
         </>
       )}
-      <h1 className="text-4xl font-bold">Profile</h1>
+      <h1 className="text-3xl font-semibold">Profile Page</h1>
       <div className="flex flex-col w-full max-w-4xl gap-5">
-        <h2 className="font-bold text-2xl">Courses Ratings</h2>
+        <h2 className="font-semibold text-2xl">Courses ratings</h2>
         {courses.length !== 0 ? (
           <>{courses.map((c) => CourseRatingCard(c, openPopup))}</>
         ) : (
@@ -144,7 +144,7 @@ export default function Profile() {
         )}
       </div>
       <div className="flex flex-col w-full max-w-4xl gap-5">
-        <h2 className="font-bold text-2xl">Degree Plan</h2>
+        <h2 className="font-semibold text-2xl">Degree plan</h2>
         {savedCourses.course.length !== 0 ? (
           <>{savedCourses.course.map((c) => DegreePlanCard(c, handleRemoveCourse, openPopup))}</>
         ) : (
