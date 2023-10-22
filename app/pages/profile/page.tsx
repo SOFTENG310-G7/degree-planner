@@ -149,7 +149,7 @@ export default function Profile() {
                 <div
                   key={c.courses.id}
                   onClick={() => handleClick(c.courses)}
-                  className="flex flex-row justify-between mt-4 mb-4 rounded-md py-5 px-5 border-2 border-black
+                  className="flex flex-row justify-between mt-4 mb-4 rounded-md py-5 px-5 border-2 border-slate-500
                   hover:cursor-pointer shadow hover:shadow-lg transition-shadow bg-white"
                 >
                   <p className="pr-6 text-slate-600 text-xl">
@@ -194,7 +194,7 @@ export default function Profile() {
                     key={c.course_code}
                     onClick={() => handleClick(c)}
                     className="flex flex-row justify-between mt-4 mb-4 rounded-md py-5 px-5 border-2 
-                    border-black hover:cursor-pointer shadow hover:shadow-lg transition-shadow bg-white"
+                    border-slate-500 hover:cursor-pointer shadow hover:shadow-lg transition-shadow bg-white"
                   >
                     <p className="pr-6 text-slate-600 text-xl">
                       <span className="font-semibold text-slate-800">{c.course_code}</span>{' '}
