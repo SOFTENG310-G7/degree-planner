@@ -134,7 +134,7 @@ export default function Profile() {
           <Popup openedData={openedData} closePopup={closePopup} />
         </>
       )}
-      <h1 className="text-3xl font-semibold">Profile Page</h1>
+      <h1 className="text-4xl font-semibold">Profile Page</h1>
       <div className="flex flex-col w-full max-w-4xl gap-5">
         <h2 className="font-semibold text-2xl">Courses ratings</h2>
         {courses.length !== 0 ? (
