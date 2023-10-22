@@ -144,7 +144,7 @@ export default function Profile() {
         <div className="flex flex-col w-1/2 mr-10">
           {courses.length !== 0 ? (
             <div className="mt-12 text-left ml-12">
-              <p className="mb-5 font-bold text-2xl">Courses Ratings</p>
+              <p className="mb-5 font-bold text-2xl">Course ratings</p>
               {courses.map((c) => (
                 <div
                   key={c.courses.id}
@@ -152,8 +152,9 @@ export default function Profile() {
                   className="flex flex-row justify-between mt-4 mb-4 rounded-md py-5 px-5 border-2 border-black
                   hover:cursor-pointer shadow hover:shadow-lg transition-shadow bg-white"
                 >
-                  <p className="pr-6 font-size text-xl">
-                    {c.courses.course_code} - {c.courses.title}
+                  <p className="pr-6 text-slate-600 text-xl">
+                    <span className="font-semibold text-slate-800">{c.courses.course_code}</span>{' '}
+                    {c.courses.title}
                   </p>
                   <div className="flex">
                     {[...Array(5)].map((star, index) => {
