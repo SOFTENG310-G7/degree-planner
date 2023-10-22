@@ -14,9 +14,9 @@ export function DegreePlanCard(
       className="flex flex-row justify-between rounded-md p-5 border-2 border-slate-500 gap-8
       hover:cursor-pointer shadow hover:shadow-lg transition-shadow bg-white"
     >
-      <p className="text-slate-600 text-xl">
+      <div className="text-slate-600 text-xl">
         <span className="font-semibold text-slate-800">{c.course_code}</span> {c.title}
-      </p>
+      </div>
       <button
         type="button"
         onClick={(e) => {
