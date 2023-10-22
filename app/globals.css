@@ -63,7 +63,7 @@
 
     header a:hover {
         /* TODO: Make navbar links a component and apply styling there */
-        @apply text-cyan-600;
+        @apply text-cyan-600 no-underline;
     }
 }
 
