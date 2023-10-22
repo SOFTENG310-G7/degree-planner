@@ -4,14 +4,8 @@ export default function Footer() {
   return (
     <footer className="flex flex-row flex-wrap justify-between items-baseline border-t border-slate-300 text-slate-600 px-16 py-7 tracking-wide min-h-[12rem]">
       <div>
-        <Link href="/" className="flex text-xl font-semibold text-cyan-900 tracking-tight">
-          Degree Planner
-        </Link>
-        <Link
-          href="https://www.auckland.ac.nz"
-          className="font-medium text-slate-500"
-          target="_blank"
-        >
+        <p className="text-2xl font-semibold text-cyan-900 tracking-tight mb-0">Degree Planner</p>
+        <Link href="https://www.auckland.ac.nz" className="text-slate-500" target="_blank">
           University of Auckland
         </Link>
       </div>
