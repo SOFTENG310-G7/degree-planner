@@ -12,7 +12,7 @@ export default async function About() {
           </p>
         </div>
         <div className="my-8 text-gray-600">
-          <p className="mb-4">
+          <p>
             In 2023, as part of the{' '}
             <a href="https://courseoutline.auckland.ac.nz/dco/course/SOFTENG/310">
               SOFTENG&nbsp;310
@@ -21,13 +21,13 @@ export default async function About() {
             Auckland), the G7s were tasked with building website for students to plan their future
             education.
           </p>
-          <p className="mb-4">
+          <p>
             Degree Planner features a complete list of courses available for the university’s
             Bachelor of Science and Bachelor of Engineering programmes, supporting potential and
             current students in their efforts to view and plan their degree, or map out alternative
             degree plans.
           </p>
-          <p className="mb-4">
+          <p>
             We encourage students to create and share degree plans, and rate courses based on past
             experiences to share and foster the culture at Waipapa Taumata Rau. Students may also
             view entrance requirements and recommended plans for essential courses for the career
